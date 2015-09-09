@@ -1,6 +1,6 @@
 This app is built with [Middleman](https://middlemanapp.com/).
 
-The documentation is hosted at: http://appriss-professional-svcs.github.io/narxcheck_documentation.
+The documentation is hosted at: http://appriss-operations.github.io/narxcheck_docs.
 
 To deploy:
 
