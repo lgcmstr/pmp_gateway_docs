@@ -1,5 +1,5 @@
-This app is built on [Middleman](https://middlemanapp.com/)
+This app is built with [Middleman](https://middlemanapp.com/).
 
-bundle exec rake build
+`bundle exec rake build`
 
-bundle exec rake publish
+`bundle exec rake publish`
