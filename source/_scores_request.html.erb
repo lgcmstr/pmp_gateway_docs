@@ -1,0 +1,36 @@
+<section class="method" id="scores-request">
+  <div class="method-copy">
+    <h1>Scores Request</h1>
+
+    <p>
+      <%= link_to 'Scores Request Schema', 'scores_request_schema.xsd' %><br />
+      <%= link_to 'Scores Request Constraints', 'request_constraints.xsd' %>
+    </p>
+
+    <p>A request should include the following information:</p>
+    <ul>
+      <li><strong>provider</strong> making the request</li>
+      <li><strong>location</strong> of the provider</li>
+      <li><strong>patient</strong> whose prescription information is being requested</li>
+    </ul>
+    <p>If prescription information is found for the requested patient, the response will include:</p>
+    <ul>
+      <li>Risk scores for three prescription categories:</li>
+      <ul>
+        <li>narcotics</li>
+        <li>sedatives</li>
+        <li>stimulants</li>
+      </ul>
+      <li>A URL to request a NARxCHECK Report for the specified patient.</li>
+    </ul>
+  </div>
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <p>Definition</p>
+<% code('shell') do %>
+POST https://gateway-prep.pmp.appriss.com/narx/request/simple
+<% end %>
+    </div>
+  </div>
+</section>

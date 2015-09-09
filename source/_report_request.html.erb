@@ -1,0 +1,30 @@
+<section class="method" id="report-request">
+  <div class="method-copy">
+    <h1>Report Request</h1>
+
+    <p>
+      <%= link_to 'Report Request Schema', 'report_request_schema.xsd' %><br />
+      <%= link_to 'Request Constraints', 'request_constraints.xsd' %>
+    </p>
+
+    <p>To make a Report Request, you must first make a successful Scores Request. The response to the Scores Request will include the URL where you can send Report Requests.</p>
+
+    <p>A Report Request should include the following information:</p>
+    <ul>
+      <li><strong>provider</strong>: person viewing the report</li>
+      <li><strong>location</strong> of the provider</li>
+    </ul>
+    <p>If the request is successul, the response will include a NARxCHECK Report.</p>
+
+    <p>Reports can be returned in two ways. You specify the method by including or excluding the <code><%= escape_html '<ReportLink />' %></code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
+  </div>
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <p>Definition</p>
+<% code('shell') do %>
+POST https://gateway-prep.pmp.appriss.com/narxreport/{REPORT_ID}.html
+<% end %>
+    </div>
+  </div>
+</section>

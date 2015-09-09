@@ -1,0 +1,54 @@
+<section class="method" id="scores-request-simple">
+  <div class="method-copy">
+    <h2>Simple Example</h2>
+    <p>The Scores Request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>This example is the most minimalistic request possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <p>Definition</p>
+<% code('shell') do %>
+POST https://gateway-prep.pmp.appriss.com/narx/request/simple
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request">
+    <p>Example Request:</p>
+<% code('shell') do %>
+curl https://gateway-prep.pmp.appriss.com/narx/request/simple \
+  -u username:password \
+  -H "Content-Type: application/xml" \
+  -H "Accept: application/xml" \
+  -d @scores_request_minimal.xml
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <p>Example Request Data</p>
+    <!-- <span class="code-block-label">scores_request_minimal.xml</span> -->
+<% code('xml') do %>
+<% File.open("#{root}/source/scores_request_minimal.xml", 'rb').read %>
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <p>Example Response</p>
+<% code('xml') do %>
+<?xml version="1.0" encoding="UTF-8"?>
+<NarxScoreResponse xmlns="http://xml.appriss.com/gateway">
+  <NarxRequestId>55656</NarxRequestId>
+  <Response>
+    <Pmp>KS</Pmp>
+    <NarxScore>
+      <Narcotics>240</Narcotics>
+      <Stimulants>000</Stimulants>
+      <Sedatives>170</Sedatives>
+      <NarxReport Content-Type="text/html">https://gateway-prep.pmp.appriss.com/narxreport/47606.html</NarxReport>
+    </NarxScore>
+  </Response>
+</NarxScoreResponse>
+<% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>

@@ -1,0 +1,142 @@
+@charset "utf-8";
+
+@import "normalize";
+@import "bourbon";
+@import "base/base";   /* Bitters needs to be imported before Neat */
+@import "neat";
+@import "pygments-monokai";
+
+$side-bar-width: 280px;
+$side-bar-padding: 6px 20px;
+// $code-background: #393939;
+$code-background: rgb(45,49,52);
+$copy-border: darken(#fff, 10);
+$code-border: lighten($code-background, 10);
+
+
+h1 {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 36px;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.side-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: $side-bar-width;
+  min-height: 100%;
+  background-color: rgb(253, 252, 249);
+  border-right: 1px solid #f3eee0;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  h5 {
+    margin: 0;
+    padding: 6px 20px;
+    font-weight: 400;
+  }
+
+  ul.toc {
+    ul.sidebar-nav-items a {
+      padding-left: 42px;
+      font-size: 15px;
+    }
+
+
+    li a {
+      padding: 6px 20px;
+      display: block;
+
+      &:hover {
+        text-decoration: underline;;
+      }
+    }
+  }
+}
+
+.code-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: $side-bar-width;
+  z-index: -1;
+
+  .code-background-actual {
+    width: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $code-background;
+  }
+}
+
+.main-content {
+  position: absolute;
+  left: $side-bar-width;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100%;
+
+  section.method {
+    @include row;
+
+    .method-copy,
+    .method-code {
+      padding: 40px 40px 50px 40px;
+      width: 50%;
+    }
+
+    .method-copy {
+      float: left;
+      color: #505050;
+      border-top: 1px solid $copy-border;
+    }
+
+    .method-code {
+      float: right;
+      position: relative;
+      padding-top: 95px;
+      color: #e1e1e1;
+      font-weight: 300;
+      border-top: 1px solid $code-border;
+
+      .method-example {
+        padding: 15px 0;
+
+        &:first-child {
+          padding-top: 0;
+        }
+
+        p {
+          margin: 0;
+          color: #f2f2f2;
+        }
+      }
+    }
+  }
+}
+
+pre {
+  background-color: #23292b;
+  border-radius: 5px;
+  font-size: 0.9em;
+  margin: 10px 0;
+  padding: 20px 25px;
+}
+
+// p.code-block-label {
+//   color: #f3f3f3;
+// }
