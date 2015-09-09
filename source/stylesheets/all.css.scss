@@ -10,8 +10,8 @@ $side-bar-width: 280px;
 $side-bar-padding: 6px 20px;
 // $code-background: #393939;
 $code-background: rgb(45,49,52);
-$copy-border: darken(#fff, 10);
-$code-border: lighten($code-background, 10);
+$copy-border: 1px solid darken(#fff, 10);
+$code-border: 1px solid lighten($code-background, 10);
 
 
 h1 {
@@ -24,6 +24,14 @@ h2 {
   font-weight: 300;
   font-size: 24px;
   line-height: 30px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: 1.5em;
+  margin-bottom: 0;
 }
 
 .side-nav {
@@ -42,7 +50,7 @@ h2 {
 
   h5 {
     margin: 0;
-    padding: 6px 20px;
+    padding: $side-bar-padding;
     font-weight: 400;
   }
 
@@ -54,11 +62,40 @@ h2 {
 
 
     li a {
-      padding: 6px 20px;
+      padding: $side-bar-padding;
       display: block;
 
       &:hover {
         text-decoration: underline;;
+      }
+    }
+  }
+
+  .links {
+    padding: 16px 20px;
+    margin-top: 18px;
+    border-top: $copy-border;
+    font-size: 14px;
+    ul {
+      li {
+        display: inline;
+        margin: 0 6px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      a {
+        color: $medium-gray;
+
+        &:hover {
+          color: #555;
+        }
       }
     }
   }
@@ -102,7 +139,7 @@ h2 {
     .method-copy {
       float: left;
       color: #505050;
-      border-top: 1px solid $copy-border;
+      border-top: $copy-border;
     }
 
     .method-code {
@@ -111,7 +148,7 @@ h2 {
       padding-top: 95px;
       color: #e1e1e1;
       font-weight: 300;
-      border-top: 1px solid $code-border;
+      border-top: $code-border;
 
       .method-example {
         padding: 15px 0;
