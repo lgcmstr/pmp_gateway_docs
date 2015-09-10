@@ -47,6 +47,12 @@ h3 {
   background-color: rgb(253, 252, 249);
   border-right: 1px solid #f3eee0;
 
+
+  img.logo {
+    margin: 12px 10px 8px;
+    max-width: $side-bar-width - 20px;
+  }
+
   ul {
     list-style-type: none;
     padding: 0;
@@ -56,14 +62,23 @@ h3 {
     margin: 0;
     padding: $side-bar-padding;
     font-weight: 400;
+    color: $medium-gray;
   }
 
   ul.toc {
+    border-top: $copy-border;
+    border-bottom: $copy-border;
+    padding-top: 12px;
+    padding-bottom: 15px;
+
     ul.sidebar-nav-items a {
       padding-left: 42px;
       font-size: 15px;
     }
 
+    li.active > a {
+      color: #000;
+    }
 
     li a {
       padding: $side-bar-padding;
@@ -76,9 +91,8 @@ h3 {
   }
 
   .links {
-    padding: 16px 20px;
+    padding: 0 20px;
     margin-top: 18px;
-    border-top: $copy-border;
     font-size: 14px;
     ul {
       li {
