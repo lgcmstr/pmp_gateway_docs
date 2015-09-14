@@ -1,7 +1,7 @@
 <section class="method" id="report-request-simple">
   <div class="method-copy">
     <h2>Simple Example</h2>
-    <p>The Report Request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>The report request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
     <p>This example is the most minimalistic request possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
   </div><!-- .method-copy -->
 
@@ -26,7 +26,6 @@ curl https://gateway-prep.pmp.appriss.com/narxreport/{REPORT_ID}.html \
 
     <div class="method-example method-example-request-data">
       <p>Example Request Data</p>
-    <!-- <span class="code-block-label">scores_request_minimal.xml</span> -->
 <% code('xml') do %>
 <% File.open("#{root}/source/report_request_minimal.xml", 'rb').read %>
 <% end %>

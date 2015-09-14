@@ -1,9 +1,9 @@
 <section class="method" id="report-request-comprehensive">
   <div class="method-copy">
     <h2>Comprehensive Example</h2>
-    <p>The Report Request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>The report request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
     <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
-    <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <%= link_to 'Report Request XML schema', './report_request_schema.xsd' %>.</p>
+    <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <%= link_to 'report request XML schema', './report_request_schema.xsd' %>.</p>
   </div><!-- .method-copy -->
 
   <div class="method-code">
@@ -27,7 +27,6 @@ curl https://gateway-prep.pmp.appriss.com/narx/request/simple \
 
     <div class="method-example method-example-request-data">
       <p>Example Request Data</p>
-    <!-- <span class="code-block-label">scores_request_comprehensive.xml</span> -->
 <% code('xml') do %>
   <% File.open("#{root}/source/report_request_comprehensive.xml", 'rb').read %>
 <% end %>
