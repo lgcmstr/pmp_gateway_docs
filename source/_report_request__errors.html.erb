@@ -2,37 +2,44 @@
   <div class="method-copy">
     <h2>Errors</h2>
     <p>NARxCHECK uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided information (e.g. a required parameter was missing, etc.), and codes in the 5xx range indicate an error with the NARxCHECK servers.</p>
+  </div><!-- .method-copy -->
 
+  <div class="method-code">
+    <div class="method-example">
+      <h3>HTTP Status Codes</h3>
     <table>
       <tbody>
         <tr>
-          <td>200 OK</td>
+          <th>200 OK</th>
           <td>Everything worked as expected.</td>
         </tr>
         <tr>
-          <td>400 Bad Request</td>
+          <th>400 Bad Request</th>
           <td>Often missing a required parameter.</td>
         </tr>
         <tr>
-          <td>401 Unauthorized</td>
+          <th>401 Unauthorized</th>
           <td>Invalid login credentials provided.</td>
         </tr>
         <tr>
-          <td>404 Not Found</td>
+          <th>404 Not Found</th>
+          <td>The requested resource doesn't exist.</td>
+        </tr>
+        <tr>
+          <th>410 Gone</th>
           <td>The report has expired.</td>
         </tr>
         <tr>
-          <td>500 Internal Server Error</td>
-          <td>Something went wrong. The response body will include information on why it failed.</td>
+          <th>500 Internal Server Error</th>
+          <td>Something went wrong with NARxCHECK. The response body will include information on why it failed.</td>
         </tr>
         <tr>
-          <td>504 Gateway Timeout</td>
+          <th>504 Gateway Timeout</th>
           <td>The report is not yet generated.</td>
         </tr>
       <tbody>
     </table>
-
-  </div>
-  <div class="method-code">
-  </div>
+    </div>
+  </div><!-- .method-code -->
+</section>
 </section>

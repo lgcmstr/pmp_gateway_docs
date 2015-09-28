@@ -2,13 +2,22 @@
   <div class="method-copy">
     <h1>API Endpoints</h1>
     <p>A testing environment is available for testing and development purposes. The testing environment is populated with test data and contains no real-world patient data.</p>
-    <p>TODO: *What test data is available?*</p>
     <p>The production environment contains real HIPAA protected patient data and must <strong>not</strong> be used for testing.</p>
-    <h4>Testing API Endpoint</h4>
-    <p><code>https://gateway-prep.pmp.appriss.com</code></p>
-    <h4>Production API Endpoint</h4>
-    <p><code>https://pmpgateway.net</code></p>
-  </div>
+  </div><!-- .method-copy -->
+
   <div class="method-code">
-  </div>
+    <div class="method-example method-example-definition">
+      <h3>Testing API Endpoint</h3>
+<% code('shell') do %>
+https://gateway-prep.pmp.appriss.com
+<% end %>
+    </div>
+
+    <div class="method-example method-example-definition">
+      <h3>Production API Endpoint</h3>
+<% code('shell') do %>
+https://pmpgateway.net
+<% end %>
+    </div>
+  </div><!-- .method-code -->
 </section>

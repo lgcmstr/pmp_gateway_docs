@@ -4,8 +4,8 @@
 
     <p>
       Schema files:<br />
-      <%= link_to 'report_request_schema.xsd', 'report_request_schema.xsd' %><br />
-      <%= link_to 'request_constraints.xsd', 'request_constraints.xsd' %>
+      <%= link_to 'report_request_schema.xsd', './data/report_request_schema.xsd' %><br />
+      <%= link_to 'request_constraints.xsd', './data/request_constraints.xsd' %>
     </p>
 
     <p>To make a report request, you must first make a successful <%= link_to 'score request', '#score-request' %>. The response to the score request will include the URL where you send report requests.</p>
@@ -18,11 +18,11 @@
     <p>If the request is successul, the response will include a NARxCHECK report.</p>
 
     <p>Reports can be returned in two ways. You specify the method by including or excluding the <code><%= escape_html '<ReportLink />' %></code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
-  </div>
+  </div><!-- .method-copy -->
 
   <div class="method-code">
     <div class="method-example method-example-definition">
-      <p>Definition</p>
+      <h3>Definition</h3>
 <% code('shell') do %>
 POST https://gateway-prep.pmp.appriss.com/narxreport/{REPORT_ID}.html
 <% end %>

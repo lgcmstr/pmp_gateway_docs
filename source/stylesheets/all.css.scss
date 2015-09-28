@@ -2,141 +2,22 @@
 
 @import "normalize";
 @import "bourbon";
-@import "base/base";   /* Bitters needs to be imported before Neat */
+@import "base/base";
 @import "neat";
 @import "pygments-monokai";
 
-$side-bar-width: 280px;
+$side-bar-width: 220px;
+$method-copy-width: 46%;
+$method-code-width: 54%;
+$method-padding: 35px 35px 50px 35px;
 $side-bar-padding: 6px 20px;
-// $code-background: #393939;
-$code-background: rgb(45,49,52);
+$code-background-color: rgb(45,49,52);
+$code-block-background-color: #23292b;
 $copy-border: 1px solid darken(#fff, 10);
-$code-border: 1px solid lighten($code-background, 10);
+$code-border: 1px solid lighten($code-background-color, 10);
 
-
-code, kbd, pre, samp {
-  font-family: 'Source Code Pro', Menlo, monospace;
-}
-
-h1 {
-  font-weight: 300;
-  font-size: 32px;
-  line-height: 36px;
-}
-
-h2 {
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 30px;
-}
-
-h3 {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-  margin-top: 1.5em;
-  margin-bottom: 0;
-}
-
-.side-nav {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: $side-bar-width;
-  min-height: 100%;
-  background-color: rgb(253, 252, 249);
-  border-right: 1px solid #f3eee0;
-
-
-  img.logo {
-    margin: 14px 10px 6px;
-    max-width: $side-bar-width - 20px;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  h5 {
-    margin: 0;
-    padding: $side-bar-padding;
-    font-weight: 400;
-    color: $medium-gray;
-  }
-
-  ul.toc {
-    border-top: $copy-border;
-    border-bottom: $copy-border;
-    padding-top: 12px;
-    padding-bottom: 15px;
-
-    ul.sidebar-nav-items a {
-      padding-left: 42px;
-      font-size: 15px;
-    }
-
-    li.active > a {
-      color: #000;
-      text-decoration: underline;
-    }
-
-    li a {
-      padding: $side-bar-padding;
-      display: block;
-
-      &:hover {
-        text-decoration: underline;;
-      }
-    }
-  }
-
-  .links {
-    padding: 0 20px;
-    margin-top: 18px;
-    font-size: 14px;
-    ul {
-      li {
-        display: inline;
-        margin: 0 6px;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-
-      a {
-        color: $medium-gray;
-
-        &:hover {
-          color: #555;
-        }
-      }
-    }
-  }
-}
-
-.code-background {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: $side-bar-width;
-  z-index: -1;
-
-  .code-background-actual {
-    width: 50%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $code-background;
-  }
-}
+@import "side-nav";
+@import "code";
 
 .main-content {
   position: absolute;
@@ -149,50 +30,12 @@ h3 {
   section.method {
     @include row;
 
-    .method-copy,
-    .method-code {
-      padding: 40px 40px 50px 40px;
-      width: 50%;
-    }
-
     .method-copy {
+      width: $method-copy-width;
       float: left;
-      color: #505050;
+      padding: $method-padding;
       border-top: $copy-border;
-    }
-
-    .method-code {
-      float: right;
-      position: relative;
-      padding-top: 88px;
-      color: #e1e1e1;
-      font-weight: 300;
-      border-top: $code-border;
-
-      .method-example {
-        padding: 15px 0;
-
-        &:first-child {
-          padding-top: 0;
-        }
-
-        p {
-          margin: 0;
-          color: #f2f2f2;
-        }
-      }
+      color: #505050;
     }
   }
 }
-
-pre {
-  background-color: #23292b;
-  border-radius: 5px;
-  font-size: 0.9em;
-  margin: 10px 0;
-  padding: 20px 25px;
-}
-
-// p.code-block-label {
-//   color: #f3f3f3;
-// }

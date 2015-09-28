@@ -18,6 +18,26 @@ h6 {
   margin: 0 0 $small-spacing;
 }
 
+h1 {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 36px;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  margin-top: 1.5em;
+  margin-bottom: 0;
+}
+
 p {
   margin: $small-spacing 0;
 }

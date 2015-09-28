@@ -7,14 +7,14 @@
 
   <div class="method-code">
     <div class="method-example method-example-definition">
-      <p>Definition</p>
+      <h3>Definition</h3>
 <% code('shell') do %>
 POST https://gateway-prep.pmp.appriss.com/narx/request/simple
 <% end %>
     </div>
 
     <div class="method-example method-example-request">
-    <p>Example Request</p>
+      <h3>Example Request</h3>
 <% code('shell') do %>
 curl https://gateway-prep.pmp.appriss.com/narx/request/simple \
   -u username:password \
@@ -25,14 +25,18 @@ curl https://gateway-prep.pmp.appriss.com/narx/request/simple \
     </div>
 
     <div class="method-example method-example-request-data">
-      <p>Example Request Data</p>
+      <h3>Example Request Data</h3>
+      <p class="filename">score_request_minimal.xml</p>
+      <span class="download">
+        <a href="./data/score_request_minimal.xml" download>download</a>
+      </span>
 <% code('xml') do %>
-<% File.open("#{root}/source/score_request_minimal.xml", 'rb').read %>
+<% File.open("#{root}/source/data/score_request_minimal.xml", 'rb').read %>
 <% end %>
     </div>
 
     <div class="method-example method-example-request-data">
-      <p>Example Response</p>
+      <h3>Example Response</h3>
 <% code('xml') do %>
 <?xml version="1.0" encoding="UTF-8"?>
 <NarxScoreResponse xmlns="http://xml.appriss.com/gateway">

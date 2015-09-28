@@ -3,19 +3,19 @@
     <h2>Comprehensive Example</h2>
     <p>The score request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
     <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
-    <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <%= link_to 'score request XML schema', './score_request_schema.xsd' %>.</p>
+    <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <%= link_to 'score request XML schema', './data/score_request_schema.xsd' %>.</p>
   </div><!-- .method-copy -->
 
   <div class="method-code">
     <div class="method-example method-example-definition">
-      <p>Definition</p>
+      <h3>Definition</h3>
 <% code('shell') do %>
 POST https://gateway-prep.pmp.appriss.com/narx/request/simple
 <% end %>
     </div>
 
     <div class="method-example method-example-request">
-    <p>Example Request</p>
+      <h3>Example Request</h3>
 <% code('shell') do %>
 curl https://gateway-prep.pmp.appriss.com/narx/request/simple \
   -u username:password \
@@ -26,14 +26,18 @@ curl https://gateway-prep.pmp.appriss.com/narx/request/simple \
     </div>
 
     <div class="method-example method-example-request-data">
-      <p>Example Request Data</p>
+      <h3>Example Request Data</h3>
+      <p class="filename">score_request_comprehensive.xml</p>
+      <span class="download">
+        <a href="./data/score_request_comprehensive.xml" download>download</a>
+      </span>
 <% code('xml') do %>
-  <% File.open("#{root}/source/score_request_comprehensive.xml", 'rb').read %>
+  <% File.open("#{root}/source/data/score_request_comprehensive.xml", 'rb').read %>
 <% end %>
     </div>
 
     <div class="method-example method-example-request-data">
-      <p>Example Response</p>
+      <h3>Example Response</h3>
 <% code('xml') do %>
 <?xml version="1.0" encoding="UTF-8"?>
 <NarxScoreResponse xmlns="http://xml.appriss.com/gateway">

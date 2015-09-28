@@ -4,8 +4,8 @@
 
     <p>
       Schema files:<br />
-      <%= link_to 'score_request_schema.xsd', 'score_request_schema.xsd' %><br />
-      <%= link_to 'request_constraints.xsd', 'request_constraints.xsd' %>
+      <%= link_to 'score_request_schema.xsd', './data/score_request_schema.xsd' %><br />
+      <%= link_to 'request_constraints.xsd', './data/request_constraints.xsd' %>
     </p>
 
     <p>A request should include the following information:</p>
@@ -24,14 +24,14 @@
       </ul>
       <li>A URL to request a NARxCHECK report for the specified patient.</li>
     </ul>
-  </div>
+  </div><!-- .method-copy -->
 
   <div class="method-code">
     <div class="method-example method-example-definition">
-      <p>Definition</p>
+      <h3>Definition</h3>
 <% code('shell') do %>
 POST https://gateway-prep.pmp.appriss.com/narx/request/simple
 <% end %>
     </div>
-  </div>
+  </div><!-- .method-code -->
 </section>
