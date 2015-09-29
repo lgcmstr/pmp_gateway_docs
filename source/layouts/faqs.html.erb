@@ -7,12 +7,10 @@
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= current_page.data.title || 'NARxCHECK API Documentation' %></title>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400|Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
-    <%= stylesheet_link_tag 'normalize', 'all' %>
+    <%= stylesheet_link_tag 'normalize', 'all', 'faqs' %>
   </head>
   <body>
-    <%= partial 'side_nav' %>
+    <%= partial 'header' %>
     <%= yield %>
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <%= javascript_include_tag 'all' %>
 </html>

@@ -1,17 +1,11 @@
 .side-nav {
   position: fixed;
   left: 0;
-  top: 0;
+  top: $header-height;
   width: $side-bar-width;
   min-height: 100%;
-  background-color: rgb(253, 252, 249);
-  border-right: 1px solid #f3eee0;
-
-
-  img.logo {
-    margin: 14px 10px 6px;
-    max-width: $side-bar-width - 60px;
-  }
+  background-color: $side-bar-background-color;
+  border-right: $base-border;
 
   ul {
     list-style-type: none;
@@ -26,10 +20,8 @@
   }
 
   ul.toc {
-    border-top: $copy-border;
-    border-bottom: $copy-border;
     padding-top: 12px;
-    padding-bottom: 15px;
+    padding-bottom: 28px;
 
     ul.sidebar-nav-items a {
       padding-left: 42px;
@@ -47,34 +39,6 @@
 
       &:hover {
         text-decoration: underline;;
-      }
-    }
-  }
-
-  .links {
-    padding: 0 20px;
-    margin-top: 18px;
-    font-size: 14px;
-    ul {
-      li {
-        display: inline;
-        margin: 0 6px;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-
-      a {
-        color: $medium-gray;
-
-        &:hover {
-          color: #555;
-        }
       }
     }
   }

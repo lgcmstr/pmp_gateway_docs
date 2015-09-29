@@ -1,0 +1,40 @@
+header {
+  height: $header-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #444;
+  border-bottom: #222;
+  z-index: 10;
+
+  .logo {
+    width: $side-bar-width;
+    float: left;
+
+    img {
+      padding: 14px 10px 6px 6px;
+    }
+  }
+
+  nav {
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+
+    ul li {
+      display: inline-block;
+      line-height: $header-height;
+      color: red;
+
+      a {
+        padding: 10px 20px;
+        color: #fff;
+
+        &:hover {
+          color: #ddd;
+        }
+      }
+    }
+  }
+}

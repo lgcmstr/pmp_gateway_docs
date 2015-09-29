@@ -10,11 +10,6 @@
 
     <p>To make a report request, you must first make a successful <%= link_to 'score request', '#score-request' %>. The response to the score request will include the URL where you send report requests.</p>
 
-    <p>A report request should include the following information:</p>
-    <ul>
-      <li><strong>provider</strong>: person viewing the report</li>
-      <li><strong>location</strong> of the provider</li>
-    </ul>
     <p>If the request is successul, the response will include a NARxCHECK report.</p>
 
     <p>Reports can be returned in two ways. You specify the method by including or excluding the <code><%= escape_html '<ReportLink />' %></code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>

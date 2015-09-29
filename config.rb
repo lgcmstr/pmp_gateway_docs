@@ -17,8 +17,8 @@
 # page "/path/to/file.html", :layout => false
 #
 # With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-#
+page "/faqs.html", layout: :faqs
+
 # A path which all have the same layout
 # with_layout :admin do
 #   page "/admin/*"
@@ -41,16 +41,14 @@
 # end
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def sentence_to_css_anchor(sentence)
+    sentence.downcase.gsub(/[^0-9a-z ]/i, '').gsub(' ','-')[0..25]
+  end
+end
 
 set :css_dir, 'stylesheets'
-
 set :js_dir, 'javascripts'
-
 set :images_dir, 'images'
 
 # Activate the syntax highlighter

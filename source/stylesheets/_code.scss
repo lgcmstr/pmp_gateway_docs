@@ -115,3 +115,15 @@ pre {
     }
   }
 }
+
+.main-content {
+  .method:first-child {
+    .method-copy {
+      border: none;
+    }
+
+    .method-code {
+      border: none;
+    }
+  }
+}

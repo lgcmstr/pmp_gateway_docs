@@ -1,0 +1,34 @@
+.container {
+  @include outer-container;
+  margin-top: $header-height * 2;
+  margin-bottom: 120px;
+}
+
+ul {
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+.questions {
+  margin-top: 60px;
+
+  li {
+    line-height: 2.4;
+  }
+}
+
+.answers {
+  margin-top: 40px;
+
+  .answer {
+    padding-top: 100px;
+    margin-top: -60px;
+  }
+
+  p.question {
+    color: #999;
+  }
+}
