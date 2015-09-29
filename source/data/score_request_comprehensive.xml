@@ -48,7 +48,9 @@
       <SexCode>M</SexCode><!-- Optional -->
       <!-- ZipCode or Phone is required -->
       <Address>
-        <ZipCode>90210</ZipCode>
+        <City>City</City>
+        <StateCode>OH</StateCode>
+        <ZipCode>40242</ZipCode>
       </Address>
       <Phone>1234567890</Phone>
       <!-- Optional - Provide the Medical Record ID to display historical scores in reports -->
