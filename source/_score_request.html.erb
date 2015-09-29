@@ -7,13 +7,6 @@
       <%= link_to 'score_request_schema.xsd', './data/score_request_schema.xsd' %><br />
       <%= link_to 'request_constraints.xsd', './data/request_constraints.xsd' %>
     </p>
-
-    <p>A request should include the following information:</p>
-    <ul>
-      <li><strong>provider</strong> making the request</li>
-      <li><strong>location</strong> of the provider</li>
-      <li><strong>patient</strong> whose prescription information is being requested</li>
-    </ul>
     <p>If prescription information is found for the requested patient, the response will include:</p>
     <ul>
       <li>Risk scores for three prescription categories:</li>
@@ -22,7 +15,7 @@
         <li>sedatives</li>
         <li>stimulants</li>
       </ul>
-      <li>A URL to request a NARxCHECK report for the specified patient.</li>
+      <li>A URL to request a NARxCHECK report for the patient.</li>
     </ul>
   </div><!-- .method-copy -->
 

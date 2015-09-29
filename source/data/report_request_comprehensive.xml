@@ -1,8 +1,7 @@
 <NarxReportRequest xmlns="http://xml.appriss.com/gateway">
   <ReportLink /><!-- Remove this element to request the report as raw HTML -->
   <Requester>
-    <Provider>
-      <!-- Person viewing the report. -->
+    <Provider><!-- Person viewing the report. -->
       <Role>Physician</Role>
       <FirstName>Jon</FirstName>
       <LastName>Doe</LastName>
