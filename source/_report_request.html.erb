@@ -10,9 +10,19 @@
 
     <p>To make a report request, you must first make a successful <%= link_to 'score request', '#score-request' %>. The response to the score request will include the URL where you send report requests.</p>
 
-    <p>If the request is successul, the response will include a NARxCHECK report.</p>
+    <div class="copy-group">
+      <h3>Report Details</h3>
+      <p>If the report request is successul, the response will include a NARxCHECK report.</p>
 
-    <p>Reports can be returned in two ways. You specify the method by including or excluding the <code><%= escape_html '<ReportLink />' %></code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
+      <p>NARxCHECK reports can be returned in two ways. You specify the method by including or excluding the <code><%= escape_html '<ReportLink />' %></code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
+    </div>
+
+    <div class="copy-group">
+      <h3>Request Data</h3>
+      <p>The report request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+      <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
+      <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <%= link_to 'report request XML schema', './data/report_request_schema.xsd' %>.</p>
+    </div>
   </div><!-- .method-copy -->
 
   <div class="method-code">
@@ -22,5 +32,34 @@
 POST https://gateway-prep.pmp.appriss.com/narxreport/{REPORT_ID}.html
 <% end %>
     </div>
-  </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<% code('shell') do %>
+curl https://gateway-prep.pmp.appriss.com/narx/request/simple \
+  -u username:password \
+  -H "Content-Type: application/xml" \
+  -H "Accept: application/xml" \
+  -d @report_request.xml
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">report_request.xml</p>
+      <span class="download">
+        <a href="./data/report_request.xml" download>download</a>
+      </span>
+      <% code('xml') do %>
+        <% File.open("#{root}/source/data/report_request.xml", 'rb').read %>
+      <% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+      <% code('xml') do %>
+        <% File.open("#{root}/source/data/report_response.xml", 'rb').read %>
+      <% end %>
+    </div>
+  </div><!-- .method-code -->
 </section>

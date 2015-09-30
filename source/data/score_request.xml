@@ -11,7 +11,7 @@
     </RequestDestinations>
     <Provider>
       <Role>Physician</Role>
-      <FirstName>Jon</FirstName>
+      <FirstName>John</FirstName>
       <LastName>Doe</LastName>
       <!-- At least one identifier is required: NPINumber, DEANumber, or ProfessionalLicenseNumber. -->
       <DEANumber>AB1234579</DEANumber>
@@ -41,20 +41,20 @@
   <PrescriptionRequest>
     <Patient>
       <Name>
-        <First>John</First>
-        <Last>Doe</Last>
+        <First>Bob</First>
+        <Last>Testpatient</Last>
       </Name>
       <Birthdate>1900-01-01</Birthdate><!-- YYYY-MM-DD -->
       <SexCode>M</SexCode><!-- Optional -->
       <!-- ZipCode or Phone is required -->
       <Address>
-        <City>City</City>
-        <StateCode>OH</StateCode>
-        <ZipCode>40242</ZipCode>
+        <City>Wichita</City>
+        <StateCode>KS</StateCode>
+        <ZipCode>67203</ZipCode>
       </Address>
       <Phone>1234567890</Phone>
       <!-- Optional - Provide the Medical Record ID to display historical scores in reports -->
-      <MedicalRecordID>any-string--id</MedicalRecordID>
+      <MedicalRecordID>any-string-id</MedicalRecordID>
     </Patient>
   </PrescriptionRequest>
 </NarxScoreRequest>
