@@ -8,13 +8,11 @@ header {
   border-bottom: #222;
   z-index: 10;
 
-  .logo {
+  div.logo {
     width: $side-bar-width;
+    height: $header-height;
+    padding: 15px 14px;
     float: left;
-
-    img {
-      padding: 14px 10px 6px 6px;
-    }
   }
 
   nav {
