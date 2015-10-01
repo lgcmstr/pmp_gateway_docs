@@ -2,6 +2,8 @@
   @include outer-container;
   margin-top: $header-height * 2;
   margin-bottom: 120px;
+  padding-left: $base-spacing;
+  padding-right: $base-spacing;
 }
 
 .faqs {
@@ -26,11 +28,26 @@
 
     .answer {
       padding-top: 100px;
-      margin-top: -60px;
+      margin-top: -75px;
     }
 
     p.question {
       color: #999;
     }
+  }
+
+  .answer-wrapper {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: $base-spacing;
+    padding-right: $base-spacing;
+    margin-left: -$base-spacing;
+    margin-right: -$base-spacing;
+    border-radius: $base-border-radius;
+  }
+
+  .answer:target .answer-wrapper {
+    background-color: #fdf2cc;
+    -webkit-transition: all 0.3s linear;
   }
 }

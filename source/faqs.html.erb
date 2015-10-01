@@ -12,9 +12,11 @@
   <div class="answers">
     <% data.faqs.each do |faq| %>
       <div class="answer" id="<%= sentence_to_css_anchor(faq['q']) %>">
-        <p class="question"><%= faq['q'] %></p>
-        <p><%= faq['a'].nil? ? lorem.paragraph :
-          (faq['escape_html'] ? escape_html(faq['a']) : faq['a']) %></p>
+        <div class="answer-wrapper">
+          <p class="question"><%= faq['q'] %></p>
+          <p><%= faq['a'].nil? ? lorem.paragraph :
+            (faq['escape_html'] ? escape_html(faq['a']) : faq['a']) %></p>
+        </div>
       </div>
     <% end %>
   </div>

@@ -1,3 +1,4 @@
+// Set toc links to .active when page is scrolled to them.
 // Cache selectors
 var lastId,
     toc = $("ul.toc"),
