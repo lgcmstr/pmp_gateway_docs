@@ -19,3 +19,5 @@
   a:
 - q: Where does NARxCHECK get prescription data from?
   a: The prescription data comes from state prescription monitoring programs (PMPs). For more information on PMP and the states that participate, check out the NABP webpage about <a href="http://www.nabp.net/programs/pmp-interconnect/nabp-pmp-interconnect">PMP InterConnect</a>.
+- q: What happens if one or more states don't successfully return data?
+  a:
