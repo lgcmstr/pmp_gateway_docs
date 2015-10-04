@@ -31,8 +31,14 @@ header {
         padding: 0 20px;
         color: #ddd;
 
+        &.active {
+          // color: #fff;
+          color: lighten(#477dca, 9);
+        }
+
         &:hover {
-          color: #fff;
+          // color: #fff;
+          color: lighten(#477dca, 9);
         }
       }
     }

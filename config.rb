@@ -45,6 +45,10 @@ helpers do
   def sentence_to_css_anchor(sentence)
     sentence.downcase.gsub(/[^0-9a-z ]/i, '').gsub(' ','-')[0..25]
   end
+
+  def active_link_to(*args)
+    link_to args[0], args[1], class: (current_path == args[1] ? 'active' : '')
+  end
 end
 
 set :css_dir, 'stylesheets'
