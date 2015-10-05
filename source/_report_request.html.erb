@@ -29,14 +29,14 @@
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
 <% code('shell') do %>
-POST https://gateway-prep.pmp.appriss.com/narxreport/{REPORT_ID}.html
+POST https://gateway-prep.pmp.appriss.com/narxreport/{REPORT_ID}
 <% end %>
     </div>
 
     <div class="method-example method-example-request">
       <h3>Example Request</h3>
 <% code('shell') do %>
-curl https://gateway-prep.pmp.appriss.com/narx/request/simple \
+curl https://gateway-prep.pmp.appriss.com/narxreport/{REPORT_ID} \
   -u username:password \
   -H "Content-Type: application/xml" \
   -H "Accept: application/xml" \
