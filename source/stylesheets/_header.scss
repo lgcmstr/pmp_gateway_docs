@@ -11,8 +11,14 @@ header {
   div.logo {
     width: $side-bar-width;
     height: $header-height;
-    padding: 15px 14px;
+    padding: 12px 15px;
     float: left;
+  }
+
+  img {
+    max-height: $header-height - 24px;
+    max-width: $side-bar-width - 30px;
+    vertical-align: middle;
   }
 
   nav {
