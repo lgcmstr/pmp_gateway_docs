@@ -1,3 +1,6 @@
+$side-nav-link-color: #777;
+$side-nav-active-link-color: $action-color;
+
 .side-nav {
   position: fixed;
   left: 0;
@@ -28,18 +31,39 @@
       font-size: 14px;
     }
 
-    li.active > a {
-      color: #000;
-      text-decoration: underline;
+    li span.active-marker {
+      float: left;
+      display: inline-block;
+      margin-top: 7px;
+      margin-left: 4px;
+      width: 6px;
+      height: 25px;
+    }
+
+    li.active {
+      & > span.active-marker {
+        background-color: $side-nav-active-link-color;
+      }
+
+      & > a {
+        color: $side-nav-active-link-color;
+      }
     }
 
     li a {
       padding: $side-bar-padding;
       display: block;
+      color: $side-nav-link-color;
 
       &:hover {
-        text-decoration: underline;;
+        text-decoration: underline;
+        color: #000;
       }
     }
   }
+}
+
+.side-nav ul.sidebar-nav-items li span.active-marker {
+  margin-top: 5px;
+  height: 23px;
 }
