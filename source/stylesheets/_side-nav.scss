@@ -48,6 +48,10 @@ $side-nav-active-link-color: $action-color;
       & > a {
         color: $side-nav-active-link-color;
       }
+
+      a:hover {
+        color: $side-nav-active-link-color;
+      }
     }
 
     li a {
