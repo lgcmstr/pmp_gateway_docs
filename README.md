@@ -2,8 +2,23 @@ This app is built with [Middleman](https://middlemanapp.com/).
 
 The documentation is hosted at: http://appriss-operations.github.io/narxcheck_docs.
 
-To deploy:
+## Setup local dev environment
 
-`bundle exec rake build`
+Install gems to local repo
+````
+$ bundle install --path vendor/bundle
+````
 
-`bundle exec rake publish`
+## Working from local dev environment
+Start local Middleman server
+````
+$ bundle exec middleman server
+````
+
+access the local server at: http://localhost:4567/
+
+Build and deploy local changes to the public site
+````
+$ bundle exec middleman build
+$ bundle exec middleman deploy
+````
