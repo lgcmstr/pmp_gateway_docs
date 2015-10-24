@@ -17,8 +17,8 @@ $ bundle exec middleman server
 
 access the local server at: http://localhost:4567/
 
-Build and deploy local changes to the public site
+Build and deploy local changes to the public site using the [middleman-gh-pages](https://github.com/edgecase/middleman-gh-pages) gem
 ````
-$ bundle exec middleman build
-$ bundle exec middleman deploy
+$ bundle exec rake build
+$ bundle exec rake publish
 ````

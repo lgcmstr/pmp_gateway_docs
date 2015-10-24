@@ -1,4 +1,5 @@
 header {
+  $header-font-color: #bcbcbc;
   height: $header-height;
   position: fixed;
   top: 0;
@@ -7,6 +8,7 @@ header {
   background-color: #444;
   border-bottom: #222;
   z-index: 10;
+  color: $light-gray;
 
   div.logo {
     width: $side-bar-width;
@@ -35,7 +37,7 @@ header {
       a {
         display: inline-block;
         padding: 0 20px;
-        color: #bcbcbc;
+        color: $header-font-color;
 
         &.active {
           color: #fff;
