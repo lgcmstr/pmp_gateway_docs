@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NarxScoreResponse xmlns="http://xml.appriss.com/gateway">
+  <NarxRequestId>56035</NarxRequestId>
+  <Response>
+    <Pmp>KS</Pmp>
+    <NarxScore>
+      <Narcotics>220</Narcotics>
+      <Stimulants>000</Stimulants>
+      <Sedatives>160</Sedatives>
+      <NarxReport Content-Type="text/html">https://gateway-prep.pmp.appriss.com/narxreport/47770.html</NarxReport>
+    </NarxScore>
+  </Response>
+  <Disclaimer></Disclaimer>
+</NarxScoreResponse>

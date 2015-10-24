@@ -1,0 +1,23 @@
+<div class="container faqs">
+  <h1>FAQs</h1>
+
+  <div class="questions">
+    <ul>
+      <% data.faqs.each do |faq| %>
+        <li><%= link_to faq['q'], '#'+sentence_to_css_anchor(faq['q']) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="answers">
+    <% data.faqs.each do |faq| %>
+      <div class="answer" id="<%= sentence_to_css_anchor(faq['q']) %>">
+        <div class="answer-wrapper">
+          <p class="question"><%= faq['q'] %></p>
+          <p><%= faq['a'].nil? ? lorem.paragraph :
+            (faq['escape_html'] ? escape_html(faq['a']) : faq['a']) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

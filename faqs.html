@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>PMP Gateway API Documentation</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400|Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="stylesheets/all.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+  <div class="logo">
+    <h1 class="brand">PMP Gateway</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a class="" href="./">API Documentation</a></li>
+      <li><a class="active" href="faqs.html">FAQs</a></li>
+      <li><a href="https://github.com/Appriss-Operations/narxcheck_docs">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+    <div class="container faqs">
+  <h1>FAQs</h1>
+
+  <div class="questions">
+    <ul>
+        <li><a href="#which-states-data-is-inclu">Which states' data is included in my request?</a></li>
+        <li><a href="#should-i-include-optional-">Should I include optional XML elements in my requests?</a></li>
+        <li><a href="#how-do-i-get-the-url-for-a">How do I get the URL for a NARxCHECK report?</a></li>
+        <li><a href="#how-do-i-get-a-narxcheck-r">How do I get a NARxCHECK report as raw HTML?</a></li>
+        <li><a href="#what-date-range-of-prescri">What date range of prescription data does NARxCHECK use?</a></li>
+        <li><a href="#how-long-before-reportid-e">How long before report_id expire?</a></li>
+        <li><a href="#why-do-the-reportids-used-">Why do the REPORT_IDs used to reteive NARxCHECK reports expire?</a></li>
+        <li><a href="#why-do-the-urls-for-narxch">Why do the URLs for NARxCHECK reports expire?</a></li>
+        <li><a href="#why-do-i-have-to-send-prov">Why do I have to send provider information with each report request?</a></li>
+        <li><a href="#where-does-narxcheck-get-p">Where does NARxCHECK get prescription data from?</a></li>
+        <li><a href="#what-happens-if-one-or-mor">What happens if one or more states don't successfully return data?</a></li>
+    </ul>
+  </div>
+
+  <div class="answers">
+      <div class="answer" id="which-states-data-is-inclu">
+        <div class="answer-wrapper">
+          <p class="question">Which states' data is included in my request?</p>
+          <p>Molestiae facere architecto quis expedita sit rem facere et cum dignissimos eum eum et facilis. laborum esse autem modi possimus in dolores repudiandae fugiat doloremque. ut fugit velit qui odit iusto amet aperiam harum laborum aut dicta eum omnis</p>
+        </div>
+      </div>
+      <div class="answer" id="should-i-include-optional-">
+        <div class="answer-wrapper">
+          <p class="question">Should I include optional XML elements in my requests?</p>
+          <p>Yes. Different states use different elements to reteive data and including optional elements will improve the results that you receive. Additionally, in the future, states may change the elements that they use. Including the optional elements now will prevent possible errors in the future.</p>
+        </div>
+      </div>
+      <div class="answer" id="how-do-i-get-the-url-for-a">
+        <div class="answer-wrapper">
+          <p class="question">How do I get the URL for a NARxCHECK report?</p>
+          <p>In your NARxCHECK report request, include the &lt;ReportLink &#x2F;&gt; element immediately after the &lt;NarxReportRequest..&gt; element.</p>
+        </div>
+      </div>
+      <div class="answer" id="how-do-i-get-a-narxcheck-r">
+        <div class="answer-wrapper">
+          <p class="question">How do I get a NARxCHECK report as raw HTML?</p>
+          <p>Enim quo corporis occaecati voluptates harum deserunt in optio qui. natus aut doloribus ut maxime. et voluptatum non consequatur nisi fugit minima inventore nemo</p>
+        </div>
+      </div>
+      <div class="answer" id="what-date-range-of-prescri">
+        <div class="answer-wrapper">
+          <p class="question">What date range of prescription data does NARxCHECK use?</p>
+          <p>NARxCHECK uses a patient's past 2 years of prescription data.</p>
+        </div>
+      </div>
+      <div class="answer" id="how-long-before-reportid-e">
+        <div class="answer-wrapper">
+          <p class="question">How long before report_id expire?</p>
+          <p>Eligendi quia occaecati nulla eos voluptas tenetur. non provident et inventore sint quaerat voluptates molestias id in minus est nesciunt. rerum est vitae et nisi excepturi aspernatur beatae impedit. dolore earum a recusandae nisi. architecto dolor ea repudiandae dolore non omnis sunt. placeat ducimus voluptatibus adipisci maiores quia et cumque est sit officiis neque eligendi nobis voluptatem</p>
+        </div>
+      </div>
+      <div class="answer" id="why-do-the-reportids-used-">
+        <div class="answer-wrapper">
+          <p class="question">Why do the REPORT_IDs used to reteive NARxCHECK reports expire?</p>
+          <p>Facere quo aperiam deserunt et nulla iure est et numquam velit a eum. fugit sed dolores illum. doloremque molestiae dolores veniam consequatur ullam sunt dolorum et ea iusto ipsum aperiam doloribus culpa. sunt harum modi tempora fuga fuga dolor corrupti vel est est. labore illum officiis modi. ea et culpa et qui</p>
+        </div>
+      </div>
+      <div class="answer" id="why-do-the-urls-for-narxch">
+        <div class="answer-wrapper">
+          <p class="question">Why do the URLs for NARxCHECK reports expire?</p>
+          <p>Ipsa error itaque excepturi enim. iste laboriosam vel omnis cumque. repudiandae similique nostrum itaque perspiciatis quibusdam omnis dignissimos officiis officiis. qui distinctio et neque magnam odit deleniti totam molestiae ad nobis nam vel</p>
+        </div>
+      </div>
+      <div class="answer" id="why-do-i-have-to-send-prov">
+        <div class="answer-wrapper">
+          <p class="question">Why do I have to send provider information with each report request?</p>
+          <p>Ea voluptas odit et illum libero quia odit nihil tempore expedita. ad ut quia veritatis. fuga voluptas ea perspiciatis a ad ex aut totam</p>
+        </div>
+      </div>
+      <div class="answer" id="where-does-narxcheck-get-p">
+        <div class="answer-wrapper">
+          <p class="question">Where does NARxCHECK get prescription data from?</p>
+          <p>The prescription data comes from state prescription monitoring programs (PMPs). For more information on PMP and the states that participate, check out the NABP webpage about <a href="http://www.nabp.net/programs/pmp-interconnect/nabp-pmp-interconnect">PMP InterConnect</a>.</p>
+        </div>
+      </div>
+      <div class="answer" id="what-happens-if-one-or-mor">
+        <div class="answer-wrapper">
+          <p class="question">What happens if one or more states don't successfully return data?</p>
+          <p>Voluptate quia adipisci ut voluptate et animi voluptatum fuga aspernatur incidunt facere sint aut. qui at eaque dolorum quas et vel totam accusantium et expedita eum sit. dolor dolor possimus saepe quasi tempore perferendis</p>
+        </div>
+      </div>
+  </div>
+</div>
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="javascripts/all.js"></script>
+</html>

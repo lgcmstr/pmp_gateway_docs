@@ -1,0 +1,590 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>PMP Gateway API Documentation</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400|Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="stylesheets/all.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+  <div class="logo">
+    <h1 class="brand">PMP Gateway</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a class="active" href="./">API Documentation</a></li>
+      <li><a class="" href="faqs.html">FAQs</a></li>
+      <li><a href="https://github.com/Appriss-Operations/narxcheck_docs">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+    <div class="side-nav">
+  <ul class="toc">
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#intro">Introduction</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#authentication">Authentication</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#endpoints">Endpoints</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#score-request">Score Request</a>
+      <ul class="sidebar-nav-items">
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#score-request-errors">Errors</a></li>
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#score-request-minimal">Minimal Example</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#report-request">Report Request</a>
+      <ul class="sidebar-nav-items">
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#report-request-errors">Errors</a>
+        </li>
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#report-request-minimal">Minimal Example</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="code-background">
+  <div class="code-background-actual"></div>
+</div>
+<div class="main-content">
+  <section class="method" id="intro">
+  <div class="method-copy">
+    <h1>Introduction</h1>
+    <p>Welcome to the PMP Gateway API documentation. This API reference provides information on available endpoints and how to interact with them.</p>
+    <p>Using the PMP Gateway API, you can integrate patient prescription history data into your applications.</p>
+    <p>This API is <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>ful and uses XML formatted requests and responses.</p>
+    <h3>Questions & Feedback</h3>
+    <p>This documentation and all example code is available on GitHub. If you have questions or feedback the best way to contact us is to
+      <a target="_blank" href="https://github.com/Appriss-Operations/narxcheck_docs/issues">open an "issue"</a>
+      on our
+      <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs">GitHub project space</a>.
+    </p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+      <p>Example code is provided for each API request. To get started, you can make requests against the testing environment using the code examples and the XML request data they reference.</p>
+    </div>
+  </div><!-- .method-code -->
+</section>
+  <section class="method" id="authentication">
+  <div class="method-copy">
+    <h1>Authentication</h1>
+    <p>You must authenticate with a username and password for all API requests.</p>
+    <p>All requests must be made over HTTPS. Calls made over plain HTTP will fail.</p>
+    <aside class="notice">Your username and password is provided to you by the Appriss Project Manager who is handling your account.</aside>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+  </div>
+</section>
+
+  <section class="method" id="endpoints">
+  <div class="method-copy">
+    <h1>API Endpoints</h1>
+    <p>A testing environment is available for testing and development purposes. The testing environment is populated with test data and contains no real-world patient data.</p>
+    <p>The production environment contains real HIPAA protected patient data and must <strong>not</strong> be used for testing.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Testing API Endpoint</h3>
+<pre class="highlight shell"><code>https://gateway-prep.pmp.appriss.com
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-definition">
+      <h3>Production API Endpoint</h3>
+<pre class="highlight shell"><code>https://pmpgateway.net
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="score-request">
+  <div class="method-copy">
+    <h1>Score Request</h1>
+    <p>
+      Schema files:<br />
+      <a href="data/score_request_schema.xsd">score_request_schema.xsd</a><br />
+      <a href="data/request_constraints.xsd">request_constraints.xsd</a>
+    </p>
+
+    <p>If prescription data is found for the requested patient, the response will include:</p>
+    <ul>
+      <li>Risk scores for three prescription categories:</li>
+      <ul>
+        <li>narcotics</li>
+        <li>sedatives</li>
+        <li>stimulants</li>
+      </ul>
+      <li>A URL to request a NARxCHECK report for the patient.</li>
+    </ul>
+
+    <p>The score request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
+    <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <a href="data/score_request_schema.xsd">score request XML schema</a>.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/narx/request/simple
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<pre class="highlight shell"><code>curl https://gateway-prep.pmp.appriss.com/narx/request/simple <span class="se">\</span>
+  -u username:password <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
+  -d @score_request.xml
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">score_request.xml</p>
+      <span class="download">
+        <a href="./data/score_request.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;NarxScoreRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Requester&gt;</span>
+    <span class="nt">&lt;SenderSoftware&gt;</span><span class="c">&lt;!-- Optional --&gt;</span>
+      <span class="nt">&lt;Developer&gt;</span>Software Inc.<span class="nt">&lt;/Developer&gt;</span>
+      <span class="nt">&lt;Product&gt;</span>Product Name<span class="nt">&lt;/Product&gt;</span>
+      <span class="nt">&lt;Version&gt;</span>Version info<span class="nt">&lt;/Version&gt;</span>
+    <span class="nt">&lt;/SenderSoftware&gt;</span>
+    <span class="nt">&lt;RequestDestinations&gt;</span><span class="c">&lt;!-- Optional --&gt;</span>
+      <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;/RequestDestinations&gt;</span>
+    <span class="nt">&lt;Provider&gt;</span>
+      <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
+      <span class="nt">&lt;FirstName&gt;</span>John<span class="nt">&lt;/FirstName&gt;</span>
+      <span class="nt">&lt;LastName&gt;</span>Doe<span class="nt">&lt;/LastName&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: NPINumber, DEANumber, or ProfessionalLicenseNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1212345671<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;ProfessionalLicenseNumber&gt;</span>
+        <span class="nt">&lt;Type&gt;</span>Something<span class="nt">&lt;/Type&gt;</span>
+        <span class="nt">&lt;Value&gt;</span>A1231xbzy-bx<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>KY<span class="nt">&lt;/StateCode&gt;</span>
+      <span class="nt">&lt;/ProfessionalLicenseNumber&gt;</span>
+    <span class="nt">&lt;/Provider&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Store #123<span class="nt">&lt;/Name&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: NPINumber, DEANumber, or NCPDPNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1234567890<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;NCPDPNumber&gt;</span>1234567<span class="nt">&lt;/NCPDPNumber&gt;</span>
+      <span class="nt">&lt;Address&gt;</span><span class="c">&lt;!-- Only StateCode is required --&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>Street1<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>Street2<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;City&gt;</span>City<span class="nt">&lt;/City&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>OH<span class="nt">&lt;/StateCode&gt;</span>
+        <span class="nt">&lt;ZipCode&gt;</span>40242<span class="nt">&lt;/ZipCode&gt;</span>
+        <span class="nt">&lt;ZipPlusFour&gt;</span>4242<span class="nt">&lt;/ZipPlusFour&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Requester&gt;</span>
+  <span class="nt">&lt;PrescriptionRequest&gt;</span>
+    <span class="nt">&lt;Patient&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>
+        <span class="nt">&lt;First&gt;</span>Bob<span class="nt">&lt;/First&gt;</span>
+        <span class="nt">&lt;Last&gt;</span>Testpatient<span class="nt">&lt;/Last&gt;</span>
+      <span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;Birthdate&gt;</span>1900-01-01<span class="nt">&lt;/Birthdate&gt;</span><span class="c">&lt;!-- YYYY-MM-DD --&gt;</span>
+      <span class="nt">&lt;SexCode&gt;</span>M<span class="nt">&lt;/SexCode&gt;</span><span class="c">&lt;!-- Optional --&gt;</span>
+      <span class="c">&lt;!-- ZipCode or Phone is required --&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;City&gt;</span>Wichita<span class="nt">&lt;/City&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>KS<span class="nt">&lt;/StateCode&gt;</span>
+        <span class="nt">&lt;ZipCode&gt;</span>67203<span class="nt">&lt;/ZipCode&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+      <span class="nt">&lt;Phone&gt;</span>1234567890<span class="nt">&lt;/Phone&gt;</span>
+      <span class="c">&lt;!-- Optional - Provide the Medical Record ID to display historical scores in reports --&gt;</span>
+      <span class="nt">&lt;MedicalRecordID&gt;</span>any-string-id<span class="nt">&lt;/MedicalRecordID&gt;</span>
+    <span class="nt">&lt;/Patient&gt;</span>
+  <span class="nt">&lt;/PrescriptionRequest&gt;</span>
+<span class="nt">&lt;/NarxScoreRequest&gt;</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;NarxScoreResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;NarxRequestId&gt;</span>56035<span class="nt">&lt;/NarxRequestId&gt;</span>
+  <span class="nt">&lt;Response&gt;</span>
+    <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;NarxScore&gt;</span>
+      <span class="nt">&lt;Narcotics&gt;</span>220<span class="nt">&lt;/Narcotics&gt;</span>
+      <span class="nt">&lt;Stimulants&gt;</span>000<span class="nt">&lt;/Stimulants&gt;</span>
+      <span class="nt">&lt;Sedatives&gt;</span>160<span class="nt">&lt;/Sedatives&gt;</span>
+      <span class="nt">&lt;NarxReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/narxreport/47770.html<span class="nt">&lt;/NarxReport&gt;</span>
+    <span class="nt">&lt;/NarxScore&gt;</span>
+  <span class="nt">&lt;/Response&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/NarxScoreResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="score-request-errors">
+  <div class="method-copy">
+    <h2>Errors</h2>
+    <p>NARxCHECK uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided information (e.g. a required parameter was missing, etc.), and codes in the 5xx range indicate an error with the NARxCHECK servers.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+      <h3>HTTP Status Codes</h3>
+      <table>
+        <tbody>
+          <tr>
+            <th>200 OK</th>
+            <td>Everything worked as expected or the request was missing required XML nodes and the error will be described in the XML response.</td>
+          </tr>
+          <tr>
+            <th>401 Unauthorized</th>
+            <td>Invalid login credentials provided.</td>
+          </tr>
+          <tr>
+            <th>500 Internal Server Error</th>
+            <td>Something went wrong. The response body will be a NARxCHECK Response with an Error section.</td>
+          </tr>
+        <tbody>
+      </table>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="score-request-minimal">
+  <div class="method-copy">
+    <h2>Minimal Example</h2>
+    <p>The score request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>This example is the most minimalistic request possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/narx/request/simple
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<pre class="highlight shell"><code>curl https://gateway-prep.pmp.appriss.com/narx/request/simple <span class="se">\</span>
+  -u username:password <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
+  -d @score_request__minimal.xml
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">score_request__minimal.xml</p>
+      <span class="download">
+        <a href="./data/score_request__minimal.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;NarxScoreRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Requester&gt;</span>
+    <span class="nt">&lt;Provider&gt;</span>
+      <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
+      <span class="nt">&lt;FirstName&gt;</span>John<span class="nt">&lt;/FirstName&gt;</span>
+      <span class="nt">&lt;LastName&gt;</span>Doe<span class="nt">&lt;/LastName&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: NPINumber, DEANumber, or ProfessionalLicenseNumber. --&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1234567890<span class="nt">&lt;/NPINumber&gt;</span>
+    <span class="nt">&lt;/Provider&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Some Medical Center<span class="nt">&lt;/Name&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: NPINumber, DEANumber, or NCPDPNumber. --&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>9876543210<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>KS<span class="nt">&lt;/StateCode&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Requester&gt;</span>
+  <span class="nt">&lt;PrescriptionRequest&gt;</span>
+    <span class="nt">&lt;Patient&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>
+        <span class="nt">&lt;First&gt;</span>Bob<span class="nt">&lt;/First&gt;</span>
+        <span class="nt">&lt;Last&gt;</span>Testpatient<span class="nt">&lt;/Last&gt;</span>
+      <span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;Birthdate&gt;</span>1900-01-01<span class="nt">&lt;/Birthdate&gt;</span>
+      <span class="c">&lt;!-- ZipCode or Phone is required. --&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;ZipCode&gt;</span>67203<span class="nt">&lt;/ZipCode&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+    <span class="nt">&lt;/Patient&gt;</span>
+  <span class="nt">&lt;/PrescriptionRequest&gt;</span>
+<span class="nt">&lt;/NarxScoreRequest&gt;</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;NarxScoreResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;NarxRequestId&gt;</span>56036<span class="nt">&lt;/NarxRequestId&gt;</span>
+  <span class="nt">&lt;Response&gt;</span>
+    <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;NarxScore&gt;</span>
+      <span class="nt">&lt;Narcotics&gt;</span>220<span class="nt">&lt;/Narcotics&gt;</span>
+      <span class="nt">&lt;Stimulants&gt;</span>000<span class="nt">&lt;/Stimulants&gt;</span>
+      <span class="nt">&lt;Sedatives&gt;</span>160<span class="nt">&lt;/Sedatives&gt;</span>
+      <span class="nt">&lt;NarxReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/narxreport/47771.html<span class="nt">&lt;/NarxReport&gt;</span>
+    <span class="nt">&lt;/NarxScore&gt;</span>
+  <span class="nt">&lt;/Response&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/NarxScoreResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="report-request">
+  <div class="method-copy">
+    <h1>Report Request</h1>
+
+    <p>
+      Schema files:<br />
+      <a href="data/report_request_schema.xsd">report_request_schema.xsd</a><br />
+      <a href="data/request_constraints.xsd">request_constraints.xsd</a>
+    </p>
+
+    <p>To make a report request, you must first make a successful <a href="#score-request">score request</a>. The response to the score request will include the URL where you send report requests.</p>
+
+    <div class="copy-group">
+      <h3>Report Details</h3>
+      <p>If the report request is successul, the response will include a NARxCHECK report.</p>
+
+      <p>NARxCHECK reports can be returned in two ways. You specify the method by including or excluding the <code>&lt;ReportLink &#x2F;&gt;</code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
+    </div>
+
+    <div class="copy-group">
+      <h3>Request Data</h3>
+      <p>The report request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+      <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
+      <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <a href="data/report_request_schema.xsd">report request XML schema</a>.</p>
+    </div>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/narxreport/<span class="o">{</span>REPORT_ID<span class="o">}</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<pre class="highlight shell"><code>curl https://gateway-prep.pmp.appriss.com/narxreport/<span class="o">{</span>REPORT_ID<span class="o">}</span> <span class="se">\</span>
+  -u username:password <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
+  -d @report_request.xml
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">report_request.xml</p>
+      <span class="download">
+        <a href="./data/report_request.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="nt">&lt;NarxReportRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ReportLink</span> <span class="nt">/&gt;</span><span class="c">&lt;!-- Remove this element to request the report as raw HTML --&gt;</span>
+  <span class="nt">&lt;Requester&gt;</span>
+    <span class="nt">&lt;Provider&gt;</span><span class="c">&lt;!-- Person viewing the report. --&gt;</span>
+      <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
+      <span class="nt">&lt;FirstName&gt;</span>Jon<span class="nt">&lt;/FirstName&gt;</span>
+      <span class="nt">&lt;LastName&gt;</span>Doe<span class="nt">&lt;/LastName&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: NPINumber, DEANumber, or ProfessionalLicenseNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1212345671<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;ProfessionalLicenseNumber&gt;</span>
+        <span class="nt">&lt;Type&gt;</span>Something<span class="nt">&lt;/Type&gt;</span>
+        <span class="nt">&lt;Value&gt;</span>A1231xbzy-bx<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>KY<span class="nt">&lt;/StateCode&gt;</span>
+      <span class="nt">&lt;/ProfessionalLicenseNumber&gt;</span>
+    <span class="nt">&lt;/Provider&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Store #123<span class="nt">&lt;/Name&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: NPINumber, DEANumber, or NCPDPNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1234567890<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;NCPDPNumber&gt;</span>1234567<span class="nt">&lt;/NCPDPNumber&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>Street1<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>Street2<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;City&gt;</span>City<span class="nt">&lt;/City&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>OH<span class="nt">&lt;/StateCode&gt;</span>
+        <span class="nt">&lt;ZipCode&gt;</span>40242<span class="nt">&lt;/ZipCode&gt;</span>
+        <span class="nt">&lt;ZipPlusFour&gt;</span>4242<span class="nt">&lt;/ZipPlusFour&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Requester&gt;</span>
+<span class="nt">&lt;/NarxReportRequest&gt;</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;NarxReportResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;NarxReportRequestId&gt;</span>2332<span class="nt">&lt;/NarxReportRequestId&gt;</span>
+  <span class="nt">&lt;ReportLink&gt;</span>https://gateway-prep.pmp.appriss.com/narxreportlink/693a2297-0a55-4980-b525-574f42d6b46b<span class="nt">&lt;/ReportLink&gt;</span>
+<span class="nt">&lt;/NarxReportResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="report-request-errors">
+  <div class="method-copy">
+    <h2>Errors</h2>
+    <p>NARxCHECK uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided information (e.g. a required parameter was missing, etc.), and codes in the 5xx range indicate an error with the NARxCHECK servers.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+      <h3>HTTP Status Codes</h3>
+    <table>
+      <tbody>
+        <tr>
+          <th>200 OK</th>
+          <td>Everything worked as expected.</td>
+        </tr>
+        <tr>
+          <th>400 Bad Request</th>
+          <td>Often missing a required parameter.</td>
+        </tr>
+        <tr>
+          <th>401 Unauthorized</th>
+          <td>Invalid login credentials provided.</td>
+        </tr>
+        <tr>
+          <th>404 Not Found</th>
+          <td>The requested resource doesn't exist.</td>
+        </tr>
+        <tr>
+          <th>410 Gone</th>
+          <td>The report has expired.</td>
+        </tr>
+        <tr>
+          <th>500 Internal Server Error</th>
+          <td>Something went wrong with NARxCHECK. The response body will include information on why it failed.</td>
+        </tr>
+        <tr>
+          <th>504 Gateway Timeout</th>
+          <td>The report is not yet generated.</td>
+        </tr>
+      <tbody>
+    </table>
+    </div>
+  </div><!-- .method-code -->
+</section>
+</section>
+
+  <section class="method" id="report-request-minimal">
+  <div class="method-copy">
+    <h2>Minimal Example</h2>
+    <p>The report request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>This example is the most minimalistic request possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/narxreport/<span class="o">{</span>REPORT_ID<span class="o">}</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<pre class="highlight shell"><code>curl https://gateway-prep.pmp.appriss.com/narxreport/<span class="o">{</span>REPORT_ID<span class="o">}</span> <span class="se">\</span>
+  -u username:password <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
+  -d @report_request__minimal.xml
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">report_request__minimal.xml</p>
+      <span class="download">
+        <a href="./data/report_request__minimal.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="nt">&lt;NarxReportRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ReportLink</span> <span class="nt">/&gt;</span><span class="c">&lt;!-- Remove this element to request the report as raw HTML --&gt;</span>
+  <span class="nt">&lt;Requester&gt;</span>
+    <span class="nt">&lt;Provider&gt;</span><span class="c">&lt;!-- Person viewing the report. --&gt;</span>
+      <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
+      <span class="nt">&lt;FirstName&gt;</span>John<span class="nt">&lt;/FirstName&gt;</span>
+      <span class="nt">&lt;LastName&gt;</span>Doe<span class="nt">&lt;/LastName&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: NPINumber, DEANumber, or ProfessionalLicenseNumber. --&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1234567890<span class="nt">&lt;/NPINumber&gt;</span>
+    <span class="nt">&lt;/Provider&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Some Medical Center<span class="nt">&lt;/Name&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: NPINumber, DEANumber, or NCPDPNumber. --&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>9876543210<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>OH<span class="nt">&lt;/StateCode&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Requester&gt;</span>
+<span class="nt">&lt;/NarxReportRequest&gt;</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;NarxReportResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;NarxReportRequestId&gt;</span>2331<span class="nt">&lt;/NarxReportRequestId&gt;</span>
+  <span class="nt">&lt;ReportLink&gt;</span>https://gateway-prep.pmp.appriss.com/narxreportlink/4c2b00c7-74fe-4daa-89be-b9908b446a57<span class="nt">&lt;/ReportLink&gt;</span>
+<span class="nt">&lt;/NarxReportResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+</div>
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="javascripts/all.js"></script>
+</html>
