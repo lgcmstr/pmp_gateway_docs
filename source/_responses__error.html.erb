@@ -2,12 +2,7 @@
   <div class="method-copy">
     <h2>Error</h2>
     <p>If something prevented the request from being processed, the response will be an error. This could be accompanied by an non-200 HTTP response code.</p>
-
-    <div class="copy-group">
-      <h3>Response Details</h3>
-      <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
-      <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting. For more information </p>
-    </div>
+    <%= partial 'responses__response_details' %>
   </div><!-- .method-copy -->
 
   <div class="method-code">
