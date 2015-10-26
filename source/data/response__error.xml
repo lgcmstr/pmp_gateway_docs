@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RequestID>5424</RequestID>
+  <Response>
+    <Pmp>VA</Pmp>
+    <Error>
+      <Message>Could not find request destination.</Message>
+      <Source>GATEWAY</Source>
+    </Error>
+  </Response>
+  <Disclaimer></Disclaimer>
+</GatewayResponse>

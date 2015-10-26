@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GatewayRequest xmlns="http://xml.appriss.com/gateway" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Requester>
+    <SenderSoftware><!-- Optional -->
+      <Developer>Software Inc.</Developer>
+      <Product>Product Name</Product>
+      <Version>Version info</Version>
+    </SenderSoftware>
+    <RequestDestinations><!-- Optional. If not included the PMP systems queried will be based on the configuration of the user account settings. -->
+      <Pmp>OH</Pmp>
+      <Pmp>VA</Pmp>
+      <Pmp>IN</Pmp>
+    </RequestDestinations>
+    <Provider>
+      <Role>Physician</Role>
+      <FirstName>Jon</FirstName>
+      <LastName>Doe</LastName>
+      <!-- At least one identifier is required: NPINumber, DEANumber, or NCPDPNumber. -->
+      <DEANumber>AB1234579</DEANumber>
+      <NPINumber>1212345671</NPINumber>
+      <ProfessionalLicenseNumber>
+        <Type>String</Type>
+        <Value>A1231xbzy-bx</Value>
+        <StateCode>KS</StateCode>
+      </ProfessionalLicenseNumber>
+    </Provider>
+    <Location>
+      <Name>Store #123</Name>
+      <!-- At least one identifier is required: NPINumber, DEANumber, or NCPDPNumber. -->
+      <DEANumber>AB1234579</DEANumber>
+      <NPINumber>1234567890</NPINumber>
+      <NCPDPNumber>1234567</NCPDPNumber>
+      <Address>
+        <Street>String</Street>
+        <Street>String</Street>
+        <City>String</City>
+        <StateCode>KS</StateCode>
+        <ZipCode>40242</ZipCode>
+        <ZipPlusFour>4242</ZipPlusFour>
+      </Address>
+    </Location>
+  </Requester>
+  <PrescriptionRequest>
+    <DateRange>
+      <Begin>2008-11-01</Begin>
+      <End>2010-11-30</End>
+    </DateRange>
+    <Patient>
+      <Name>
+        <First>John</First>
+        <Middle>Jacob Jingleheimer</Middle><!-- Optional -->
+        <Last>Schmidt</Last>
+      </Name>
+      <Birthdate>1900-01-01</Birthdate>
+      <SexCode>M</SexCode>
+      <Address>
+        <Street>123 Main St</Street>
+        <Street>Apt B</Street>
+        <City>Columbus</City>
+        <StateCode>KS</StateCode>
+        <ZipCode>43215</ZipCode>
+        <ZipPlusFour>4321</ZipPlusFour>
+      </Address>
+      <Phone>1234567890</Phone>
+      <SSN>123-45-6789</SSN>
+      <DriversLicenseIdentifier>
+        <Value>S01-45-6789</Value>
+        <StateCode>KS</StateCode>
+      </DriversLicenseIdentifier>
+      <PharmacyBenefitsMemberID>String</PharmacyBenefitsMemberID>
+      <MedicalBenefitsMemeberID>String</MedicalBenefitsMemeberID>
+    </Patient>
+ </PrescriptionRequest>
+</GatewayRequest>

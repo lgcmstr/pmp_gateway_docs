@@ -1,7 +1,7 @@
-<section class="method" id="score-request-minimal">
+<section class="method" id="gateway-request-minimal">
   <div class="method-copy">
     <h2>Minimal Example</h2>
-    <p>The score request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>The Gateway request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
     <p>This example is the most minimalistic request possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
   </div><!-- .method-copy -->
 
@@ -9,36 +9,36 @@
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
 <% code('shell') do %>
-POST https://gateway-prep.pmp.appriss.com/narx/request/simple
+POST https://gateway-prep.pmp.appriss.com/search_request/create
 <% end %>
     </div>
 
     <div class="method-example method-example-request">
       <h3>Example Request</h3>
 <% code('shell') do %>
-curl https://gateway-prep.pmp.appriss.com/narx/request/simple \
+curl https://gateway-prep.pmp.appriss.com/search_request/create \
   -u username:password \
   -H "Content-Type: application/xml" \
   -H "Accept: application/xml" \
-  -d @score_request__minimal.xml
+  -d @gateway_request__minimal.xml
 <% end %>
     </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Request Data</h3>
-      <p class="filename">score_request__minimal.xml</p>
+      <p class="filename">gateway_request__minimal.xml</p>
       <span class="download">
-        <a href="./data/score_request__minimal.xml" download>download</a>
+        <a href="./data/gateway_request__minimal.xml" download>download</a>
       </span>
       <% code('xml') do %>
-        <% File.open("#{root}/source/data/score_request__minimal.xml", 'rb').read %>
+        <% File.open("#{root}/source/data/gateway_request__minimal.xml", 'rb').read %>
       <% end %>
     </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Response</h3>
       <% code('xml') do %>
-        <% File.open("#{root}/source/data/score_response__minimal.xml", 'rb').read %>
+        <% File.open("#{root}/source/data/gateway_response__minimal.xml", 'rb').read %>
       <% end %>
     </div>
   </div><!-- .method-code -->

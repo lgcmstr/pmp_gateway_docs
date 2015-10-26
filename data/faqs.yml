@@ -2,22 +2,9 @@
   a:
 - q: Should I include optional XML elements in my requests?
   a: Yes. Different states use different elements to reteive data and including optional elements will improve the results that you receive. Additionally, in the future, states may change the elements that they use. Including the optional elements now will prevent possible errors in the future.
-- q: How do I get the URL for a NARxCHECK report?
-  a: In your NARxCHECK report request, include the <ReportLink /> element immediately after the <NarxReportRequest..> element.
-  escape_html: y
-- q: How do I get a NARxCHECK report as raw HTML?
-  a:
-- q: What date range of prescription data does NARxCHECK use?
-  a: NARxCHECK uses a patient's past 2 years of prescription data.
-- q: How long before report_id expire?
-  a:
-- q: Why do the REPORT_IDs used to reteive NARxCHECK reports expire?
-  a:
-- q: Why do the URLs for NARxCHECK reports expire?
-  a:
 - q: Why do I have to send provider information with each report request?
   a:
-- q: Where does NARxCHECK get prescription data from?
+- q: Where does PMP Gateway get prescription data from?
   a: The prescription data comes from state prescription monitoring programs (PMPs). For more information on PMP and the states that participate, check out the NABP webpage about <a href="http://www.nabp.net/programs/pmp-interconnect/nabp-pmp-interconnect">PMP InterConnect</a>.
 - q: What happens if one or more states don't successfully return data?
   a:

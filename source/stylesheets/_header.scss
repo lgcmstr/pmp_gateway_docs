@@ -17,6 +17,10 @@ header {
     float: left;
   }
 
+  h1.brand a {
+    color: $light-gray;
+  }
+
   img {
     max-height: $header-height - 24px;
     max-width: $side-bar-width - 30px;
