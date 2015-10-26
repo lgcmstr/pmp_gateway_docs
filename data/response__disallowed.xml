@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RequestID>5424</RequestID>
+  <Response>
+    <Pmp>IN</Pmp>
+    <Disallowed>
+      <Message>Your licensee is not allowed to make requests to IN</Message>
+      <Source>GATEWAY</Source>
+    </Disallowed>
+  </Response>
+  <Response>
+    <Pmp>VA</Pmp>
+    <Disallowed>
+      <Message>A Optometrist from OH is not allowed to make requests to VA</Message>
+      <Source>INTERCONNECT</Source>
+    </Disallowed>
+  </Response>
+  <Disclaimer></Disclaimer>
+</GatewayResponse>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://xml.appriss.com/gateway" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://xml.appriss.com/gateway" elementFormDefault="qualified"
+           attributeFormDefault="qualified">
+  <xs:include schemaLocation="./constrained_base_types.xsd"/>
+  <xs:include schemaLocation="./gateway_request_types.xsd"/>
+  <xs:element name="GatewayRequest" type="GatewayRequestType">
+    <xs:annotation>
+      <xs:documentation>This is the base element of the schema that describes the data format when doing a search request over Gateway.</xs:documentation>
+    </xs:annotation>
+    </xs:element>
+</xs:schema>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<NarxScoreRequest xmlns="http://xml.appriss.com/gateway">
+<?xml version="1.0" encoding="UTF-8"?>
+<GatewayRequest xmlns="http://xml.appriss.com/gateway">
   <Requester>
     <Provider>
       <Role>Physician</Role>
-      <FirstName>John</FirstName>
+      <FirstName>Jon</FirstName>
       <LastName>Doe</LastName>
       <!-- At least one identifier is required: NPINumber, DEANumber, or ProfessionalLicenseNumber. -->
       <NPINumber>1234567890</NPINumber>
@@ -18,6 +18,10 @@
     </Location>
   </Requester>
   <PrescriptionRequest>
+    <DateRange>
+      <Begin>2015-01-01</Begin>
+      <End>2015-12-31</End>
+    </DateRange>
     <Patient>
       <Name>
         <First>Bob</First>
@@ -29,5 +33,5 @@
         <ZipCode>67203</ZipCode>
       </Address>
     </Patient>
-  </PrescriptionRequest>
-</NarxScoreRequest>
+ </PrescriptionRequest>
+</GatewayRequest>
