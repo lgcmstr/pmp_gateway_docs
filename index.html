@@ -31,6 +31,10 @@
     </li>
     <li>
       <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#architecture">Architecture</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
       <a class="sidebar-nav-item" href="#authentication">Authentication</a>
     </li>
     <li>
@@ -94,6 +98,29 @@
     <div class="method-example">
       <p>Example code is provided for each API request. To get started, you can make requests against the testing environment using the code examples and the XML request data they reference.</p>
     </div>
+  </div><!-- .method-code -->
+</section>
+  <section class="method" id="architecture">
+  <div class="method-copy">
+    <h1>Architecture (of the PMP system)</h1>
+    <p>PMP Gateway gets prescription data from a distributed network of state PMP systems. The goal of this section is to help you better understand how the PMP system work and how PMP Gateway fits into that system.</p>
+
+    <p><strong>State PMP Systems</strong> store prescription data for patients and allow authorized users to request or commit prescription data.</p>
+    <p><strong><a href="http://www.nabp.net/programs/pmp-interconnect/nabp-pmp-interconnect">PMP Interconnect</a></strong> facilitates communications between state PMP systems. One role of PMP Interconnect is to manage permissions for how state PMP systems communicate with each other.</p>
+    <p><strong>PMP Gateway</strong> connects to PMP Interconnect, providing an interface for healthcare providers to query patient prescription data.</p>
+
+    <div class="copy-group">
+      <h3>Consequences of Distributed Architecture</h3>
+      <p>The distributed architecture of the PMP system impacts how PMP Gateway functions. Some of the consequences:</p>
+      <ul>
+        <li>Prescription data requests can only be as fast as the slowest PMP being queried. Some may take up to 60 seconds.</li>
+        <li>Errors may occur at any point in the network. XML Responses will describe where in the network an error occured.</li>
+      </ul>
+    </div>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <a href="images/gateway_diagram.png"><img alt="PMP Diagram" src="images/gateway_diagram.png" /></a>
   </div><!-- .method-code -->
 </section>
   <section class="method" id="authentication">
@@ -720,7 +747,7 @@
       </ul>
     </div>
 
-    <p>Because of the distributed architecture of the PMP system, there are many factors which impact the response to a Gateway request. This section explains some of the common responses and what they mean.</p>
+    <p>Because of the distributed <a href="#architecture">architecture of the PMP system</a>, there are many factors which impact the response to a Gateway request. This section explains some of the common responses and what they mean.</p>
   </div><!-- .method-copy -->
 
   <div class="method-code">
@@ -806,7 +833,7 @@
   <div class="method-copy">
     <h2>Disallowed</h2>
     <p>Your account with PMP Gateway does not have permission to query the specified PMP system.</p>
-    <p>Because of the distributed architecture of the PMP system, each PMP has its own administrator who manages permissions. To gain permission to query a specific PMP, contact the Appriss Project Manager who handles your account. Our project managers work with the PMP administrators to manage permissions requests.</p>
+    <p>Because of the distributed <a href="#architecture">architecture of the PMP system</a>, each PMP has its own administrator who manages permissions. To gain permission to query a specific PMP, contact the Appriss Project Manager who handles your account. Our project managers work with the PMP administrators to manage permissions requests.</p>
     <div class="copy-group">
   <h3>Response Details</h3>
   <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
