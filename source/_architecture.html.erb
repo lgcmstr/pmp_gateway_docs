@@ -1,0 +1,23 @@
+<section class="method" id="architecture">
+  <div class="method-copy">
+    <h1>Architecture (of the PMP system)</h1>
+    <p>PMP Gateway gets prescription data from a distributed network of state PMP systems. The goal of this section is to help you better understand how the PMP system work and how PMP Gateway fits into that system.</p>
+
+    <p><strong>State PMP Systems</strong> store prescription data for patients and allow authorized users to request or commit prescription data.</p>
+    <p><strong><%= link_to 'PMP Interconnect', 'http://www.nabp.net/programs/pmp-interconnect/nabp-pmp-interconnect' %></strong> facilitates communications between state PMP systems. One role of PMP Interconnect is to manage permissions for how state PMP systems communicate with each other.</p>
+    <p><strong>PMP Gateway</strong> connects to PMP Interconnect, providing an interface for healthcare providers to query patient prescription data.</p>
+
+    <div class="copy-group">
+      <h3>Consequences of Distributed Architecture</h3>
+      <p>The distributed architecture of the PMP system impacts how PMP Gateway functions. Some of the consequences:</p>
+      <ul>
+        <li>Prescription data requests can only be as fast as the slowest PMP being queried. Some may take up to 60 seconds.</li>
+        <li>Errors may occur at any point in the network. XML Responses will describe where in the network an error occured.</li>
+      </ul>
+    </div>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <%= link_to (image_tag 'gateway_diagram.png', alt: 'PMP Diagram'), '/images/gateway_diagram.png' %>
+  </div><!-- .method-code -->
+</section>
