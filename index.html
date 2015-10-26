@@ -731,6 +731,13 @@
   <div class="method-copy">
     <h2>No Data</h2>
     <p>If a PMP system has no prescription data for the specified patient, it returns a <code>NoData</code> response.</p>
+    <div class="copy-group">
+  <h3>Response Details</h3>
+  <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
+  <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting. For more information </p>
+</div>
+
   </div><!-- .method-copy -->
 
   <div class="method-code">
@@ -762,12 +769,13 @@
   <div class="method-copy">
     <h2>Error</h2>
     <p>If something prevented the request from being processed, the response will be an error. This could be accompanied by an non-200 HTTP response code.</p>
-
     <div class="copy-group">
-      <h3>Response Details</h3>
-      <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
-      <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting. For more information </p>
-    </div>
+  <h3>Response Details</h3>
+  <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
+  <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting. For more information </p>
+</div>
+
   </div><!-- .method-copy -->
 
   <div class="method-code">
@@ -799,6 +807,13 @@
     <h2>Disallowed</h2>
     <p>Your account with PMP Gateway does not have permission to query the specified PMP system.</p>
     <p>Because of the distributed architecture of the PMP system, each PMP has its own administrator who manages permissions. To gain permission to query a specific PMP, contact the Appriss Project Manager who handles your account. Our project managers work with the PMP administrators to manage permissions requests.</p>
+    <div class="copy-group">
+  <h3>Response Details</h3>
+  <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
+  <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting. For more information </p>
+</div>
+
   </div><!-- .method-copy -->
 
   <div class="method-code">
