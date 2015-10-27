@@ -1,3 +1,5 @@
+- q: How long should I wait for a response from PMP Gateway?
+  a: At least 30 seconds. PMP Gateway may request data from multiple state PMP systems and consequently, can respond only as quickly as the slowest state PMP system it queries.
 - q: Which states' data is included in my request?
   a:
 - q: Should I include optional XML elements in my requests?
@@ -5,6 +7,6 @@
 - q: Why do I have to send provider information with each report request?
   a:
 - q: Where does PMP Gateway get prescription data from?
-  a: The prescription data comes from state prescription monitoring programs (PMPs). For more information on PMP and the states that participate, check out the NABP webpage about <a href="http://www.nabp.net/programs/pmp-interconnect/nabp-pmp-interconnect">PMP InterConnect</a>.
+  a: The prescription data comes from state prescription monitoring programs (PMPs). For more information on the PMP network and how PMP Gateway fits into it, check out the <a href="http://appriss-operations.github.io/pmp_gateway_docs/#architecture">Architecture</a> section in the documentation.
 - q: What happens if one or more states don't successfully return data?
   a:
