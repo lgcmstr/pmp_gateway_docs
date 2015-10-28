@@ -53,7 +53,7 @@ $code-border: 1px solid lighten($code-background-color, 10);
       }
 
       code {
-        background: #e8e8e8;
+        background: $code-element-background-color;
       }
 
       .schema-files {
