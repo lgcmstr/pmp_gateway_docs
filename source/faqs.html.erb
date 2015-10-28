@@ -14,8 +14,11 @@
       <div class="answer" id="<%= sentence_to_css_anchor(faq['q']) %>">
         <div class="answer-wrapper">
           <p class="question"><%= faq['q'] %></p>
-          <p><%= faq['a'].nil? ? lorem.paragraph :
-            (faq['escape_html'] ? escape_html(faq['a']) : faq['a']) %></p>
+          <% if faq['a_file'] %>
+            <p><%= partial "faqs/#{faq['a_file']}" %></p>
+          <% else %>
+            <p><%= faq['a'].nil? ? lorem.paragraph : faq['a'] %></p>
+          <% end %>
         </div>
       </div>
     <% end %>

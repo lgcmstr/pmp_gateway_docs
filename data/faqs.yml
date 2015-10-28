@@ -3,10 +3,10 @@
 - q: Which states' data is included in my request?
   a:
 - q: Should I include optional XML elements in my requests?
-  a: Yes. Different states use different elements to reteive data and including optional elements will improve the results that you receive. Additionally, in the future, states may change the elements that they use. Including the optional elements now will prevent possible errors in the future.
+  a: Yes, include as many of the optional XML elements as you can. Different states use different elements to reteive data and including optional elements will improve the results you receive. Additionally, in the future, states may change the elements they use. Including the optional elements now will prevent possible errors in the future.
 - q: Why do I have to send provider information with each report request?
   a:
 - q: Where does PMP Gateway get prescription data from?
-  a: The prescription data comes from state prescription monitoring programs (PMPs). For more information on the PMP network and how PMP Gateway fits into it, check out the <a href="http://appriss-operations.github.io/pmp_gateway_docs/#architecture">Architecture</a> section in the documentation.
+  a_file: prescription_data_source
 - q: What happens if one or more states don't successfully return data?
   a:
