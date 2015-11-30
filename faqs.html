@@ -28,38 +28,50 @@
 
   <div class="questions">
     <ul>
+        <li><a href="#how-do-i-get-a-username-an">How do I get a username and password for the API?</a></li>
+        <li><a href="#how-do-i-recover-or-reset-">How do I recover or reset our user account password?</a></li>
+        <li><a href="#what-are-the-testing-and-p">What are the testing and production API endpoints we need to be hitting?</a></li>
+        <li><a href="#what-is-the-average-respon">What is the average response time for a PMP Gateway request?</a></li>
         <li><a href="#how-long-should-i-wait-for">How long should I wait for a response from PMP Gateway?</a></li>
-        <li><a href="#which-states-data-is-inclu">Which states' data is included in my request?</a></li>
-        <li><a href="#should-i-include-optional-">Should I include optional XML elements in my requests?</a></li>
-        <li><a href="#why-do-i-have-to-send-prov">Why do I have to send provider information with each report request?</a></li>
         <li><a href="#where-does-pmp-gateway-get">Where does PMP Gateway get prescription data from?</a></li>
-        <li><a href="#what-happens-if-one-or-mor">What happens if one or more states don't successfully return data?</a></li>
+        <li><a href="#how-do-i-get-approval-to-r">How do I get approval to request data from a PMP?</a></li>
+        <li><a href="#should-i-include-optional-">Should I include optional XML elements in my requests?</a></li>
+        <li><a href="#how-are-pmp-prescription-r">How are PMP prescription records matched to the patient data I supply?</a></li>
+        <li><a href="#why-do-i-have-to-send-prov">Why do I have to send provider information with each report request?</a></li>
+        <li><a href="#are-we-permitted-to-store-">Are we permitted to store the prescription data returned by PMP Gateway?</a></li>
     </ul>
   </div>
 
   <div class="answers">
+      <div class="answer" id="how-do-i-get-a-username-an">
+        <div class="answer-wrapper">
+          <p class="question">How do I get a username and password for the API?</p>
+            <p>You need a username and password to make API requests. Your Appriss project manager will create your account and provide you with your login credentials. You will have a different password for the testing and production environments.</p>
+        </div>
+      </div>
+      <div class="answer" id="how-do-i-recover-or-reset-">
+        <div class="answer-wrapper">
+          <p class="question">How do I recover or reset our user account password?</p>
+            <p>If you have lost your password or it reset, your Appriss project manager will provide you with a new one. For security reasons, it's not possible for Appriss to recover lost passwords.</p>
+        </div>
+      </div>
+      <div class="answer" id="what-are-the-testing-and-p">
+        <div class="answer-wrapper">
+          <p class="question">What are the testing and production API endpoints we need to be hitting?</p>
+            <p><p>The API endpoints are listed and kept up-to-date in the <a href="./#endpoints">endpoints</a> section of the API documentation.</p>
+</p>
+        </div>
+      </div>
+      <div class="answer" id="what-is-the-average-respon">
+        <div class="answer-wrapper">
+          <p class="question">What is the average response time for a PMP Gateway request?</p>
+            <p>The response time for PMP Gateway requests depends directly on the response time of the PMP(s) being queried. The response can be only as fast as the slowest PMP. In general, the average response time is about 6 or 7 seconds for a search request.</p>
+        </div>
+      </div>
       <div class="answer" id="how-long-should-i-wait-for">
         <div class="answer-wrapper">
           <p class="question">How long should I wait for a response from PMP Gateway?</p>
-            <p>At least 30 seconds. PMP Gateway may request data from multiple state PMP systems and consequently, can respond only as quickly as the slowest state PMP system it queries.</p>
-        </div>
-      </div>
-      <div class="answer" id="which-states-data-is-inclu">
-        <div class="answer-wrapper">
-          <p class="question">Which states' data is included in my request?</p>
-            <p>Eligendi quo sunt dolorem illo sint mollitia ipsum cum natus iure iste placeat. reprehenderit vero consequuntur autem recusandae dolores et. velit qui deleniti qui officiis voluptas laudantium quisquam maxime ea repellendus vel labore dolorum. molestiae dolor inventore voluptatem qui aut qui esse et quia optio. voluptates quaerat quod quisquam inventore sed sint. assumenda quam sed dolore ratione expedita ipsa aut expedita id cumque voluptatem laborum. assumenda est voluptates qui dignissimos iste nemo voluptas sit et aperiam sed</p>
-        </div>
-      </div>
-      <div class="answer" id="should-i-include-optional-">
-        <div class="answer-wrapper">
-          <p class="question">Should I include optional XML elements in my requests?</p>
-            <p>Yes, include as many of the optional XML elements as you can. Different states use different elements to reteive data and including optional elements will improve the results you receive. Additionally, in the future, states may change the elements they use. Including the optional elements now will prevent possible errors in the future.</p>
-        </div>
-      </div>
-      <div class="answer" id="why-do-i-have-to-send-prov">
-        <div class="answer-wrapper">
-          <p class="question">Why do I have to send provider information with each report request?</p>
-            <p>Deleniti inventore voluptas ipsam at sed quam provident est repellendus esse incidunt vel pariatur eum. placeat quasi voluptates odio quae quo. aliquam optio ut totam doloribus consectetur aspernatur aliquam enim dolor consequatur. illum molestiae at voluptatem voluptas animi iusto dolorem nam ut itaque dolor illo molestiae. placeat aut qui error rerum molestiae accusantium repellat aut in iure consequatur magnam odit. eius velit velit quae corporis tempore doloribus repellat ad tempora nihil ducimus laboriosam enim. esse repudiandae in iste repudiandae</p>
+            <p>You should wait at least 30 seconds for a PMP Gateway response. PMP Gateway may request data from multiple state PMP systems and consequently, can respond only as quickly as the slowest state PMP system it queries.</p>
         </div>
       </div>
       <div class="answer" id="where-does-pmp-gateway-get">
@@ -71,10 +83,35 @@ section in the documentation.</p>
 </p>
         </div>
       </div>
-      <div class="answer" id="what-happens-if-one-or-mor">
+      <div class="answer" id="how-do-i-get-approval-to-r">
         <div class="answer-wrapper">
-          <p class="question">What happens if one or more states don't successfully return data?</p>
-            <p>Officia accusantium assumenda et consequatur voluptates ullam ut. sit ipsum autem et. eos minima voluptates nisi optio ad officia in laborum. officiis voluptas exercitationem quisquam aspernatur reprehenderit repellat ea assumenda nihil. nulla dignissimos nulla quos nobis reprehenderit harum tempore quia quaerat</p>
+          <p class="question">How do I get approval to request data from a PMP?</p>
+            <p>Each PMP controls who has access to its presctiption data. To request access to a specific PMP, contact your Appriss project manager, they will take care of the details.</p>
+        </div>
+      </div>
+      <div class="answer" id="should-i-include-optional-">
+        <div class="answer-wrapper">
+          <p class="question">Should I include optional XML elements in my requests?</p>
+            <p>Yes, include as many of the optional XML elements as you can. Different states use different elements to reteive data and including optional elements will improve the results you receive. Additionally, in the future, states may change the elements they use. Including the optional elements now will prevent possible errors in the future.</p>
+        </div>
+      </div>
+      <div class="answer" id="how-are-pmp-prescription-r">
+        <div class="answer-wrapper">
+          <p class="question">How are PMP prescription records matched to the patient data I supply?</p>
+            <p>The logic behind patient matching is performed at the PMP level and can vary between PMPs. PMP Gateway does not perform any matching or filtering - it takes the results from each PMP, aggregates them and sends you the result.</p>
+        </div>
+      </div>
+      <div class="answer" id="why-do-i-have-to-send-prov">
+        <div class="answer-wrapper">
+          <p class="question">Why do I have to send provider information with each report request?</p>
+            <p><p> Patient prescription data is <a href="https://en.wikipedia.org/wiki/Protected_health_information">protected health information </a>. Consequently, for each request, we need to log the health care provider making the request and the faclity they are working at.</p>
+</p>
+        </div>
+      </div>
+      <div class="answer" id="are-we-permitted-to-store-">
+        <div class="answer-wrapper">
+          <p class="question">Are we permitted to store the prescription data returned by PMP Gateway?</p>
+            <p>This depends on which state PMP systems the prescription data was retrieved from and each individual state's laws.</p>
         </div>
       </div>
   </div>
