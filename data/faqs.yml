@@ -1,12 +1,32 @@
+- q: How do I get a username and password for the API?
+  a: You need a username and password to make API requests. Your Appriss project manager will create your account and provide you with your login credentials. You will have a different password for the testing and production environments.
+- q: How do I recover or reset our user account password?
+  a: If you have lost your password or it reset, your Appriss project manager will provide you with a new one. For security reasons, it's not possible for Appriss to recover lost passwords.
+
+- q: What are the testing and production API endpoints we need to be hitting?
+  a_file: endpoints
+
+- q: What is the average response time for a PMP Gateway request?
+  a: The response time for PMP Gateway requests depends directly on the response time of the PMP(s) being queried. The response can be only as fast as the slowest PMP. In general, the average response time is about 6 or 7 seconds for a search request.
 - q: How long should I wait for a response from PMP Gateway?
-  a: At least 30 seconds. PMP Gateway may request data from multiple state PMP systems and consequently, can respond only as quickly as the slowest state PMP system it queries.
-- q: Which states' data is included in my request?
-  a:
-- q: Should I include optional XML elements in my requests?
-  a: Yes, include as many of the optional XML elements as you can. Different states use different elements to reteive data and including optional elements will improve the results you receive. Additionally, in the future, states may change the elements they use. Including the optional elements now will prevent possible errors in the future.
-- q: Why do I have to send provider information with each report request?
-  a:
+  a: You should wait at least 30 seconds for a PMP Gateway response. PMP Gateway may request data from multiple state PMP systems and consequently, can respond only as quickly as the slowest state PMP system it queries.
+
 - q: Where does PMP Gateway get prescription data from?
   a_file: prescription_data_source
-- q: What happens if one or more states don't successfully return data?
-  a:
+- q: How do I get approval to request data from a PMP?
+  a: Each PMP controls who has access to its presctiption data. To request access to a specific PMP, contact your Appriss project manager, they will take care of the details.
+# - q: Which states' data is included in my request?
+#   a:
+# - q: What happens if one or more states don't successfully return data?
+#   a:
+
+- q: Should I include optional XML elements in my requests?
+  a: Yes, include as many of the optional XML elements as you can. Different states use different elements to reteive data and including optional elements will improve the results you receive. Additionally, in the future, states may change the elements they use. Including the optional elements now will prevent possible errors in the future.
+- q: How are PMP prescription records matched to the patient data I supply?
+  a: The logic behind patient matching is performed at the PMP level and can vary between PMPs. PMP Gateway does not perform any matching or filtering - it takes the results from each PMP, aggregates them and sends you the result.
+
+- q: Why do I have to send provider information with each report request?
+  a_file: protected_health_information
+
+- q: Are we permitted to store the prescription data returned by PMP Gateway?
+  a: This depends on which state PMP systems the prescription data was retrieved from and each individual state's laws.
