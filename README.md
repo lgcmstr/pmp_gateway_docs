@@ -20,6 +20,8 @@ access the local server at: http://localhost:4567/
 Build and deploy local changes to the public site using the [middleman-gh-pages](https://github.com/edgecase/middleman-gh-pages) gem
 ````
 $ git add .
+$ git commit -m COMMIT_MESSAGE
+$ git push
 $ bundle exec rake build
 $ bundle exec rake publish
 ````
