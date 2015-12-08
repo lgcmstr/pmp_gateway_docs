@@ -11,7 +11,7 @@ header {
   color: $light-gray;
 
   div.logo {
-    width: $side-bar-width;
+    width: $side-nav-width;
     height: $header-height;
     padding: 12px 15px;
     float: left;
@@ -23,7 +23,7 @@ header {
 
   img {
     max-height: $header-height - 24px;
-    max-width: $side-bar-width - 30px;
+    max-width: $side-nav-width - 30px;
     vertical-align: middle;
   }
 

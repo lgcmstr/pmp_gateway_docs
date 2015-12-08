@@ -4,19 +4,9 @@
 @import "bourbon";
 @import "base/base";
 @import "neat";
+
+@import "variables";
 @import "pygments-monokai";
-
-$header-height: 60px;
-$side-bar-width: 220px;
-$side-bar-padding: 6px 20px;
-$side-bar-background-color: rgb(253, 252, 249);
-$method-copy-width: 46%;
-$method-code-width: 54%;
-$method-padding: 40px 35px 50px 35px;
-$code-background-color: rgb(45,49,52);
-$code-block-background-color: #23292b;
-$code-border: 1px solid lighten($code-background-color, 10);
-
 @import "header";
 @import "side-nav";
 @import "code";
@@ -25,7 +15,7 @@ $code-border: 1px solid lighten($code-background-color, 10);
 
 .main-content {
   position: absolute;
-  left: $side-bar-width;
+  left: $side-nav-width;
   top: $header-height;
   right: 0;
   bottom: 0;

@@ -46,8 +46,23 @@ helpers do
     sentence.downcase.gsub(/[^0-9a-z ]/i, '').gsub(' ','-')[0..25]
   end
 
-  def active_link_to(*args)
-    link_to args[0], args[1], class: (current_path == args[1] ? 'active' : '')
+  def link_to_active(name, path, options={})
+    if options[:active_path]
+      active = options[:active_path] == current_path
+      link_to name, path, class: (active ? 'active' : '')
+    end
+  end
+
+  def link_to_current_version(name, path, options={})
+    current_version = current_path.split('/').first if current_path.start_with?('v')
+    target_path =
+      if current_version
+        "/#{current_version}#{path unless path == '/index.html'}"
+      else
+        path
+      end
+    active = path.end_with?(current_path.split('/').last)
+    link_to name, target_path, options, class: (active ? 'active' : '')
   end
 end
 

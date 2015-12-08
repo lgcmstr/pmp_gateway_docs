@@ -1,0 +1,59 @@
+<section class="method" id="gateway-request">
+  <div class="method-copy">
+    <h1>Gateway Request</h1>
+
+    <div class="schema-files">
+      <p>Schema files:</p>
+      <ul>
+        <li><%= link_to 'gateway_request_schema.xsd', './data/schema/gateway_request_schema.xsd' %></li>
+        <li><%= link_to 'gateway_constraints.xsd', './data/schema/gateway_constraints.xsd' %></li>
+        <li><%= link_to 'gateway_request_types.xsd', './data/schema/gateway_request_types.xsd' %></li>
+      </ul>
+    </div>
+
+    <p>When a Gateway reqest is recieved, PMP Gateway requests patient prescription data from the required PMP systems.</p>
+    <p>If the PMP systems are successfully queried, the Gateway response be the patient prescription data.</p>
+
+    <p>The Gateway request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
+    <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <%= link_to 'gateway request types XML schema', './data/schema/gateway_request_types.xsd' %>.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<% code('shell') do %>
+POST https://gateway-prep.pmp.appriss.com/search_request/create
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<% code('shell') do %>
+curl https://gateway-prep.pmp.appriss.com/search_request/create \
+  -u username:password \
+  -H "Content-Type: application/xml" \
+  -H "Accept: application/xml" \
+  -d @gateway_request.xml
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">gateway_request.xml</p>
+      <span class="download">
+        <a href="./data/gateway_request.xml" download>download</a>
+      </span>
+<% code('xml') do %>
+  <% File.open("#{root}/source/data/gateway_request.xml", 'rb').read %>
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<% code('xml') do %>
+  <% File.open("#{root}/source/data/gateway_response.xml", 'rb').read %>
+<% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>

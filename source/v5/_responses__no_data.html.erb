@@ -1,0 +1,20 @@
+<section class="method" id="responses-no-data">
+  <div class="method-copy">
+    <h2>No Data</h2>
+    <p>If a PMP system has no prescription data for the specified patient, it returns a <code>NoData</code> response.</p>
+    <%= partial 'responses__response_details' %>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">response__no_data.xml</p>
+      <span class="download">
+        <a href="./data/response__no_data.xml" download>download</a>
+      </span>
+      <% code('xml') do %>
+        <% File.open("#{root}/source/data/response__no_data.xml", 'rb').read %>
+      <% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>

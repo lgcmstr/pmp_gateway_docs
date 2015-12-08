@@ -1,0 +1,20 @@
+<section class="method" id="responses-error">
+  <div class="method-copy">
+    <h2>Error</h2>
+    <p>If something prevented the request from being processed, the response will be an error. This could be accompanied by an non-200 HTTP response code.</p>
+    <%= partial 'responses__response_details' %>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">response__error.xml</p>
+      <span class="download">
+        <a href="./data/response__error.xml" download>download</a>
+      </span>
+      <% code('xml') do %>
+        <% File.open("#{root}/source/data/response__error.xml", 'rb').read %>
+      <% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>
