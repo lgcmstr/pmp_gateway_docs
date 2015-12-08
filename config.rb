@@ -48,7 +48,12 @@ helpers do
 
   def link_to_active(name, path, options={})
     if options[:active_path]
-      active = options[:active_path] == current_path
+      active =
+        if options[:active_path].is_a? Array
+          options[:active_path].include?(current_path)
+        else
+          options[:active_path] == current_path
+        end
       link_to name, path, class: (active ? 'active' : '')
     end
   end
