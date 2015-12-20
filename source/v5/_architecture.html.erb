@@ -12,7 +12,7 @@
       <p>The distributed architecture of the PMP system impacts how PMP Gateway functions. Some of the consequences:</p>
       <ul>
         <li>Prescription data requests can only be as fast as the slowest PMP being queried. Consequently, the average response time is 7 seconds.</li>
-        <li>Errors may occur at any point in the network. XML Responses will describe where in the network an error occured.</li>
+        <li>Errors may occur at any point in the network and cause patient requests to fail or return incomplete data. If an error occurs, the <em>patient response</em> will include a description of the error and where it occured.</li>
       </ul>
     </div>
   </div><!-- .method-copy -->
