@@ -1,0 +1,27 @@
+<section class="method" id="patient-response-disallowed">
+  <div class="method-copy">
+    <h2>Disallowed</h2>
+
+    <p>A Patient Response will include a <code>&#60;Disallowed&#62;</code> response in these circumstances:</p>
+    <ul>
+      <li>You make a request to a PMP that has not granted access to your Licensee.</li>
+      <li>The <code>&#60;Provider&#62;</code> <code>&#60;Role&#62;</code> specified in the Patient Request is not permitted to query the specified PMP.</li>
+    </ul>
+
+    <p>If you would like access to query additional PMPs, contact the Appriss Project Manager who handles your account. Our project managers work with the PMPs to manage permissions requests.</p>
+    <%= partial 'patient_response__details' %>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">patient_response__disallowed.xml</p>
+      <span class="download">
+        <a href="./data/v5/patient_response__disallowed.xml" download>download</a>
+      </span>
+      <% code('xml') do %>
+        <% File.open("#{root}/source/data/v5/patient_response__disallowed.xml", 'rb').read %>
+      <% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>

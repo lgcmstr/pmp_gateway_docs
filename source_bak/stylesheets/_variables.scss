@@ -1,0 +1,17 @@
+$header-height: 60px;
+
+$side-nav-width: 220px;
+$side-nav-background-color: rgb(253, 252, 249);
+$side-nav-background-color-secondary: desaturate(darken($side-nav-background-color, 5), 10);
+$side-nav-left-padding: 20px;
+$side-nav-link-padding: 6px $side-nav-left-padding;
+$side-nav-link-color: #777;
+$side-nav-active-link-color: $action-color;
+
+$method-copy-width: 46%;
+$method-code-width: 54%;
+$method-padding: 40px 35px 50px 35px;
+
+$code-background-color: rgb(45,49,52);
+$code-block-background-color: #23292b;
+$code-border: 1px solid lighten($code-background-color, 10);

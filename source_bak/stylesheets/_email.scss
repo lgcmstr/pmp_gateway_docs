@@ -1,0 +1,24 @@
+.email {
+  .email-header {
+    h1 {
+      margin-bottom: 0;
+    }
+
+    margin-bottom: $base-spacing;
+  }
+
+  .email-text {
+    padding: $base-spacing;
+    background: $light-gray;
+    border: solid 1px darken($light-gray, 3);
+    border-radius: $base-border-radius;
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

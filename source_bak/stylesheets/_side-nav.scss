@@ -1,0 +1,102 @@
+.side-nav {
+  position: fixed;
+  left: 0;
+  top: $header-height;
+  width: $side-nav-width;
+  min-height: 100%;
+  background-color: $side-nav-background-color;
+  border-right: $base-border;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  a {
+    color: $side-nav-link-color;
+  }
+
+  h5 {
+    margin: 0;
+    padding: $side-nav-link-padding;
+    font-weight: 400;
+    color: $medium-gray;
+  }
+
+  ul.api-versions {
+    margin-bottom: 12px;
+    padding: 16px 0 16px $side-nav-left-padding;
+    border-bottom: $base-border;
+    background: $side-nav-background-color-secondary;
+
+    li {
+      display: inline-block;
+    }
+
+    a {
+      padding: .15em .7em .2em;
+      border: 1px solid $side-nav-background-color-secondary;
+      border-radius: $base-border-radius;
+      letter-spacing: 1px;
+    }
+
+    a:hover {
+      border: 1px solid $side-nav-active-link-color;
+      color: $side-nav-active-link-color;
+    }
+
+    a.active {
+      background: $side-nav-active-link-color;
+      border: 1px solid $side-nav-active-link-color;
+      color: #fff;
+    }
+  }
+
+  ul.toc {
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    ul.sidebar-nav-items a {
+      padding-left: 42px;
+      font-size: 14px;
+    }
+
+    li span.active-marker {
+      float: left;
+      display: inline-block;
+      margin-top: 7px;
+      margin-left: 4px;
+      width: 6px;
+      height: 25px;
+    }
+
+    li.active {
+      & > span.active-marker {
+        background-color: $side-nav-active-link-color;
+      }
+
+      & > a {
+        color: $side-nav-active-link-color;
+      }
+
+      a:hover {
+        color: $side-nav-active-link-color;
+      }
+    }
+
+    li a {
+      padding: $side-nav-link-padding;
+      display: block;
+
+      &:hover {
+        text-decoration: underline;
+        color: #000;
+      }
+    }
+  }
+}
+
+.side-nav ul.sidebar-nav-items li span.active-marker {
+  margin-top: 5px;
+  height: 23px;
+}

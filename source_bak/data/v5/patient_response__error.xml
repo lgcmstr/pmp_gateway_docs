@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PatientResponse xmlns="http://xml.appriss.com/gateway/v5">
+  <RequestId>241</RequestId>
+  <Response>
+    <ResponseDestinations>
+      <Pmp>KY</Pmp>
+    </ResponseDestinations>
+    <Error>
+      <Message>Error Message from the PMP</Message>
+      <Details>Optionally - More technical details regarding the error.</Details>
+      <Source>PMP</Source>
+    </Error>
+  </Response>
+  <Disclaimer>...</Disclaimer>
+</PatientResponse>

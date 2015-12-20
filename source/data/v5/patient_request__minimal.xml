@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PatientRequest xmlns="http://xml.appriss.com/gateway/v5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Requester>
+    <Provider>
+      <Role>Physician</Role>
+      <FirstName>Jon</FirstName>
+      <LastName>Doe</LastName>
+      <DEANumber>AB1234579</DEANumber>
+    </Provider>
+    <Location>
+      <Name>Store #123</Name>
+      <DEANumber>AB1234579</DEANumber>
+      <Address>
+        <StateCode>KS</StateCode>
+      </Address>
+    </Location>
+  </Requester>
+  <PrescriptionRequest>
+    <Patient>
+      <Name>
+        <First>Bob</First>
+        <Last>Testpatient</Last>
+      </Name>
+      <Birthdate>1900-01-01</Birthdate>
+      <!-- ZipCode or Phone is required. -->
+      <Address>
+        <ZipCode>67203</ZipCode>
+      </Address>
+      <Phone>1234567890</Phone>
+    </Patient>
+ </PrescriptionRequest>
+</PatientRequest>

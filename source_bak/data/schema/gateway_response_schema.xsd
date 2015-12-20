@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://xml.appriss.com/gateway" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://xml.appriss.com/gateway" elementFormDefault="qualified"
+           attributeFormDefault="qualified">
+  <xs:include schemaLocation="./constrained_base_types.xsd"/>
+  <xs:include schemaLocation="./gateway_request_types.xsd"/>
+  <xs:include schemaLocation="./gateway_response_types.xsd"/>
+  <xs:element name="GatewayResponse" type="GatewayResponseType" >
+    <xs:annotation>
+      <xs:documentation>Root element for a Search Response.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>

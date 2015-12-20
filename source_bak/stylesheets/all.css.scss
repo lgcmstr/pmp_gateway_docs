@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+@import "normalize";
+@import "bourbon";
+@import "base/base";
+@import "neat";
+
+@import "variables";
+@import "pygments-monokai";
+@import "header";
+@import "side-nav";
+@import "code";
+@import "faqs";
+@import "email";
+
+.main-content {
+  position: absolute;
+  left: $side-nav-width;
+  top: $header-height;
+  right: 0;
+  bottom: 0;
+  min-height: 100%;
+
+  section.method {
+    @include row;
+    padding-bottom: 10px;
+    padding-top: $header-height - 2px;
+    margin-top: -($header-height - 2px);
+
+    .method-copy {
+      width: $method-copy-width;
+      float: left;
+      padding: $method-padding;
+      border-top: $base-border;
+      color: #505050;
+
+      p {
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+        & + ul {
+          margin-top: -.5em;
+        }
+      }
+
+      code {
+        background: $code-element-background-color;
+      }
+
+      .schema-files {
+        margin-bottom: 25px;
+
+        p {
+          margin-bottom: 0.5em;
+        }
+
+        ul {
+          list-style: none;
+          padding-left: 0;
+        }
+      }
+
+      .copy-group {
+        margin-top: 2em;
+        margin-bottom: 2em;
+
+        h3 + p {
+          margin-top: $small-spacing;
+        }
+      }
+    }
+  }
+}

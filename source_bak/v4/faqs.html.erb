@@ -1,0 +1,26 @@
+<div class="container faqs">
+  <h1>FAQs</h1>
+
+  <div class="questions">
+    <ul>
+      <% data.faqs.each do |faq| %>
+        <li><%= link_to faq['q'], '#'+sentence_to_css_anchor(faq['q']) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="answers">
+    <% data.faqs.each do |faq| %>
+      <div class="answer" id="<%= sentence_to_css_anchor(faq['q']) %>">
+        <div class="answer-wrapper">
+          <p class="question"><%= faq['q'] %></p>
+          <% if faq['a_file'] %>
+            <p><%= partial "faqs/#{faq['a_file']}" %></p>
+          <% else %>
+            <p><%= faq['a'].nil? ? lorem.paragraph : faq['a'] %></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

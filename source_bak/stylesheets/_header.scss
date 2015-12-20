@@ -1,0 +1,56 @@
+header {
+  $header-font-color: #bcbcbc;
+  height: $header-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #444;
+  border-bottom: #222;
+  z-index: 10;
+  color: $light-gray;
+
+  div.logo {
+    width: $side-nav-width;
+    height: $header-height;
+    padding: 12px 15px;
+    float: left;
+  }
+
+  h1.brand a {
+    color: $light-gray;
+  }
+
+  img {
+    max-height: $header-height - 24px;
+    max-width: $side-nav-width - 30px;
+    vertical-align: middle;
+  }
+
+  nav {
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    font-weight: 300;
+
+    ul li {
+      display: inline-block;
+      line-height: $header-height;
+      margin-left: 20px;
+
+      a {
+        display: inline-block;
+        padding: 0 20px;
+        color: $header-font-color;
+
+        &.active {
+          color: #fff;
+        }
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

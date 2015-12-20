@@ -1,0 +1,64 @@
+QUESTIONS
+
+Why is the test domain name so wonky?
+ - current: https://gateway-test.pmp.appriss.com
+ - why not: https://test.pmpgateway.net
+
+
+are requests sent to:
+  https://gateway-test.pmp.appriss.com
+  https://pmpgateway.net
+automatically handled as v5 or does the user need to send request to
+  https://gateway-test.pmp.appriss.com/v5
+  https://pmpgateway.net/v5
+
+Can I change the v4 endpoint
+  from: https://gateway-prep.pmp.appriss.com
+  to: https://gateway-test.pmp.appriss.com/v5
+
+
+Why is this element necessary?
+    <Provider>
+      <LocationStateCode>OH</LocationStateCode>
+There is already:
+    <Location>
+      ...
+      <Address>
+        ...
+        <StateCode>KS</StateCode>
+LocationStateCode is optional (excluded from the min example) and redundant.
+
+
+============================================================
+IMPROVEMENTS
+use correct singular "A", "An"
+<Message>A Optometrist with prescriptive authority from OH is not allowed to make requests.</Message>
+
+
+Need a second PMP listed for Patient Request comprehensive example
+
+============================================================
+for older version
+  - tell the reader that the newest version is v5
+  - link to newest version
+  - "all new integrations should use the newest API"
+
+style 'aside'
+  _authentication.html.erb
+  _patient_request.html.erb
+
+style 'em'
+  refer to request names
+    - _patient_requests.html.erb
+
+
+link to schema file
+  ? introduction
+    <div class="schema-files">
+      <p>Schema files:</p>
+      <ul>
+        <li><%= link_to 'gateway_v5_schema.xsd', './data/v5/gateway_v5_schema.xsd' %></li>
+        <!-- <li><%#= link_to 'gateway_constraints.xsd', './data/schema/gateway_constraints.xsd' %></li> -->
+        <!-- <li><%#= link_to 'gateway_request_types.xsd', './data/schema/gateway_request_types.xsd' %></li> -->
+      </ul>
+    </div>

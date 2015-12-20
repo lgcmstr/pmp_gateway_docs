@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PatientResponse xmlns="http://xml.appriss.com/gateway/v5">
+  <RequestId>232</RequestId>
+  <Report>
+    <ResponseDestinations>
+      <Pmp>KS</Pmp>
+    </ResponseDestinations>
+    <NarxCheckScore>
+      <Narcotics>170</Narcotics>
+      <Stimulants>000</Stimulants>
+      <Sedatives>120</Sedatives>
+    </NarxCheckScore>
+    <ReportRequestURLs>
+      <ViewableReport Content-Type="text/html">https://gateway-prep.pmp.appriss.com/v5/report/144.html</ViewableReport>
+    </ReportRequestURLs>
+  </Report>
+  <Disclaimer>...</Disclaimer>
+</PatientResponse>
