@@ -1,0 +1,547 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>PMP Gateway API Documentation</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400|Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="../stylesheets/all.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+  <div class="logo">
+    <h1 class="brand"><a href="/v5">PMP Gateway</a></h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a class="active" href="/v5">API Documentation</a></li>
+      <li><a href="../faqs.html">FAQs</a></li>
+      <li><a href="https://github.com/Appriss-Operations/pmp_gateway_docs">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+    <div class="side-nav">
+  <ul class="api-versions">
+  <li><a class="active" href="/v5">v5</a></li>
+  <li><a class="" href="/v4">v4</a></li>
+</ul>
+
+  <ul class="toc">
+    <li class="active">
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#intro">Introduction</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#pmp-network">PMP Network</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#authentication">Authentication</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#endpoints">Endpoints</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#errors">Errors</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#patient-request">Patient Request</a>
+      <ul class="sidebar-nav-items">
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#patient-request-minimal">Minimal Example</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#patient-response">Patient Response</a>
+      <ul class="sidebar-nav-items">
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#patient-response-disallowed">Disallowed</a>
+        </li>
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#patient-response-error">Error</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="code-background">
+  <div class="code-background-actual"></div>
+</div>
+<div class="main-content">
+  <section class="method" id="intro">
+  <div class="method-copy">
+    <h1>Introduction</h1>
+    <p>Welcome to the PMP Gateway API documentation. This API reference provides information on available endpoints and how to interact with them.</p>
+    <p>Using the PMP Gateway API, you can integrate patient prescription history data into your applications.</p>
+    <p>This API is <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>ful and uses XML formatted requests and responses.</p>
+    <h3>Questions & Feedback</h3>
+    <p>This documentation and all example code is available on GitHub. If you have questions or feedback the best way to contact us is to
+      <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs/issues">open an "issue"</a>
+      on our
+      <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs">GitHub project space</a>.
+    </p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+      <p>Example code is provided for each API request. To get started, you can make requests against the testing environment using the code examples and the XML request data they reference.</p>
+    </div>
+  </div><!-- .method-code -->
+</section>
+  <section class="method" id="pmp-network">
+  <div class="method-copy">
+    <h1>PMP Network</h1>
+    <p>PMP Gateway gets prescription data from a distributed network of state PMP systems. This section explains the architecture of the PMP network and how PMP Gateway fits into it.</p>
+
+    <p><strong>State PMP Systems</strong> store prescription data for patients and allow authorized users to request or commit prescription data.</p>
+    <p><strong><a href="http://www.nabp.net/programs/pmp-interconnect/nabp-pmp-interconnect">PMP Interconnect</a></strong> facilitates communications between state PMP systems. One role of PMP Interconnect is to manage permissions for how state PMP systems communicate with each other.</p>
+    <p><strong>PMP Gateway</strong> connects to PMP Interconnect, providing an interface for healthcare providers to query patient prescription data.</p>
+
+    <div class="copy-group">
+      <h3>Consequences of Distributed Architecture</h3>
+      <p>The distributed architecture of the PMP system impacts how PMP Gateway functions. Some of the consequences:</p>
+      <ul>
+        <li>Prescription data requests can only be as fast as the slowest PMP being queried. Consequently, the average response time is 7 seconds.</li>
+        <li>Errors may occur at any point in the network and cause patient requests to fail or return incomplete data. If an error occurs, the <em>patient response</em> will include a description of the error and where it occured.</li>
+      </ul>
+    </div>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <a href="../images/gateway_diagram.png"><img alt="PMP Diagram" src="../images/gateway_diagram.png" /></a>
+  </div><!-- .method-code -->
+</section>
+  <section class="method" id="authentication">
+  <div class="method-copy">
+    <h1>Authentication</h1>
+    <p>All requests must be made over HTTPS. Calls made over plain HTTP will fail.</p>
+
+    <p>This API uses <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">basic HTTP authentication</a>, which means you must provide a username and password with every API request. Each username is linked to a Licensee account and there may be multiple API users per Licensee.</p>
+
+    <p>Based on the user making the request and the destination PMP systems requested, PMP Gateway checks that:</p>
+    <ol>
+      <li>The Licensee is allowed to make a request against the destination PMP.</li>
+      <li>The Health Care Provider Role specified in the request is allowed to make a request against the destination PMP.</li>
+    </ol>
+    <p>If either fail for a PMP, the request for that specific PMP is not forwarded on to PMP InterConnect.</p>
+
+    <aside class="notice">Your username and password is provided to you by the Appriss Project Manager who is handling your account.</aside>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+  </div>
+</section>
+
+  <section class="method" id="endpoints">
+  <div class="method-copy">
+    <h1>API Endpoints</h1>
+    <p>Two API endpoints are available: testing and production.</p>
+    <p>The testing environment is populated with fake data and contains no real-world patient data. All testing and development should be done using this testing environment.</p>
+    <p>The production environment contains real HIPAA protected patient data that must be handled properly.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Testing API Endpoint</h3>
+<pre class="highlight shell"><code>https://gateway-test.pmp.appriss.com
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-definition">
+      <h3>Production API Endpoint</h3>
+<pre class="highlight shell"><code>https://pmpgateway.net
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="errors">
+  <div class="method-copy">
+    <h1>Errors</h1>
+    <p>PMP Gateway uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided information (e.g. a required parameter was missing) and codes in the 5xx range indicate an error with PMP Gateway.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+      <h3>HTTP Status Codes</h3>
+      <table>
+        <tbody>
+          <tr>
+            <th>200 OK</th>
+            <td>Everything worked as expected.</td>
+          </tr>
+          <tr>
+            <th>401 Unauthorized</th>
+            <td>Invalid login credentials.</td>
+          </tr>
+          <tr>
+            <th>500 Internal Server Error</th>
+            <td>Something went wrong. The response body will be a Patient Response with an Error section.</td>
+          </tr>
+        <tbody>
+      </table>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="patient-request">
+  <div class="method-copy">
+    <h1>Patient Request</h1>
+
+    <p>The Patient Request initiates a search for a patient's prescription data and results in a Patient Response.</p>
+    <p>The strcuture and contents of a Patient Request are dictated by the <a href="./data/v5/gateway_v5_schema.xsd">Gateway v5 schema</a>. Please refer to the schema for detailed annotations on each element.</p>
+    <p>The Patient Request has many optional data elements. Additionally, some elements are conditional, meaning your request must include at least one element out of a set of possible elements.</p>
+
+    <p>The example request on the right includes all required elements and most of the optional elements. For the conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
+
+    <p><code>&#60;RequestDestinations&#62;</code> - Optional. If omitted, the request will be made against the PMP systems configured for your Licensee account. If included, requests will be sent to the PMP(s) listed under this element. Your Licensee permissions will still restrict which PMPs are accessible.</p>
+
+    <p><code>&#60;LicenseeRequestID&#62;</code> - Optional. Allows you to pass your own custom request ID, which will be returned in the Patient Response.</p>
+
+    <p><code>&#60;MedicalRecordID&#62;</code> - Optional. This element is useful for only those accounts that are configured to recieve NARxCHECK reports. If you provide the same Medical Record ID for the same patient in each Patient Request, the returned NARxCHECK report will include historical NARxCHECK Score information for the patient.</aside>
+
+    <p>Note: Some optional elements have been omitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <a href="./data/v5/gateway_v5_schema.xsd">Gateway v5 schema</a>.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-test.pmp.appriss.com/v5/patient
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<pre class="highlight shell"><code>curl https://gateway-test.pmp.appriss.com/v5/patient <span class="se">\</span>
+  -u username:password <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
+  -d @patient_request.xml
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">patient_request.xml</p>
+      <span class="download">
+        <a href="./data/v5/patient_request.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;PatientRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Requester&gt;</span>
+    <span class="nt">&lt;LicenseeRequestId&gt;</span>identifier<span class="nt">&lt;/LicenseeRequestId&gt;</span><span class="c">&lt;!-- Optional. If Provided it will be echoed in the Patient Response. --&gt;</span>
+    <span class="nt">&lt;SenderSoftware&gt;</span>
+      <span class="nt">&lt;Developer&gt;</span>Software Inc.<span class="nt">&lt;/Developer&gt;</span>
+      <span class="nt">&lt;Product&gt;</span>Product Name<span class="nt">&lt;/Product&gt;</span>
+      <span class="nt">&lt;Version&gt;</span>Version Info<span class="nt">&lt;/Version&gt;</span>
+    <span class="nt">&lt;/SenderSoftware&gt;</span>
+    <span class="nt">&lt;RequestDestinations&gt;</span><span class="c">&lt;!-- Optional. If ommitted, the request will be sent to the default PMPs that are configured for the Licensee. --&gt;</span>
+      <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;/RequestDestinations&gt;</span>
+    <span class="nt">&lt;Provider&gt;</span>
+      <span class="nt">&lt;LocationStateCode&gt;</span>OH<span class="nt">&lt;/LocationStateCode&gt;</span>
+      <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
+      <span class="nt">&lt;FirstName&gt;</span>Jon<span class="nt">&lt;/FirstName&gt;</span>
+      <span class="nt">&lt;LastName&gt;</span>Doe<span class="nt">&lt;/LastName&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: DEANumber, NPINumber, or ProfessionalLicenseNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1212345671<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;ProfessionalLicenseNumber&gt;</span>
+        <span class="nt">&lt;Type&gt;</span>String<span class="nt">&lt;/Type&gt;</span>
+        <span class="nt">&lt;Value&gt;</span>A1231xbzy-bx<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>KY<span class="nt">&lt;/StateCode&gt;</span>
+      <span class="nt">&lt;/ProfessionalLicenseNumber&gt;</span>
+    <span class="nt">&lt;/Provider&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Store #123<span class="nt">&lt;/Name&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: DEANumber, NPINumber, or NCPDPNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1234567890<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;NCPDPNumber&gt;</span>1234567<span class="nt">&lt;/NCPDPNumber&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>Street 1<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>Street 2<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;City&gt;</span>City<span class="nt">&lt;/City&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>KS<span class="nt">&lt;/StateCode&gt;</span>
+        <span class="nt">&lt;ZipCode&gt;</span>40242<span class="nt">&lt;/ZipCode&gt;</span>
+        <span class="nt">&lt;ZipPlusFour&gt;</span>4242<span class="nt">&lt;/ZipPlusFour&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Requester&gt;</span>
+  <span class="nt">&lt;PrescriptionRequest&gt;</span>
+    <span class="nt">&lt;DateRange&gt;</span>
+      <span class="nt">&lt;Begin&gt;</span>2008-11-01<span class="nt">&lt;/Begin&gt;</span>
+      <span class="nt">&lt;End&gt;</span>2010-11-30<span class="nt">&lt;/End&gt;</span>
+    <span class="nt">&lt;/DateRange&gt;</span>
+    <span class="nt">&lt;Patient&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>
+        <span class="nt">&lt;First&gt;</span>Bob<span class="nt">&lt;/First&gt;</span>
+        <span class="nt">&lt;Middle&gt;</span>Dylan<span class="nt">&lt;/Middle&gt;</span><span class="c">&lt;!-- Optional --&gt;</span>
+        <span class="nt">&lt;Last&gt;</span>Testpatient<span class="nt">&lt;/Last&gt;</span>
+      <span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;Birthdate&gt;</span>1900-01-01<span class="nt">&lt;/Birthdate&gt;</span>
+      <span class="nt">&lt;SexCode&gt;</span>M<span class="nt">&lt;/SexCode&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>123 Main St<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>Apt B<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;City&gt;</span>Wichita<span class="nt">&lt;/City&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>KS<span class="nt">&lt;/StateCode&gt;</span>
+        <span class="nt">&lt;ZipCode&gt;</span>67203<span class="nt">&lt;/ZipCode&gt;</span>
+        <span class="nt">&lt;ZipPlusFour&gt;</span>4321<span class="nt">&lt;/ZipPlusFour&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+      <span class="nt">&lt;Phone&gt;</span>1234567890<span class="nt">&lt;/Phone&gt;</span>
+      <span class="nt">&lt;SSN&gt;</span>123-45-6789<span class="nt">&lt;/SSN&gt;</span>
+      <span class="nt">&lt;DriversLicenseIdentifier&gt;</span>
+        <span class="nt">&lt;Value&gt;</span>S01-45-6789<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>KS<span class="nt">&lt;/StateCode&gt;</span>
+      <span class="nt">&lt;/DriversLicenseIdentifier&gt;</span>
+      <span class="nt">&lt;PharmacyBenefitsMemberID&gt;</span>String<span class="nt">&lt;/PharmacyBenefitsMemberID&gt;</span>
+      <span class="nt">&lt;MedicalBenefitsMemeberID&gt;</span>String<span class="nt">&lt;/MedicalBenefitsMemeberID&gt;</span>
+      <span class="nt">&lt;MedicalRecordID&gt;</span>XX-1234-AnyString<span class="nt">&lt;/MedicalRecordID&gt;</span><span class="c">&lt;!-- Optional. If you want historical scores in NARxCHECK reports then it is required. --&gt;</span>
+    <span class="nt">&lt;/Patient&gt;</span>
+ <span class="nt">&lt;/PrescriptionRequest&gt;</span>
+<span class="nt">&lt;/PatientRequest&gt;</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;PatientResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;RequestId&gt;</span>227<span class="nt">&lt;/RequestId&gt;</span>
+  <span class="nt">&lt;LicenseeRequestId&gt;</span>identifier<span class="nt">&lt;/LicenseeRequestId&gt;</span>
+  <span class="nt">&lt;Report&gt;</span>
+    <span class="nt">&lt;ResponseDestinations&gt;</span>
+      <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;/ResponseDestinations&gt;</span>
+    <span class="nt">&lt;NarxCheckScore&gt;</span>
+      <span class="nt">&lt;Narcotics&gt;</span>170<span class="nt">&lt;/Narcotics&gt;</span>
+      <span class="nt">&lt;Stimulants&gt;</span>000<span class="nt">&lt;/Stimulants&gt;</span>
+      <span class="nt">&lt;Sedatives&gt;</span>120<span class="nt">&lt;/Sedatives&gt;</span>
+    <span class="nt">&lt;/NarxCheckScore&gt;</span>
+    <span class="nt">&lt;ReportRequestURLs&gt;</span>
+      <span class="nt">&lt;ViewableReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/v5/report/141.html<span class="nt">&lt;/ViewableReport&gt;</span>
+    <span class="nt">&lt;/ReportRequestURLs&gt;</span>
+  <span class="nt">&lt;/Report&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/PatientResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="patient-request-minimal">
+  <div class="method-copy">
+    <h2>Minimal Example</h2>
+    <p>The Patient Request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>This example is the most minimalistic request possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-test.pmp.appriss.com/v5/patient
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<pre class="highlight shell"><code>curl https://gateway-test.pmp.appriss.com/v5/patient <span class="se">\</span>
+  -u username:password <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
+  -d @patient_request__minimal.xml
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">patient_request__minimal.xml</p>
+      <span class="download">
+        <a href="./data/v5/patient_request__minimal.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;PatientRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Requester&gt;</span>
+    <span class="nt">&lt;Provider&gt;</span>
+      <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
+      <span class="nt">&lt;FirstName&gt;</span>Jon<span class="nt">&lt;/FirstName&gt;</span>
+      <span class="nt">&lt;LastName&gt;</span>Doe<span class="nt">&lt;/LastName&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+    <span class="nt">&lt;/Provider&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Store #123<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>KS<span class="nt">&lt;/StateCode&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Requester&gt;</span>
+  <span class="nt">&lt;PrescriptionRequest&gt;</span>
+    <span class="nt">&lt;Patient&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>
+        <span class="nt">&lt;First&gt;</span>Bob<span class="nt">&lt;/First&gt;</span>
+        <span class="nt">&lt;Last&gt;</span>Testpatient<span class="nt">&lt;/Last&gt;</span>
+      <span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;Birthdate&gt;</span>1900-01-01<span class="nt">&lt;/Birthdate&gt;</span>
+      <span class="c">&lt;!-- ZipCode or Phone is required. --&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;ZipCode&gt;</span>67203<span class="nt">&lt;/ZipCode&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+      <span class="nt">&lt;Phone&gt;</span>1234567890<span class="nt">&lt;/Phone&gt;</span>
+    <span class="nt">&lt;/Patient&gt;</span>
+ <span class="nt">&lt;/PrescriptionRequest&gt;</span>
+<span class="nt">&lt;/PatientRequest&gt;</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;PatientResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;RequestId&gt;</span>232<span class="nt">&lt;/RequestId&gt;</span>
+  <span class="nt">&lt;Report&gt;</span>
+    <span class="nt">&lt;ResponseDestinations&gt;</span>
+      <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;/ResponseDestinations&gt;</span>
+    <span class="nt">&lt;NarxCheckScore&gt;</span>
+      <span class="nt">&lt;Narcotics&gt;</span>170<span class="nt">&lt;/Narcotics&gt;</span>
+      <span class="nt">&lt;Stimulants&gt;</span>000<span class="nt">&lt;/Stimulants&gt;</span>
+      <span class="nt">&lt;Sedatives&gt;</span>120<span class="nt">&lt;/Sedatives&gt;</span>
+    <span class="nt">&lt;/NarxCheckScore&gt;</span>
+    <span class="nt">&lt;ReportRequestURLs&gt;</span>
+      <span class="nt">&lt;ViewableReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/v5/report/144.html<span class="nt">&lt;/ViewableReport&gt;</span>
+    <span class="nt">&lt;/ReportRequestURLs&gt;</span>
+  <span class="nt">&lt;/Report&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/PatientResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="patient-response">
+  <div class="method-copy">
+    <h1>Patient Response</h1>
+
+    <p>A Patient Response contains the results of the searches made on the PMP systems. If any of the PMP searches are successful, the Patient Response will include a link to a prescription report. The Patient Response will also sometimes include additional information about the results of the search. For details, check out the <a href="./data/v5/gateway_v5_schema.xsd">Gateway v5 schema</a> .</p>
+
+    <p>Because of the distributed nature of the <a href="#pmp-network">PMP network</a>, there are many factors which impact a Patient Response. This section explains some of the common responses and what they mean.</p>
+
+    <p><code>&#60;Report&#62;</code>. Typically included in the Patient Response and summarizes any successful searches.  <code>&#60;Response&#62;</code> nodes may also display based upon the type of unsuccessful response from the corresponding PMP.</p>
+
+    <p><code>&#60;NarxCheckScore&#62;</code>. This element will be included in the response if the Licensee is configured to receive NARxCHECK reports rather than Prescription History reports.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="patient-response-disallowed">
+  <div class="method-copy">
+    <h2>Disallowed</h2>
+
+    <p>A Patient Response will include a <code>&#60;Disallowed&#62;</code> response in these circumstances:</p>
+    <ul>
+      <li>You make a request to a PMP that has not granted access to your Licensee.</li>
+      <li>The <code>&#60;Provider&#62;</code> <code>&#60;Role&#62;</code> specified in the Patient Request is not permitted to query the specified PMP.</li>
+    </ul>
+
+    <p>If you would like access to query additional PMPs, contact the Appriss Project Manager who handles your account. Our project managers work with the PMPs to manage permissions requests.</p>
+    <div class="copy-group">
+  <h3>Response Details</h3>
+  <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
+  <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting.</p>
+</div>
+
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">patient_response__disallowed.xml</p>
+      <span class="download">
+        <a href="./data/v5/patient_response__disallowed.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;PatientResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;RequestId&gt;</span>238<span class="nt">&lt;/RequestId&gt;</span>
+  <span class="nt">&lt;Response&gt;</span>
+    <span class="nt">&lt;ResponseDestinations&gt;</span>
+      <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;/ResponseDestinations&gt;</span>
+    <span class="nt">&lt;Disallowed&gt;</span>
+      <span class="nt">&lt;Message&gt;</span>A Dentist from KS is not allowed to make requests.<span class="nt">&lt;/Message&gt;</span>
+      <span class="nt">&lt;Source&gt;</span>GATEWAY<span class="nt">&lt;/Source&gt;</span>
+    <span class="nt">&lt;/Disallowed&gt;</span>
+  <span class="nt">&lt;/Response&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/PatientResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="patient-response-error">
+  <div class="method-copy">
+    <h2>Error</h2>
+
+    <p>If a technical problem prevents a Patient Request from being processed, the response will include an <code>&#60;Error&#62;</code> response element.</p>
+
+    <p>If technical problem preventing the request from being processed, the response will be an error. This could be accompanied by an non-200 HTTP response code.</p>
+    <div class="copy-group">
+  <h3>Response Details</h3>
+  <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
+  <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting.</p>
+</div>
+
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">patient_response__error.xml</p>
+      <span class="download">
+        <a href="./data/v5/patient_response__error.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;PatientResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;RequestId&gt;</span>241<span class="nt">&lt;/RequestId&gt;</span>
+  <span class="nt">&lt;Response&gt;</span>
+    <span class="nt">&lt;ResponseDestinations&gt;</span>
+      <span class="nt">&lt;Pmp&gt;</span>KY<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;/ResponseDestinations&gt;</span>
+    <span class="nt">&lt;Error&gt;</span>
+      <span class="nt">&lt;Message&gt;</span>Error Message from the PMP<span class="nt">&lt;/Message&gt;</span>
+      <span class="nt">&lt;Details&gt;</span>Optionally - More technical details regarding the error.<span class="nt">&lt;/Details&gt;</span>
+      <span class="nt">&lt;Source&gt;</span>PMP<span class="nt">&lt;/Source&gt;</span>
+    <span class="nt">&lt;/Error&gt;</span>
+  <span class="nt">&lt;/Response&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/PatientResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+</div>
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="../javascripts/all.js"></script>
+</html>

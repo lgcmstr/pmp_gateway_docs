@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GatewayRequest xmlns="http://xml.appriss.com/gateway" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<PatientRequest xmlns="http://xml.appriss.com/gateway/v5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Requester>
-    <SenderSoftware><!-- Optional -->
+    <LicenseeRequestId>identifier</LicenseeRequestId><!-- Optional. If Provided it will be echoed in the Patient Response. -->
+    <SenderSoftware>
       <Developer>Software Inc.</Developer>
       <Product>Product Name</Product>
-      <Version>Version info</Version>
+      <Version>Version Info</Version>
     </SenderSoftware>
-    <RequestDestinations><!-- Optional. If not included the PMP systems queried will be based on the configuration of the user account settings. -->
-      <Pmp>OH</Pmp>
-      <Pmp>VA</Pmp>
-      <Pmp>IN</Pmp>
+    <RequestDestinations><!-- Optional. If ommitted, the request will be sent to the default PMPs that are configured for the Licensee. -->
+      <Pmp>KS</Pmp>
     </RequestDestinations>
     <Provider>
+      <LocationStateCode>OH</LocationStateCode>
       <Role>Physician</Role>
       <FirstName>Jon</FirstName>
       <LastName>Doe</LastName>
@@ -21,7 +21,7 @@
       <ProfessionalLicenseNumber>
         <Type>String</Type>
         <Value>A1231xbzy-bx</Value>
-        <StateCode>KS</StateCode>
+        <StateCode>KY</StateCode>
       </ProfessionalLicenseNumber>
     </Provider>
     <Location>
@@ -31,9 +31,9 @@
       <NPINumber>1234567890</NPINumber>
       <NCPDPNumber>1234567</NCPDPNumber>
       <Address>
-        <Street>String</Street>
-        <Street>String</Street>
-        <City>String</City>
+        <Street>Street 1</Street>
+        <Street>Street 2</Street>
+        <City>City</City>
         <StateCode>KS</StateCode>
         <ZipCode>40242</ZipCode>
         <ZipPlusFour>4242</ZipPlusFour>
@@ -47,18 +47,18 @@
     </DateRange>
     <Patient>
       <Name>
-        <First>John</First>
-        <Middle>Jacob Jingleheimer</Middle><!-- Optional -->
-        <Last>Schmidt</Last>
+        <First>Bob</First>
+        <Middle>Dylan</Middle><!-- Optional -->
+        <Last>Testpatient</Last>
       </Name>
       <Birthdate>1900-01-01</Birthdate>
       <SexCode>M</SexCode>
       <Address>
         <Street>123 Main St</Street>
         <Street>Apt B</Street>
-        <City>Columbus</City>
+        <City>Wichita</City>
         <StateCode>KS</StateCode>
-        <ZipCode>43215</ZipCode>
+        <ZipCode>67203</ZipCode>
         <ZipPlusFour>4321</ZipPlusFour>
       </Address>
       <Phone>1234567890</Phone>
@@ -69,6 +69,7 @@
       </DriversLicenseIdentifier>
       <PharmacyBenefitsMemberID>String</PharmacyBenefitsMemberID>
       <MedicalBenefitsMemeberID>String</MedicalBenefitsMemeberID>
+      <MedicalRecordID>XX-1234-AnyString</MedicalRecordID><!-- Optional. If you want historical scores in NARxCHECK reports then it is required. -->
     </Patient>
  </PrescriptionRequest>
-</GatewayRequest>
+</PatientRequest>

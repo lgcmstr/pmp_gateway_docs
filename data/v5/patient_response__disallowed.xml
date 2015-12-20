@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PatientResponse xmlns="http://xml.appriss.com/gateway/v5">
+  <RequestId>238</RequestId>
+  <Response>
+    <ResponseDestinations>
+      <Pmp>KS</Pmp>
+    </ResponseDestinations>
+    <Disallowed>
+      <Message>A Dentist from KS is not allowed to make requests.</Message>
+      <Source>GATEWAY</Source>
+    </Disallowed>
+  </Response>
+  <Disclaimer>...</Disclaimer>
+</PatientResponse>
