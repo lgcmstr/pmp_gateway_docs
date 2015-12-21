@@ -1,0 +1,27 @@
+<section class="method" id="report-request-minimal">
+  <div class="method-copy">
+    <h2>Report Request Minimal</h2>
+    <p>The Report Request example on the right is as minimalistic as possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
+    <p>This minimal example can serve as a good starting point during development. However, when you submit Report Requests, you should include as many of the optional fields as you possibly can. Including optional elements makes it easier to track errors, makes your code more future-proof, and helps with generating usage statistics for your organization.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<% code('shell') do %>
+POST https://gateway-test.pmp.appriss.com/v5/report/{REPORT_ID}
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">report_request__minimal.xml</p>
+      <span class="download">
+        <a href="./data/report_request__minimal.xml" download>download</a>
+      </span>
+      <% code('xml') do %>
+        <% File.open("#{root}/source/v5/data/report_request__minimal.xml", 'rb').read %>
+      <% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>

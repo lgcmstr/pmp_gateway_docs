@@ -1,0 +1,42 @@
+<section class="method" id="report-request">
+  <div class="method-copy">
+    <h1>Report Request</h1>
+
+    <p>To make a Report Request, you must first make a successful Patient Request. The Patient Response you receive in return, will contain the URL where you send Report Requests for that patient.</p>
+
+    <aside>The URL where you send the Report Request, can be found in the Patient Response at: <code>xpath //PatientResponse/Report/ReportRequestURLs/ViewableReport</code></aside>
+
+    <h3>Report Details</h3>
+    <p>If the Report Request is successul, the response will include a prescription report.</p>
+
+    <p>Prescription reports can be returned in one of two ways. You specify the method by including or excluding the <code>&#60;ReportLink /&#62;</code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
+
+    <h3>Request Data</h3>
+    <p>The report request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+
+    <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are comments where conditional elements are present.</p>
+
+    <p>Note: In the example on the right, some optional elements have been ommitted because they are not useful for the vast majority of users.</p>
+    <p>For more technical details on Report Requests, please refer to the <%= link_to 'Gateway v5 schema', './data/gateway_v5_schema.xsd' %>.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<% code('shell') do %>
+POST https://gateway-test.pmp.appriss.com/v5/report/{REPORT_ID}
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">report_request.xml</p>
+      <span class="download">
+        <a href="./data/report_request.xml" download>download</a>
+      </span>
+<% code('xml') do %>
+  <% File.open("#{root}/source/v5/data/report_request.xml", 'rb').read %>
+<% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>

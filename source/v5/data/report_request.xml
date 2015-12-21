@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportRequest xmlns="http://xml.appriss.com/gateway/v5">
+  <Requester>
+    <ReportLink /><!-- Include this element to get the report as a on-time-use URL. -->
+    <Provider><!-- Person viewing the report. -->
+      <Role>Physician</Role>
+      <FirstName>Jon</FirstName>
+      <LastName>Doe</LastName>
+      <!-- At least one identifier is required: DEANumber, NPINumber, or ProfessionalLicenseNumber. -->
+      <DEANumber>AB1234579</DEANumber>
+      <NPINumber>1212345671</NPINumber>
+      <ProfessionalLicenseNumber>
+        <Type>Something</Type>
+        <Value>A1231xbzy-bx</Value>
+        <StateCode>OH</StateCode>
+      </ProfessionalLicenseNumber>
+    </Provider>
+    <Location>
+      <Name>Store #123</Name>
+      <!-- At least one identifier is required: DEANumber, NPINumber, or NCPDPNumber. -->
+      <DEANumber>AB1234579</DEANumber>
+      <NPINumber>1234567890</NPINumber>
+      <NCPDPNumber>1234567</NCPDPNumber>
+      <Address>
+        <Street>Street1</Street>
+        <Street>Street2</Street>
+        <City>City</City>
+        <StateCode>OH</StateCode>
+        <ZipCode>40242</ZipCode>
+        <ZipPlusFour>4242</ZipPlusFour>
+      </Address>
+    </Location>
+  </Requester>
+</ReportRequest>

@@ -1,4 +1,23 @@
+PROBLEMS
+Patient Response
+why does the report URL have ".html" at the end?
+https://gateway-prep.pmp.appriss.com/v5/report/141.html
+Can we just return the ReportID?
+  OR does the path change by report type?
+
+
+============================================================
 QUESTIONS
+
+What are the report types?
+  URL
+  html
+  pdf
+  xml
+  narxcheck
+what types are most customers using?
+  what type do most customers first implement?
+
 
 Why is the test domain name so wonky?
  - current: https://gateway-test.pmp.appriss.com
@@ -53,3 +72,4 @@ link to schema file
         <!-- <li><%#= link_to 'gateway_request_types.xsd', './data/schema/gateway_request_types.xsd' %></li> -->
       </ul>
     </div>
+
