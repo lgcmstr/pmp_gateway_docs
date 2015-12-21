@@ -12,5 +12,11 @@
   </div><!-- .method-copy -->
 
   <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Patient Response</h3>
+<% code('xml') do %>
+  <% File.open("#{root}/source/v5/data/patient_response.xml", 'rb').read %>
+<% end %>
+    </div>
   </div><!-- .method-code -->
 </section>

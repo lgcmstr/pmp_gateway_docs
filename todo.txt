@@ -14,22 +14,6 @@ automatically handled as v5 or does the user need to send request to
   https://gateway-test.pmp.appriss.com/v5
   https://pmpgateway.net/v5
 
-Can I change the v4 endpoint
-  from: https://gateway-prep.pmp.appriss.com
-  to: https://gateway-test.pmp.appriss.com/v5
-
-
-Why is this element necessary?
-    <Provider>
-      <LocationStateCode>OH</LocationStateCode>
-There is already:
-    <Location>
-      ...
-      <Address>
-        ...
-        <StateCode>KS</StateCode>
-LocationStateCode is optional (excluded from the min example) and redundant.
-
 
 ============================================================
 IMPROVEMENTS
@@ -43,9 +27,6 @@ Need a second PMP listed for Patient Request comprehensive example
 combine errors for both requests into one section
 
 add diagram of requests and responses
-
-add example xml for patient response
-
 
 
 for older version
