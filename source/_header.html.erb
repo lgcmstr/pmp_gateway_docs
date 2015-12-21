@@ -5,8 +5,7 @@
   </div>
   <nav>
     <ul>
-      <li><%= link_to_current_version 'API Documentation', '/index.html' %></li>
-      <li><%= link_to 'API Documentation', '/index.html' %></li>
+      <li><%= link_to 'API Documentation', '/index.html', class: (current_path.start_with?('v') ? 'active' : '') %></li>
       <li><%= link_to 'FAQs', '/faqs.html' %></li>
       <li><%= link_to 'GitHub', 'https://github.com/Appriss-Operations/pmp_gateway_docs' %></li>
     </ul>
