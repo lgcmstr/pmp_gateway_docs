@@ -14,7 +14,7 @@
 # Per-page layout changes:
 #
 # With no layout
-page "/index.html", layout: false
+page '/index.html', layout: false
 
 # With alternative layout
 # page "/faqs.html", layout: :faqs
@@ -90,8 +90,8 @@ configure :build do
   # activate :asset_hash
 
   # Use relative URLs
-  activate :relative_assets
-  set :relative_links, true
+  # activate :relative_assets
+  # set :relative_links, true
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
