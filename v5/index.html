@@ -74,6 +74,16 @@
         </li>
       </ul>
     </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#report-request">Report Request</a>
+      <ul class="sidebar-nav-items">
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#report-request-minimal">Minimal Example</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </div>
 
@@ -184,6 +194,10 @@
             <td>Everything worked as expected.</td>
           </tr>
           <tr>
+            <th>400 Bad Request</th>
+            <td>The request was invalid, often due to a missing required element.</td>
+          </tr>
+          <tr>
             <th>401 Unauthorized</th>
             <td>Invalid login credentials.</td>
           </tr>
@@ -252,7 +266,6 @@
       <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
     <span class="nt">&lt;/RequestDestinations&gt;</span>
     <span class="nt">&lt;Provider&gt;</span>
-      <span class="nt">&lt;LocationStateCode&gt;</span>OH<span class="nt">&lt;/LocationStateCode&gt;</span>
       <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
       <span class="nt">&lt;FirstName&gt;</span>Jon<span class="nt">&lt;/FirstName&gt;</span>
       <span class="nt">&lt;LastName&gt;</span>Doe<span class="nt">&lt;/LastName&gt;</span>
@@ -447,6 +460,29 @@
   </div><!-- .method-copy -->
 
   <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Patient Response</h3>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;PatientResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;RequestId&gt;</span>227<span class="nt">&lt;/RequestId&gt;</span>
+  <span class="nt">&lt;LicenseeRequestId&gt;</span>identifier<span class="nt">&lt;/LicenseeRequestId&gt;</span>
+  <span class="nt">&lt;Report&gt;</span>
+    <span class="nt">&lt;ResponseDestinations&gt;</span>
+      <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;/ResponseDestinations&gt;</span>
+    <span class="nt">&lt;NarxCheckScore&gt;</span>
+      <span class="nt">&lt;Narcotics&gt;</span>170<span class="nt">&lt;/Narcotics&gt;</span>
+      <span class="nt">&lt;Stimulants&gt;</span>000<span class="nt">&lt;/Stimulants&gt;</span>
+      <span class="nt">&lt;Sedatives&gt;</span>120<span class="nt">&lt;/Sedatives&gt;</span>
+    <span class="nt">&lt;/NarxCheckScore&gt;</span>
+    <span class="nt">&lt;ReportRequestURLs&gt;</span>
+      <span class="nt">&lt;ViewableReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/v5/report/141.html<span class="nt">&lt;/ViewableReport&gt;</span>
+    <span class="nt">&lt;/ReportRequestURLs&gt;</span>
+  <span class="nt">&lt;/Report&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/PatientResponse&gt;</span>
+</code></pre>
+    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -534,6 +570,126 @@
   <span class="nt">&lt;/Response&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/PatientResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="report-request">
+  <div class="method-copy">
+    <h1>Report Request</h1>
+
+    <p>To make a Report Request, you must first make a successful Patient Request. The Patient Response you receive in return, will contain the URL where you send Report Requests for that patient.</p>
+
+    <aside>The URL where you send the Report Request, can be found in the Patient Response at: <code>xpath //PatientResponse/Report/ReportRequestURLs/ViewableReport</code></aside>
+
+    <h3>Report Details</h3>
+    <p>If the Report Request is successul, the response will include a prescription report.</p>
+
+    <p>Prescription reports can be returned in one of two ways. You specify the method by including or excluding the <code>&#60;ReportLink /&#62;</code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
+
+    <h3>Request Data</h3>
+    <p>The report request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+
+    <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are comments where conditional elements are present.</p>
+
+    <p>Note: In the example on the right, some optional elements have been ommitted because they are not useful for the vast majority of users.</p>
+    <p>For more technical details on Report Requests, please refer to the <a href="data/gateway_v5_schema.xsd">Gateway v5 schema</a>.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-test.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">report_request.xml</p>
+      <span class="download">
+        <a href="./data/report_request.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ReportRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Requester&gt;</span>
+    <span class="nt">&lt;ReportLink</span> <span class="nt">/&gt;</span><span class="c">&lt;!-- Include this element to get the report as a on-time-use URL. --&gt;</span>
+    <span class="nt">&lt;Provider&gt;</span><span class="c">&lt;!-- Person viewing the report. --&gt;</span>
+      <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
+      <span class="nt">&lt;FirstName&gt;</span>Jon<span class="nt">&lt;/FirstName&gt;</span>
+      <span class="nt">&lt;LastName&gt;</span>Doe<span class="nt">&lt;/LastName&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: DEANumber, NPINumber, or ProfessionalLicenseNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1212345671<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;ProfessionalLicenseNumber&gt;</span>
+        <span class="nt">&lt;Type&gt;</span>Something<span class="nt">&lt;/Type&gt;</span>
+        <span class="nt">&lt;Value&gt;</span>A1231xbzy-bx<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>OH<span class="nt">&lt;/StateCode&gt;</span>
+      <span class="nt">&lt;/ProfessionalLicenseNumber&gt;</span>
+    <span class="nt">&lt;/Provider&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Store #123<span class="nt">&lt;/Name&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: DEANumber, NPINumber, or NCPDPNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;NPINumber&gt;</span>1234567890<span class="nt">&lt;/NPINumber&gt;</span>
+      <span class="nt">&lt;NCPDPNumber&gt;</span>1234567<span class="nt">&lt;/NCPDPNumber&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>Street1<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;Street&gt;</span>Street2<span class="nt">&lt;/Street&gt;</span>
+        <span class="nt">&lt;City&gt;</span>City<span class="nt">&lt;/City&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>OH<span class="nt">&lt;/StateCode&gt;</span>
+        <span class="nt">&lt;ZipCode&gt;</span>40242<span class="nt">&lt;/ZipCode&gt;</span>
+        <span class="nt">&lt;ZipPlusFour&gt;</span>4242<span class="nt">&lt;/ZipPlusFour&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Requester&gt;</span>
+<span class="nt">&lt;/ReportRequest&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="report-request-minimal">
+  <div class="method-copy">
+    <h2>Report Request Minimal</h2>
+    <p>The Report Request example on the right is as minimalistic as possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
+    <p>This minimal example can serve as a good starting point during development. However, when you submit Report Requests, you should include as many of the optional fields as you possibly can. Including optional elements makes it easier to track errors, makes your code more future-proof, and helps with generating usage statistics for your organization.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-test.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">report_request__minimal.xml</p>
+      <span class="download">
+        <a href="./data/report_request__minimal.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ReportRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Requester&gt;</span>
+    <span class="nt">&lt;ReportLink</span> <span class="nt">/&gt;</span><span class="c">&lt;!-- Include this element to get the report as a on-time-use URL. --&gt;</span>
+    <span class="nt">&lt;Provider&gt;</span><span class="c">&lt;!-- Person viewing the report. --&gt;</span>
+      <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
+      <span class="nt">&lt;FirstName&gt;</span>Jon<span class="nt">&lt;/FirstName&gt;</span>
+      <span class="nt">&lt;LastName&gt;</span>Doe<span class="nt">&lt;/LastName&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: DEANumber, NPINumber, or ProfessionalLicenseNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+    <span class="nt">&lt;/Provider&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Store #123<span class="nt">&lt;/Name&gt;</span>
+      <span class="c">&lt;!-- At least one identifier is required: DEANumber, NPINumber, or NCPDPNumber. --&gt;</span>
+      <span class="nt">&lt;DEANumber&gt;</span>AB1234579<span class="nt">&lt;/DEANumber&gt;</span>
+      <span class="nt">&lt;Address&gt;</span>
+        <span class="nt">&lt;StateCode&gt;</span>OH<span class="nt">&lt;/StateCode&gt;</span>
+      <span class="nt">&lt;/Address&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Requester&gt;</span>
+<span class="nt">&lt;/ReportRequest&gt;</span>
 </code></pre>
     </div>
   </div><!-- .method-code -->
