@@ -4,7 +4,9 @@ Why is the test domain name so wonky?
  - current: https://gateway-test.pmp.appriss.com
  - why not: https://test.pmpgateway.net
 
-
+How are requests for different versions handled?
+  different paths
+  server processing
 are requests sent to:
   https://gateway-test.pmp.appriss.com
   https://pmpgateway.net
@@ -38,6 +40,14 @@ use correct singular "A", "An"
 Need a second PMP listed for Patient Request comprehensive example
 
 ============================================================
+combine errors for both requests into one section
+
+add diagram of requests and responses
+
+add example xml for patient response
+
+
+
 for older version
   - tell the reader that the newest version is v5
   - link to newest version

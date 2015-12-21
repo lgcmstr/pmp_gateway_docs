@@ -31,14 +31,14 @@ curl https://gateway-prep.pmp.appriss.com/search_request/create \
         <a href="./data/gateway_request__minimal.xml" download>download</a>
       </span>
       <% code('xml') do %>
-        <% File.open("#{root}/source/data/gateway_request__minimal.xml", 'rb').read %>
+        <% File.open("#{root}/source/v4/data/gateway_request__minimal.xml", 'rb').read %>
       <% end %>
     </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Response</h3>
       <% code('xml') do %>
-        <% File.open("#{root}/source/data/gateway_response__minimal.xml", 'rb').read %>
+        <% File.open("#{root}/source/v4/data/gateway_response__minimal.xml", 'rb').read %>
       <% end %>
     </div>
   </div><!-- .method-code -->

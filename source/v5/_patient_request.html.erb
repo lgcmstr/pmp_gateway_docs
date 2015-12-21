@@ -3,7 +3,7 @@
     <h1>Patient Request</h1>
 
     <p>The Patient Request initiates a search for a patient's prescription data and results in a Patient Response.</p>
-    <p>The strcuture and contents of a Patient Request are dictated by the <%= link_to 'Gateway v5 schema', './data/v5/gateway_v5_schema.xsd' %>. Please refer to the schema for detailed annotations on each element.</p>
+    <p>The strcuture and contents of a Patient Request are dictated by the <%= link_to 'Gateway v5 schema', './data/gateway_v5_schema.xsd' %>. Please refer to the schema for detailed annotations on each element.</p>
     <p>The Patient Request has many optional data elements. Additionally, some elements are conditional, meaning your request must include at least one element out of a set of possible elements.</p>
 
     <p>The example request on the right includes all required elements and most of the optional elements. For the conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
@@ -14,7 +14,7 @@
 
     <p><code>&#60;MedicalRecordID&#62;</code> - Optional. This element is useful for only those accounts that are configured to recieve NARxCHECK reports. If you provide the same Medical Record ID for the same patient in each Patient Request, the returned NARxCHECK report will include historical NARxCHECK Score information for the patient.</aside>
 
-    <p>Note: Some optional elements have been omitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <%= link_to 'Gateway v5 schema', './data/v5/gateway_v5_schema.xsd' %>.</p>
+    <p>Note: Some optional elements have been omitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <%= link_to 'Gateway v5 schema', './data/gateway_v5_schema.xsd' %>.</p>
   </div><!-- .method-copy -->
 
   <div class="method-code">
@@ -40,17 +40,17 @@ curl https://gateway-test.pmp.appriss.com/v5/patient \
       <h3>Example Request Data</h3>
       <p class="filename">patient_request.xml</p>
       <span class="download">
-        <a href="./data/v5/patient_request.xml" download>download</a>
+        <a href="./data/patient_request.xml" download>download</a>
       </span>
 <% code('xml') do %>
-  <% File.open("#{root}/source/data/v5/patient_request.xml", 'rb').read %>
+  <% File.open("#{root}/source/v5/data/patient_request.xml", 'rb').read %>
 <% end %>
     </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Response</h3>
 <% code('xml') do %>
-  <% File.open("#{root}/source/data/v5/patient_response.xml", 'rb').read %>
+  <% File.open("#{root}/source/v5/data/patient_response.xml", 'rb').read %>
 <% end %>
     </div>
   </div><!-- .method-code -->

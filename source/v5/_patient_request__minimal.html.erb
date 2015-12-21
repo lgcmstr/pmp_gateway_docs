@@ -28,17 +28,17 @@ curl https://gateway-test.pmp.appriss.com/v5/patient \
       <h3>Example Request Data</h3>
       <p class="filename">patient_request__minimal.xml</p>
       <span class="download">
-        <a href="./data/v5/patient_request__minimal.xml" download>download</a>
+        <a href="./data/patient_request__minimal.xml" download>download</a>
       </span>
       <% code('xml') do %>
-        <% File.open("#{root}/source/data/v5/patient_request__minimal.xml", 'rb').read %>
+        <% File.open("#{root}/source/v5/data/patient_request__minimal.xml", 'rb').read %>
       <% end %>
     </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Response</h3>
       <% code('xml') do %>
-        <% File.open("#{root}/source/data/v5/patient_response__minimal.xml", 'rb').read %>
+        <% File.open("#{root}/source/v5/data/patient_response__minimal.xml", 'rb').read %>
       <% end %>
     </div>
   </div><!-- .method-code -->
