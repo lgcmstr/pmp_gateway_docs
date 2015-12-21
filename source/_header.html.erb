@@ -1,12 +1,11 @@
 <header>
   <div class="logo">
-    <%#= link_to (image_tag 'gateway_logo.png', alt: 'PMP Gateway Logo', class: 'logo'), 'index.html' %>
     <h1 class="brand"><%= link_to 'PMP Gateway', '/index.html' %></h1>
   </div>
   <nav>
     <ul>
       <li><%= link_to 'API Documentation', '/index.html', class: (current_path.start_with?('v') ? 'active' : '') %></li>
-      <li><%= link_to 'FAQs', '/faqs.html' %></li>
+      <li><%= link_to 'FAQs', '/faqs.html', class: (current_path.end_with?('faqs.html') ? 'active' : '') %></li>
       <li><%= link_to 'GitHub', 'https://github.com/Appriss-Operations/pmp_gateway_docs' %></li>
     </ul>
   </nav>
