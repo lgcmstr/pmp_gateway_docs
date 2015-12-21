@@ -25,8 +25,8 @@
 
     <div class="side-nav">
   <ul class="api-versions">
-  <li><a class="active" href="../v5">v5</a></li>
-  <li><a class="" href="../v4">v4</a></li>
+  <li><a class="active" href="../v5/">v5</a></li>
+  <li><a class="" href="../v4/">v4</a></li>
 </ul>
 
   <ul class="toc">
@@ -202,7 +202,7 @@
     <h1>Patient Request</h1>
 
     <p>The Patient Request initiates a search for a patient's prescription data and results in a Patient Response.</p>
-    <p>The strcuture and contents of a Patient Request are dictated by the <a href="./data/v5/gateway_v5_schema.xsd">Gateway v5 schema</a>. Please refer to the schema for detailed annotations on each element.</p>
+    <p>The strcuture and contents of a Patient Request are dictated by the <a href="data/gateway_v5_schema.xsd">Gateway v5 schema</a>. Please refer to the schema for detailed annotations on each element.</p>
     <p>The Patient Request has many optional data elements. Additionally, some elements are conditional, meaning your request must include at least one element out of a set of possible elements.</p>
 
     <p>The example request on the right includes all required elements and most of the optional elements. For the conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
@@ -213,7 +213,7 @@
 
     <p><code>&#60;MedicalRecordID&#62;</code> - Optional. This element is useful for only those accounts that are configured to recieve NARxCHECK reports. If you provide the same Medical Record ID for the same patient in each Patient Request, the returned NARxCHECK report will include historical NARxCHECK Score information for the patient.</aside>
 
-    <p>Note: Some optional elements have been omitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <a href="./data/v5/gateway_v5_schema.xsd">Gateway v5 schema</a>.</p>
+    <p>Note: Some optional elements have been omitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <a href="data/gateway_v5_schema.xsd">Gateway v5 schema</a>.</p>
   </div><!-- .method-copy -->
 
   <div class="method-code">
@@ -237,7 +237,7 @@
       <h3>Example Request Data</h3>
       <p class="filename">patient_request.xml</p>
       <span class="download">
-        <a href="./data/v5/patient_request.xml" download>download</a>
+        <a href="./data/patient_request.xml" download>download</a>
       </span>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;PatientRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
@@ -371,7 +371,7 @@
       <h3>Example Request Data</h3>
       <p class="filename">patient_request__minimal.xml</p>
       <span class="download">
-        <a href="./data/v5/patient_request__minimal.xml" download>download</a>
+        <a href="./data/patient_request__minimal.xml" download>download</a>
       </span>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;PatientRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
@@ -437,7 +437,7 @@
   <div class="method-copy">
     <h1>Patient Response</h1>
 
-    <p>A Patient Response contains the results of the searches made on the PMP systems. If any of the PMP searches are successful, the Patient Response will include a link to a prescription report. The Patient Response will also sometimes include additional information about the results of the search. For details, check out the <a href="./data/v5/gateway_v5_schema.xsd">Gateway v5 schema</a> .</p>
+    <p>A Patient Response contains the results of the searches made on the PMP systems. If any of the PMP searches are successful, the Patient Response will include a link to a prescription report. The Patient Response will also sometimes include additional information about the results of the search. For details, check out the <a href="data/gateway_v5_schema.xsd">Gateway v5 schema</a> .</p>
 
     <p>Because of the distributed nature of the <a href="#pmp-network">PMP network</a>, there are many factors which impact a Patient Response. This section explains some of the common responses and what they mean.</p>
 
@@ -475,7 +475,7 @@
       <h3>Example Request Data</h3>
       <p class="filename">patient_response__disallowed.xml</p>
       <span class="download">
-        <a href="./data/v5/patient_response__disallowed.xml" download>download</a>
+        <a href="./data/patient_response__disallowed.xml" download>download</a>
       </span>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;PatientResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
@@ -517,7 +517,7 @@
       <h3>Example Request Data</h3>
       <p class="filename">patient_response__error.xml</p>
       <span class="download">
-        <a href="./data/v5/patient_response__error.xml" download>download</a>
+        <a href="./data/patient_response__error.xml" download>download</a>
       </span>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;PatientResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
