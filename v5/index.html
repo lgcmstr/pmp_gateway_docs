@@ -34,6 +34,10 @@
       <span class="active-marker">&nbsp;</span>
       <a class="sidebar-nav-item" href="#intro">Introduction</a>
     </li>
+    <li class="active">
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#overview">Overview</a>
+    </li>
     <li>
       <span class="active-marker">&nbsp;</span>
       <a class="sidebar-nav-item" href="#pmp-network">PMP Network</a>
@@ -84,6 +88,24 @@
         </li>
       </ul>
     </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#report-response">Report Response</a>
+      <ul class="sidebar-nav-items">
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#report-response-report-link">Report Link</a>
+        </li>
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#report-response-disallowed">Disallowed</a>
+        </li>
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#report-response-error">Error</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </div>
 
@@ -108,6 +130,30 @@
   <div class="method-code">
     <div class="method-example">
       <p>Example code is provided for each API request. To get started, you can make requests against the testing environment using the code examples and the XML request data they reference.</p>
+    </div>
+  </div><!-- .method-code -->
+</section>
+  <section class="method" id="overview">
+  <div class="method-copy">
+    <h1>Overview</h1>
+
+    <p>When successful, your interactions with Gateway should follow this sequence of events:</p>
+    <ol>
+      <li>POST a Patient Request</li>
+      <li>Receive a Patient Response containing a Report Request URL</li>
+      <li>POST a Report Request to the Report Request URL</li>
+      <li>Receive one of the following</li>
+      <ul>
+        <li>the report content (e.g. html, pdf)</li>
+        <li>a Report Response with a URL where the report can be viewed</li>
+      </ul>
+    </ol>
+    <p>The figure on the right illustrates this sequence of events. It also shows Gateway's various response types.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+      <img alt="Communication diagram" src="images/communication_diagram.png" />
     </div>
   </div><!-- .method-code -->
 </section>
@@ -166,7 +212,7 @@
   <div class="method-code">
     <div class="method-example method-example-definition">
       <h3>Testing API Endpoint</h3>
-<pre class="highlight shell"><code>https://gateway-test.pmp.appriss.com
+<pre class="highlight shell"><code>https://gateway-prep.pmp.appriss.com
 </code></pre>
     </div>
 
@@ -202,8 +248,16 @@
             <td>Invalid login credentials.</td>
           </tr>
           <tr>
+            <th>410 Gone</th>
+            <td>The resource has expired.</td>
+          </tr>
+          <tr>
             <th>500 Internal Server Error</th>
             <td>Something went wrong. The response body will be a Patient Response with an Error section.</td>
+          </tr>
+          <tr>
+            <th>504 Gateway Timeout</th>
+            <td>The report is not yet generated. Try again in a few minutes.</td>
           </tr>
         <tbody>
       </table>
@@ -233,13 +287,13 @@
   <div class="method-code">
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
-<pre class="highlight shell"><code>POST https://gateway-test.pmp.appriss.com/v5/patient
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/patient
 </code></pre>
     </div>
 
     <div class="method-example method-example-request">
       <h3>Example Request</h3>
-<pre class="highlight shell"><code>curl https://gateway-test.pmp.appriss.com/v5/patient <span class="se">\</span>
+<pre class="highlight shell"><code>curl https://gateway-prep.pmp.appriss.com/v5/patient <span class="se">\</span>
   -u username:password <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
@@ -254,7 +308,7 @@
         <a href="./data/patient_request.xml" download>download</a>
       </span>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;PatientRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;PatientRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Requester&gt;</span>
     <span class="nt">&lt;LicenseeRequestId&gt;</span>identifier<span class="nt">&lt;/LicenseeRequestId&gt;</span><span class="c">&lt;!-- Optional. If Provided it will be echoed in the Patient Response. --&gt;</span>
     <span class="nt">&lt;SenderSoftware&gt;</span>
@@ -366,13 +420,13 @@
   <div class="method-code">
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
-<pre class="highlight shell"><code>POST https://gateway-test.pmp.appriss.com/v5/patient
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/patient
 </code></pre>
     </div>
 
     <div class="method-example method-example-request">
       <h3>Example Request</h3>
-<pre class="highlight shell"><code>curl https://gateway-test.pmp.appriss.com/v5/patient <span class="se">\</span>
+<pre class="highlight shell"><code>curl https://gateway-prep.pmp.appriss.com/v5/patient <span class="se">\</span>
   -u username:password <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
@@ -387,7 +441,7 @@
         <a href="./data/patient_request__minimal.xml" download>download</a>
       </span>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;PatientRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;PatientRequest</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Requester&gt;</span>
     <span class="nt">&lt;Provider&gt;</span>
       <span class="nt">&lt;Role&gt;</span>Physician<span class="nt">&lt;/Role&gt;</span>
@@ -450,7 +504,7 @@
   <div class="method-copy">
     <h1>Patient Response</h1>
 
-    <p>A Patient Response contains the results of the searches made on the PMP systems. If any of the PMP searches are successful, the Patient Response will include a link to a prescription report. The Patient Response will also sometimes include additional information about the results of the search. For details, check out the <a href="data/gateway_v5_schema.xsd">Gateway v5 schema</a> .</p>
+    <p>A Patient Response contains the results of the searches made on the PMP systems. If any of the PMP searches are successful, the Patient Response will include a link to a prescription report. The Patient Response will also sometimes include additional information about the results of the search. For details, check out the <a href="data/gateway_v5_schema.xsd">Gateway v5 schema</a>.</p>
 
     <p>Because of the distributed nature of the <a href="#pmp-network">PMP network</a>, there are many factors which impact a Patient Response. This section explains some of the common responses and what they mean.</p>
 
@@ -584,9 +638,9 @@
     <aside>The URL where you send the Report Request, can be found in the Patient Response at: <code>xpath //PatientResponse/Report/ReportRequestURLs/ViewableReport</code></aside>
 
     <h3>Report Details</h3>
-    <p>If the Report Request is successul, the response will include a prescription report.</p>
+    <p>If the Report Request is successul, the response will include a report.</p>
 
-    <p>Prescription reports can be returned in one of two ways. You specify the method by including or excluding the <code>&#60;ReportLink /&#62;</code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
+    <p>Reports can be returned in one of two ways. You specify the method by including or excluding the <code>&#60;ReportLink /&#62;</code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
 
     <h3>Request Data</h3>
     <p>The report request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
@@ -600,7 +654,7 @@
   <div class="method-code">
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
-<pre class="highlight shell"><code>POST https://gateway-test.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
 </code></pre>
     </div>
 
@@ -659,7 +713,7 @@
   <div class="method-code">
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
-<pre class="highlight shell"><code>POST https://gateway-test.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
 </code></pre>
     </div>
 
@@ -690,6 +744,92 @@
     <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Requester&gt;</span>
 <span class="nt">&lt;/ReportRequest&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="report-response">
+  <div class="method-copy">
+    <h1>Report Response</h1>
+
+    <p>The response will be either the actual report content or a Report Response. Depending upon the Licensee's configuration, the report type will be either a Prescription History report or a NARxCHECK report.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="report-response-report-link">
+  <div class="method-copy">
+    <h2>Report Link</h2>
+
+    <p>If you include the <code>&#60;ReportLink /&#62;</code> node in a Report Request, the Report Response will include a ReportLink URL. The report will be hosted at that URL and may be viewed one time. After one view, it expires. To view it again, you must submit another Report Request which will then provide you with another one-time-use URL.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Response Data</h3>
+      <p class="filename">report_response__report_link.xml</p>
+      <span class="download">
+        <a href="./data/report_response__report_link.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="nt">&lt;ReportResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ReportRequestId&gt;</span>12342123<span class="nt">&lt;/ReportRequestId&gt;</span>
+  <span class="nt">&lt;ReportLink&gt;</span>https://pmpgateway.net/v5/report_link/12342123-69deaf50-a734-11e4-89d3-123b93f75cba<span class="nt">&lt;/ReportLink&gt;</span>
+<span class="nt">&lt;/ReportResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="report-response-disallowed">
+  <div class="method-copy">
+    <h2>Disallowed</h2>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Response Data</h3>
+      <p class="filename">report_response__disallowed.xml</p>
+      <span class="download">
+        <a href="./data/report_response__disallowed.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ReportResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ReportRequestId&gt;</span>12342123<span class="nt">&lt;/ReportRequestId&gt;</span>
+  <span class="nt">&lt;Disallowed&gt;</span>
+    <span class="nt">&lt;Message&gt;</span>Permissions message.<span class="nt">&lt;/Message&gt;</span>
+    <span class="nt">&lt;Source&gt;</span>GATEWAY<span class="nt">&lt;/Source&gt;</span>
+  <span class="nt">&lt;/Disallowed&gt;</span>
+<span class="nt">&lt;/ReportResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="report-response-error">
+  <div class="method-copy">
+    <h2>Error</h2>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Response Data</h3>
+      <p class="filename">report_response__error.xml</p>
+      <span class="download">
+        <a href="./data/report_response__error.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ReportResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway/v5"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ReportRequestId&gt;</span>12342123<span class="nt">&lt;/ReportRequestId&gt;</span>
+  <span class="nt">&lt;Error&gt;</span>
+    <span class="nt">&lt;Message&gt;</span>Error message.<span class="nt">&lt;/Message&gt;</span>
+    <span class="nt">&lt;Source&gt;</span>GATEWAY<span class="nt">&lt;/Source&gt;</span>
+  <span class="nt">&lt;/Error&gt;</span>
+<span class="nt">&lt;/ReportResponse&gt;</span>
 </code></pre>
     </div>
   </div><!-- .method-code -->

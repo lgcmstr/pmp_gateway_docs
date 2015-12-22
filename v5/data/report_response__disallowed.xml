@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportResponse xmlns="http://xml.appriss.com/gateway/v5">
+  <ReportRequestId>12342123</ReportRequestId>
+  <Disallowed>
+    <Message>Permissions message.</Message>
+    <Source>GATEWAY</Source>
+  </Disallowed>
+</ReportResponse>
