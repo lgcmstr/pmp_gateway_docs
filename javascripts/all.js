@@ -2,7 +2,7 @@
 // Cache selectors
 var lastId,
     toc = $("ul.toc"),
-    tocHeight = toc.outerHeight() - 200,
+    tocHeight = toc.outerHeight() - 400,
     // All list items
     menuItems = toc.find("a"),
     // Anchors corresponding to menu items
