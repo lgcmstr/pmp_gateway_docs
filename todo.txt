@@ -9,6 +9,14 @@ Can we just return the ReportID?
 ============================================================
 QUESTIONS
 
+Do we actually return 404 Not Found?
+404 Not Found - The report has expired.
+Should be returning 410 Gone.
+
+Is this used?
+504 Gateway Timeout - Report not yet generated.
+
+
 What are the report types?
   URL
   html

@@ -1,0 +1,20 @@
+<section class="method" id="report-response-report-link">
+  <div class="method-copy">
+    <h2>Report Link</h2>
+
+    <p>If you include the <code>&#60;ReportLink /&#62;</code> node in a Report Request, the Report Response will include a ReportLink URL. The report will be hosted at that URL and may be viewed one time. After one view, it expires. To view it again, you must submit another Report Request which will then provide you with another one-time-use URL.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Response Data</h3>
+      <p class="filename">report_response__report_link.xml</p>
+      <span class="download">
+        <a href="./data/report_response__report_link.xml" download>download</a>
+      </span>
+<% code('xml') do %>
+  <% File.open("#{root}/source/v5/data/report_response__report_link.xml", 'rb').read %>
+<% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>

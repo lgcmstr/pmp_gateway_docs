@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PatientRequest xmlns="http://xml.appriss.com/gateway/v5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<PatientRequest xmlns="http://xml.appriss.com/gateway/v5">
   <Requester>
     <LicenseeRequestId>identifier</LicenseeRequestId><!-- Optional. If Provided it will be echoed in the Patient Response. -->
     <SenderSoftware>

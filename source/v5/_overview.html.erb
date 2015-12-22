@@ -1,0 +1,24 @@
+<section class="method" id="overview">
+  <div class="method-copy">
+    <h1>Overview</h1>
+
+    <p>When successful, your interactions with Gateway should follow this sequence of events:</p>
+    <ol>
+      <li>POST a Patient Request</li>
+      <li>Receive a Patient Response containing a Report Request URL</li>
+      <li>POST a Report Request to the Report Request URL</li>
+      <li>Receive one of the following</li>
+      <ul>
+        <li>the report content (e.g. html, pdf)</li>
+        <li>a Report Response with a URL where the report can be viewed</li>
+      </ul>
+    </ol>
+    <p>The figure on the right illustrates this sequence of events. It also shows Gateway's various response types.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+      <%= image_tag '/v5/images/communication_diagram.png', alt: 'Communication diagram' %>
+    </div>
+  </div><!-- .method-code -->
+</section>
