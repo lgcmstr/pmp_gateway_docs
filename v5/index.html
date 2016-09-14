@@ -16,8 +16,8 @@
   </div>
   <nav>
     <ul>
-      <li><a class="active" href="../">API Documentation</a></li>
-      <li><a class="" href="../faqs.html">FAQs</a></li>
+      <li><a href="../" class="active">API Documentation</a></li>
+      <li><a href="../faqs.html" class="">FAQs</a></li>
       <li><a href="https://github.com/Appriss-Operations/pmp_gateway_docs">GitHub</a></li>
     </ul>
   </nav>
@@ -25,8 +25,8 @@
 
     <div class="side-nav">
   <ul class="api-versions">
-  <li><a class="active" href="../v5/">v5</a></li>
-  <li><a class="" href="../v4/">v4</a></li>
+  <li><a href="../v5/" class="active">v5</a></li>
+  <li><a href="../v4/" class="">v4</a></li>
 </ul>
 
   <ul class="toc">
@@ -98,6 +98,10 @@
         </li>
         <li>
           <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#report-response-html-report">HTML Report</a>
+        </li>
+        <li>
+          <span class="active-marker">&nbsp;</span>
           <a class="sidebar-nav-item" href="#report-response-disallowed">Disallowed</a>
         </li>
         <li>
@@ -121,9 +125,9 @@
     <p>This API is <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>ful and uses XML formatted requests and responses.</p>
     <h3>Questions & Feedback</h3>
     <p>This documentation and all example code is available on GitHub. If you have questions or feedback the best way to contact us is to
-      <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs/issues">open an "issue"</a>
+      <a href="https://github.com/Appriss-Operations/pmp_gateway_docs/issues" target="_blank">open an "issue"</a>
       on our
-      <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs">GitHub project space</a>.
+      <a href="https://github.com/Appriss-Operations/pmp_gateway_docs" target="_blank">GitHub project space</a>.
     </p>
   </div><!-- .method-copy -->
 
@@ -155,7 +159,7 @@
 
   <div class="method-code">
     <div class="method-example">
-      <img alt="Communication diagram" src="images/communication_diagram.png" />
+      <img src="images/communication_diagram.png" alt="Communication diagram" />
     </div>
   </div><!-- .method-code -->
 </section>
@@ -179,7 +183,7 @@
   </div><!-- .method-copy -->
 
   <div class="method-code">
-    <a href="../images/gateway_diagram.png"><img alt="PMP Diagram" src="../images/gateway_diagram.png" /></a>
+    <a href="../images/gateway_diagram.png"><img src="../images/gateway_diagram.png" alt="PMP Diagram" /></a>
   </div><!-- .method-code -->
 </section>
   <section class="method" id="authentication">
@@ -215,14 +219,12 @@
     <div class="method-example method-example-definition">
       <h3>Testing API Endpoint</h3>
 <pre class="highlight shell"><code>https://gateway-prep.pmp.appriss.com
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-definition">
       <h3>Production API Endpoint</h3>
 <pre class="highlight shell"><code>https://pmpgateway.net
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -290,8 +292,7 @@
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
 <pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/patient
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request">
       <h3>Example Request</h3>
@@ -300,8 +301,7 @@
   -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
   -d @patient_request.xml
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Request Data</h3>
@@ -383,8 +383,7 @@
     <span class="nt">&lt;/Patient&gt;</span>
  <span class="nt">&lt;/PrescriptionRequest&gt;</span>
 <span class="nt">&lt;/PatientRequest&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Response</h3>
@@ -407,8 +406,7 @@
   <span class="nt">&lt;/Report&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/PatientResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -423,8 +421,7 @@
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
 <pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/patient
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request">
       <h3>Example Request</h3>
@@ -433,8 +430,7 @@
   -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
   -d @patient_request__minimal.xml
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Request Data</h3>
@@ -474,8 +470,7 @@
     <span class="nt">&lt;/Patient&gt;</span>
  <span class="nt">&lt;/PrescriptionRequest&gt;</span>
 <span class="nt">&lt;/PatientRequest&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Response</h3>
@@ -497,8 +492,7 @@
   <span class="nt">&lt;/Report&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/PatientResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -537,8 +531,7 @@
   <span class="nt">&lt;/Report&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/PatientResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -583,8 +576,7 @@
   <span class="nt">&lt;/Response&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/PatientResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -626,8 +618,7 @@
   <span class="nt">&lt;/Response&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/PatientResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -657,8 +648,7 @@
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
 <pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Request Data</h3>
@@ -700,8 +690,7 @@
     <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Requester&gt;</span>
 <span class="nt">&lt;/ReportRequest&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -716,8 +705,7 @@
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
 <pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Request Data</h3>
@@ -746,8 +734,7 @@
     <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Requester&gt;</span>
 <span class="nt">&lt;/ReportRequest&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -782,10 +769,1129 @@
   <span class="nt">&lt;ReportRequestId&gt;</span>12342123<span class="nt">&lt;/ReportRequestId&gt;</span>
   <span class="nt">&lt;ReportLink&gt;</span>https://pmpgateway.net/v5/report_link/12342123-69deaf50-a734-11e4-89d3-123b93f75cba<span class="nt">&lt;/ReportLink&gt;</span>
 <span class="nt">&lt;/ReportResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
+
+  <section class="method" id="report-response-html-report">
+  <div class="method-copy">
+    <h2>HTML Report</h2>
+
+    <p>If you do not include the <code>&#60;ReportLink /&#62;</code> node in a Report Request, the Report Response will include the HTML data for the report.</p>
+  </div><!-- .method-copy -->
+
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Response Data</h3>
+      <p class="filename"></p>
+      <span class="download">
+        <a href= download>download</a>
+      </span>
+<pre class="highlight html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>PMP Gateway Data Report<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"https://gateway-prep.pmp.appriss.com/narx-content/content/201507/jquery-ui-1.11.4/external/jquery/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"https://gateway-prep.pmp.appriss.com/narx-content/content/201507/jquery-ui-1.11.4/jquery-ui.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"https://gateway-prep.pmp.appriss.com/narx-content/scripts/jquery.tablesorter.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://gateway-prep.pmp.appriss.com/narx-content/content/201507/jquery-ui-1.11.4/jquery-ui.css"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">media=</span><span class="s">"all"</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+        <span class="c">/* common styles */</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="o">*</span> <span class="p">{</span>
+            <span class="nl">font-family</span><span class="p">:</span><span class="n">Arial</span><span class="p">,</span><span class="n">Verdana</span><span class="p">,</span><span class="nb">sans-serif</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="p">{</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">1005px</span><span class="p">;</span>
+           <span class="c">/* Centering */</span>
+           <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">table</span><span class="nc">.layout</span> <span class="p">{</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">1005px</span><span class="p">;</span>
+            <span class="nl">min-width</span><span class="p">:</span> <span class="m">1005px</span><span class="p">;</span>
+            <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">table</span><span class="o">,</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">th</span><span class="o">,</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">td</span> <span class="p">{</span>
+            <span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span> 
+            <span class="nl">padding-top</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+            <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+            <span class="nl">padding-left</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+            <span class="nl">padding-right</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+        <span class="c">/* Datatable */</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.datatable</span> <span class="p">{</span>
+            <span class="nl">margin</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span><span class="m">100%</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">1005px</span><span class="p">;</span>
+            <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">table</span><span class="nc">.datatable</span> <span class="nt">td</span> <span class="p">{</span>
+            <span class="nl">text-align</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+        <span class="p">}</span>
+		
+		
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">table</span><span class="nc">.datatable</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nc">.header</span> <span class="p">{</span>
+            <span class="nl">padding-right</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+        	<span class="nl">background-image</span><span class="p">:</span> <span class="sx">url(https://gateway-prep.pmp.appriss.com/narx-content/content/bg.gif)</span><span class="p">;</span>
+        	<span class="nl">background-repeat</span><span class="p">:</span> <span class="nb">no-repeat</span><span class="p">;</span>
+        	<span class="nl">background-position</span><span class="p">:</span> <span class="nb">center</span> <span class="nb">right</span><span class="p">;</span>
+        	<span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">table</span><span class="nc">.datatable</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nc">.headerSortDown</span><span class="o">,</span> <span class="nt">table</span><span class="nc">.datatable</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nc">.headerSortUp</span> <span class="p">{</span>
+             <span class="nl">background-color</span><span class="p">:</span> <span class="m">#d9dfea</span><span class="p">;</span>
+             <span class="nl">border-top-left-radius</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+             <span class="nl">border-top-right-radius</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">table</span><span class="nc">.datatable</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nc">.headerSortUp</span> <span class="p">{</span>
+        	<span class="nl">background-image</span><span class="p">:</span> <span class="sx">url(https://gateway-prep.pmp.appriss.com/narx-content/content/asc.gif)</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">table</span><span class="nc">.datatable</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nc">.headerSortDown</span> <span class="p">{</span>
+        	<span class="nl">background-image</span><span class="p">:</span> <span class="sx">url(https://gateway-prep.pmp.appriss.com/narx-content/content/desc.gif)</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c">/* End Datatable */</span>
+
+        <span class="nf">#data-analysis</span> <span class="p">{</span>
+          <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+        <span class="p">}</span>
+
+		<span class="nf">#prescriptions-table</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nt">th</span><span class="o">,</span>
+        <span class="nf">#prescriptions-table</span> <span class="nt">tbody</span> <span class="nt">tr</span> <span class="nt">td</span> 
+        <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span><span class="m">12px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#providers-table</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nt">th</span><span class="o">,</span>
+		<span class="nf">#providers-table</span> <span class="nt">tbody</span> <span class="nt">tr</span> <span class="nt">td</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span><span class="m">12px</span><span class="p">;</span>
+        <span class="p">}</span>
+		
+        <span class="nf">#pharmacies-table</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nt">th</span><span class="o">,</span>
+		<span class="nf">#pharmacies-table</span> <span class="nt">tbody</span> <span class="nt">tr</span> <span class="nt">td</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span><span class="m">12px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">th</span> <span class="p">{</span>
+            <span class="nl">text-align</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+            <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+            <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">hr</span> <span class="p">{</span>
+            <span class="nl">height</span><span class="p">:</span> <span class="m">1px</span><span class="p">;</span>
+            <span class="nl">border-color</span><span class="p">:</span><span class="m">#ccc</span><span class="p">;</span>
+            <span class="nl">border</span><span class="p">:</span><span class="m">0</span><span class="p">;</span>
+            <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+            <span class="nl">margin</span><span class="p">:</span> <span class="m">1em</span> <span class="m">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.left</span> <span class="p">{</span>
+            <span class="nl">text-align</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+            <span class="nl">padding-left</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.right</span> <span class="p">{</span>
+            <span class="nl">text-align</span><span class="p">:</span> <span class="nb">right</span> <span class="cp">!important</span><span class="p">;</span>
+            <span class="nl">padding-right</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+         <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.centered</span> <span class="p">{</span>
+            <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span> <span class="cp">!important</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.wide</span> <span class="p">{</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">300px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.error</span> <span class="p">{</span>
+            <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+        <span class="nf">#canvas_container</span> <span class="p">{</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+            <span class="nl">margin-left</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+            <span class="nl">padding-left</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.score_label</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span><span class="m">32px</span><span class="p">;</span>
+            <span class="nl">font-weight</span><span class="p">:</span><span class="nb">bold</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span><span class="m">125px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.score</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span><span class="m">32px</span><span class="p">;</span>
+            <span class="nl">font-weight</span><span class="p">:</span><span class="nb">bold</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span><span class="m">75px</span><span class="p">;</span>
+            <span class="nl">min-width</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span>
+            <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.score_legend</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span><span class="m">12px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.drug_odd</span> <span class="p">{</span>
+            <span class="nl">background-color</span><span class="p">:</span><span class="m">#FFFFFF</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.drug_even</span> <span class="p">{</span>
+            <span class="nl">background-color</span><span class="p">:</span><span class="m">#f8f8f8</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.hidden</span> <span class="p">{</span>
+            <span class="nl">display</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#hovertable</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span>
+            <span class="nl">padding</span><span class="p">:</span><span class="m">5px</span><span class="p">;</span>
+            <span class="nl">text-align</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+            <span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span><span class="m">800px</span><span class="p">;</span>
+            <span class="nl">background-color</span><span class="p">:</span><span class="no">white</span><span class="p">;</span>
+            <span class="nl">margin</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+            <span class="nl">margin-right</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#hovertable</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="p">{</span>
+            <span class="nl">border-bottom</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+            <span class="nl">background-color</span><span class="p">:</span><span class="m">#050054</span><span class="p">;</span>
+            <span class="nl">color</span><span class="p">:</span><span class="no">white</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#dochovertable</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span>
+            <span class="nl">padding</span><span class="p">:</span><span class="m">5px</span><span class="p">;</span>
+            <span class="nl">text-align</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+            <span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span><span class="m">800px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#dochovertable</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="p">{</span>
+            <span class="nl">border-bottom</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+            <span class="nl">background-color</span><span class="p">:</span><span class="m">#050054</span><span class="p">;</span>
+            <span class="nl">color</span><span class="p">:</span><span class="no">white</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span>
+            <span class="nl">cursor</span><span class="p">:</span><span class="nb">pointer</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.shadow</span> <span class="p">{</span>
+	        <span class="nl">-moz-box-shadow</span><span class="p">:</span> <span class="m">3px</span> <span class="m">3px</span> <span class="m">4px</span> <span class="m">#cccccc</span><span class="p">;</span>
+	        <span class="nl">-webkit-box-shadow</span><span class="p">:</span> <span class="m">3px</span> <span class="m">3px</span> <span class="m">4px</span> <span class="m">#cccccc</span><span class="p">;</span>
+	        <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">3px</span> <span class="m">3px</span> <span class="m">4px</span> <span class="m">#cccccc</span><span class="p">;</span>
+	        <span class="c">/* For IE 8 */</span>
+	        <span class="nl">-ms-filter</span><span class="p">:</span> <span class="s1">"progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#cccccc')"</span><span class="p">;</span>
+	        <span class="c">/* For IE 5.5 - 7 */</span>
+	        <span class="nl">filter</span><span class="p">:</span> <span class="n">progid</span><span class="p">:</span><span class="n">DXImageTransform</span><span class="p">.</span><span class="n">Microsoft</span><span class="p">.</span><span class="n">Shadow</span><span class="p">(</span><span class="n">Strength</span><span class="err">=</span><span class="m">4</span><span class="p">,</span> <span class="n">Direction</span><span class="err">=</span><span class="m">135</span><span class="p">,</span> <span class="n">Color</span><span class="err">=</span><span class="s2">'#cccccc'</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.title</span> <span class="p">{</span>
+           <span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+           <span class="nl">font-size</span><span class="p">:</span><span class="m">16px</span><span class="p">;</span>
+           <span class="nl">font-weight</span><span class="p">:</span><span class="nb">bold</span><span class="p">;</span>
+           <span class="nl">white-space</span><span class="p">:</span> <span class="nb">nowrap</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.title-space</span> <span class="p">{</span>
+           <span class="nl">width</span><span class="p">:</span><span class="m">120px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.title-extra</span><span class="p">{</span>
+           <span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+           <span class="nl">margin-left</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span>
+           <span class="nl">white-space</span><span class="p">:</span> <span class="nb">nowrap</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.title-extra-right</span><span class="p">{</span>
+           <span class="nl">white-space</span><span class="p">:</span> <span class="nb">nowrap</span><span class="p">;</span>
+           <span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.narx-table-title-bar</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+            <span class="nl">margin-top</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+            <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">45px</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.narx-table-title-bar</span> <span class="nt">span</span><span class="nd">:first-child</span> <span class="p">{</span>
+            <span class="nl">margin-left</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.clear</span> <span class="p">{</span>
+            <span class="nl">clear</span><span class="p">:</span><span class="nb">both</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.font14</span> <span class="p">{</span>
+           <span class="nl">font-size</span><span class="p">:</span><span class="m">14px</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.font12</span> <span class="p">{</span>
+           <span class="nl">font-size</span><span class="p">:</span><span class="m">12px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.gray</span> <span class="p">{</span>
+            <span class="nl">color</span><span class="p">:</span><span class="m">#ccc</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.superscript</span><span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span><span class="nb">large</span><span class="p">;</span>
+            <span class="nl">vertical-align</span><span class="p">:</span><span class="nb">top</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.darkred</span> <span class="p">{</span>
+            <span class="nl">color</span><span class="p">:</span><span class="no">darkred</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.align-right</span> <span class="p">{</span>
+            <span class="nl">text-align</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.historical-score-title</span> <span class="p">{</span>
+           <span class="nl">color</span><span class="p">:</span><span class="m">#ccc</span><span class="p">;</span>
+           <span class="nl">font-size</span><span class="p">:</span><span class="m">14px</span><span class="p">;</span>
+           <span class="nl">text-align</span><span class="p">:</span><span class="nb">center</span><span class="p">;</span>
+           <span class="nl">padding-top</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+           <span class="nl">padding-bottom</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.border-bottom</span> <span class="p">{</span>
+           <span class="nl">border-bottom</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.border-top</span> <span class="p">{</span>
+           <span class="nl">border-top</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.border-top-space</span> <span class="p">{</span>
+           <span class="nl">border-top</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.border</span> <span class="p">{</span>
+           <span class="nl">border</span><span class="p">:</span><span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.title-bar</span> <span class="p">{</span>
+           <span class="nl">height</span><span class="p">:</span> <span class="m">35px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.title-bar</span><span class="nd">::after</span><span class="p">{</span>
+           <span class="nl">clear</span><span class="p">:</span><span class="nb">both</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.patient-title</span> <span class="p">{</span>
+           <span class="nl">font-size</span><span class="p">:</span><span class="m">22px</span><span class="p">;</span>
+           <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+           <span class="nl">margin-top</span><span class="p">:</span> <span class="m">25px</span><span class="p">;</span>
+           <span class="nl">margin-left</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.float-left</span> <span class="p">{</span>
+           <span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.float-right</span> <span class="p">{</span>
+           <span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.bold</span> <span class="p">{</span>
+           <span class="nl">font-weight</span><span class="p">:</span><span class="nb">bold</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#note-overlay</span> <span class="p">{</span>
+           <span class="nl">width</span><span class="p">:</span><span class="m">800px</span><span class="p">;</span>
+           <span class="nl">display</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+           <span class="nl">text-align</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+           <span class="nl">background-color</span><span class="p">:</span><span class="m">#fffdce</span><span class="p">;</span>
+           <span class="nl">padding</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.visit_odd</span> <span class="p">{</span>
+            <span class="nl">background-color</span><span class="p">:</span><span class="m">#ffffff</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.visit_even</span> <span class="p">{</span>
+            <span class="nl">background-color</span><span class="p">:</span><span class="m">#f8f8f8</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+
+        <span class="nf">#visit-table</span> <span class="p">{</span>
+            <span class="nl">width</span><span class="p">:</span><span class="m">798px</span><span class="p">;</span>
+            <span class="nl">margin</span><span class="p">:</span><span class="m">0px</span> <span class="m">1px</span> <span class="m">0px</span> <span class="m">1px</span><span class="p">;</span>
+            <span class="nl">font-size</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#visit-overlay</span> <span class="p">{</span>
+           <span class="nl">display</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+           <span class="nl">background-color</span><span class="p">:</span><span class="m">#fefefe</span><span class="p">;</span>
+           <span class="nl">padding</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#visit-titlebar</span><span class="p">{</span>
+             <span class="nl">text-align</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span>
+             <span class="nl">background-color</span><span class="p">:</span><span class="m">#eeeeee</span><span class="p">;</span>
+             <span class="nl">height</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span>
+             <span class="nl">line-height</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span>
+             <span class="nl">width</span><span class="p">:</span><span class="m">800px</span><span class="p">;</span>
+             <span class="nl">cursor</span><span class="p">:</span><span class="n">move</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.hover-title</span> <span class="p">{</span>
+           <span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+           <span class="nl">margin-left</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span>
+           <span class="nl">font-size</span><span class="p">:</span><span class="m">12px</span><span class="p">;</span>
+           <span class="nl">font-weight</span><span class="p">:</span><span class="nb">bold</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.close-button</span> <span class="p">{</span>
+          <span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span>
+ 
+          <span class="nl">text-decoration</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+          <span class="nl">cursor</span><span class="p">:</span><span class="nb">pointer</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#demo-overlay</span> <span class="p">{</span>
+            <span class="nl">display</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+            <span class="nl">background-color</span><span class="p">:</span><span class="m">#fefefe</span><span class="p">;</span>
+            <span class="nl">padding</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+            <span class="nl">margin</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nf">#demo-titlebar</span> <span class="p">{</span>
+            <span class="nl">text-align</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span>
+            <span class="nl">background-color</span><span class="p">:</span><span class="m">#eeeeee</span><span class="p">;</span>
+            <span class="nl">height</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span>
+            <span class="nl">padding-right</span><span class="p">:</span><span class="m">0px</span><span class="p">;</span>
+            <span class="nl">line-height</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span><span class="m">800px</span><span class="p">;</span>
+            <span class="nl">cursor</span><span class="p">:</span><span class="n">move</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#demo-table</span> <span class="p">{</span>
+            <span class="nl">margin-left</span><span class="p">:</span><span class="m">1px</span><span class="p">;</span>
+            <span class="nl">margin-right</span><span class="p">:</span><span class="m">1px</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">798px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#data-analysis</span> <span class="p">{</span>
+          <span class="nl">margin-left</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.control_link</span> <span class="p">{</span>
+          <span class="nl">text-decoration</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+          <span class="nl">cursor</span><span class="p">:</span><span class="nb">pointer</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="nc">.pr_content</span> <span class="nc">.pr_alert</span> <span class="p">{</span>
+           <span class="nl">background</span><span class="p">:</span><span class="m">#FFFBDE</span><span class="p">;</span>
+	       <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span>  <span class="nb">dotted</span> <span class="m">#C9AF00</span><span class="p">;</span>
+	       <span class="nl">color</span><span class="p">:</span> <span class="m">#A69000</span><span class="p">;</span>
+           <span class="nl">padding</span><span class="p">:</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#demobar</span>  <span class="p">{</span>
+           <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+           <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+           <span class="nl">margin-top</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+           <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+           <span class="nl">padding</span><span class="p">:</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">5px</span> <span class="m">10px</span><span class="p">;</span> 
+           <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#demobar</span> <span class="nc">.demoitem</span><span class="p">{</span>
+            <span class="nl">margin-left</span><span class="p">:</span> <span class="m">18px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nf">#demobar</span> <span class="nc">.demodate</span><span class="p">{</span>
+            <span class="nl">float</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span>
+            <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nf">#demobar</span> <span class="nc">.demodate</span><span class="nd">:after</span><span class="p">{</span>
+            <span class="nl">clear</span><span class="p">:</span><span class="nb">both</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        
+    <span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span>
+
+
+        <span class="o">&lt;</span><span class="nt">style</span> <span class="nt">type</span><span class="o">=</span><span class="s1">"text/css"</span><span class="o">&gt;</span>
+        <span class="c">/* data report specific styles */</span>
+
+    <span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pr_content"</span><span class="nt">&gt;</span>
+
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"patient-title"</span><span class="nt">&gt;&lt;b&gt;</span>TESTPATIENT, BETTY<span class="nt">&lt;/b&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"demobar"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span&gt;</span>Age: 46<span class="nt">&lt;/span&gt;</span>
+                 <span class="nt">&lt;span</span>  <span class="na">style=</span><span class="s">"margin-left:150px;"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"control_link demo-toggle"</span><span class="nt">&gt;</span>demographics<span class="nt">&lt;/a&gt;</span>  <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">"float:right;"</span><span class="nt">&gt;</span>Data as of: 9/12/2016<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="c">&lt;!-- Report Message --&gt;</span>
+
+        <span class="c">&lt;!-- Data Tables --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"narx-table-title-bar"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"title title-space"</span><span class="nt">&gt;</span>Prescriptions<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"title-extra"</span><span class="nt">&gt;</span>Total Prescriptions: 18<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        
+
+                <span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">"prescriptions-table"</span> <span class="na">class=</span><span class="s">"datatable"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;thead&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>Fill Date<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>Drug<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>Qty<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>Days<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>Prescriber<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th&gt;</span>Pharmacy<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>Refill<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>MgEq<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>MgEq/Day<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"padding-left:10px;"</span><span class="nt">&gt;</span>Pymt Type<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"centered"</span> <span class="na">title=</span><span class="s">"The State that provided this prescription record"</span><span class="nt">&gt;</span>PMP<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;/tr&gt;&lt;/thead&gt;</span>
+                    <span class="nt">&lt;tbody&gt;</span>
+
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>08/21/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>OXYCODONE HCL ER 40 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"HOSPITAL, FAKE"</span> <span class="na">title=</span><span class="s">"HOSPITAL, FAKE[br][br][br] [br]DEA #:FH0005769"</span><span class="nt">&gt;</span>FA HOS<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Fake C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>1,800.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>60.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>08/21/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>ALPRAZOLAM 1 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>120<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOC, GOOD"</span> <span class="na">title=</span><span class="s">"DOC, GOOD[br][br][br] [br]DEA #:GD0006406"</span><span class="nt">&gt;</span>GO DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>PillsN<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>240.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>08/20/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>ALPRAZOLAM 0.5 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"FAMILYDOC, CANDICE"</span> <span class="na">title=</span><span class="s">"FAMILYDOC, CANDICE[br][br][br] [br]DEA #:CF0726200"</span><span class="nt">&gt;</span>CA FAM<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Real C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>60.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>06/27/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>PERCOCET 5-325 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>15<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>15<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"HEADACHE, BRENDA"</span> <span class="na">title=</span><span class="s">"HEADACHE, BRENDA[br][br][br] [br]DEA #:BH0012221"</span><span class="nt">&gt;</span>BR HEA<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Real C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>112.50<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>7.50<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>06/27/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>ALPRAZOLAM 1 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>120<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOC, GOOD"</span> <span class="na">title=</span><span class="s">"DOC, GOOD[br][br][br] [br]DEA #:GD0006406"</span><span class="nt">&gt;</span>GO DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>PillsN<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>240.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>06/26/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>PERCOCET 5-325 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>180<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"HEADACHE, BRENDA"</span> <span class="na">title=</span><span class="s">"HEADACHE, BRENDA[br][br][br] [br]DEA #:BH0012221"</span><span class="nt">&gt;</span>BR HEA<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Real C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>1,350.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>22.50<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>05/26/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>OXYCODONE HCL 5 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOC, GOOD"</span> <span class="na">title=</span><span class="s">"DOC, GOOD[br][br][br] [br]DEA #:GD0006406"</span><span class="nt">&gt;</span>GO DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Real C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>450.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>15.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>05/09/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>OXYCONTIN 20 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOC, GOOD"</span> <span class="na">title=</span><span class="s">"DOC, GOOD[br][br][br] [br]DEA #:GD0006406"</span><span class="nt">&gt;</span>GO DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Real C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>1,800.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>60.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>04/04/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>ALPRAZOLAM 1 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>120<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOC, GOOD"</span> <span class="na">title=</span><span class="s">"DOC, GOOD[br][br][br] [br]DEA #:GD0006406"</span><span class="nt">&gt;</span>GO DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>We Fil<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>240.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>04/01/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>AMBIEN CR 12.5 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>23<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>23<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"HEADACHE, BRENDA"</span> <span class="na">title=</span><span class="s">"HEADACHE, BRENDA[br][br][br] [br]DEA #:BH0012221"</span><span class="nt">&gt;</span>BR HEA<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Real C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>14.38<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>03/27/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>CLONAZEPAM 0.5 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>90<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOCTOR, BAD"</span> <span class="na">title=</span><span class="s">"DOCTOR, BAD[br][br][br] [br]DEA #:BD4135326"</span><span class="nt">&gt;</span>BA DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>DrugWa<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>90.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>03/02/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>CARISOPRODOL 350 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>15<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"HOSPITAL, FAKE"</span> <span class="na">title=</span><span class="s">"HOSPITAL, FAKE[br][br][br] [br]DEA #:FH0005769"</span><span class="nt">&gt;</span>FA HOS<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Fake C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>26.25<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>02/27/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>CLONAZEPAM 0.5 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>90<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOCTOR, BAD"</span> <span class="na">title=</span><span class="s">"DOCTOR, BAD[br][br][br] [br]DEA #:BD4135326"</span><span class="nt">&gt;</span>BA DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>DrugWa<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>90.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>02/11/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>AMBIEN CR 12.5 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>12<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOC, OHIO"</span> <span class="na">title=</span><span class="s">"DOC, OHIO[br][br][br] [br]DEA #:OD0017120"</span><span class="nt">&gt;</span>OH DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Script<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>7.50<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>02/03/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>CLONAZEPAM 0.5 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>90<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOCTOR, BAD"</span> <span class="na">title=</span><span class="s">"DOCTOR, BAD[br][br][br] [br]DEA #:BD4135326"</span><span class="nt">&gt;</span>BA DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>DrugWa<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>90.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>01/09/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>CLONAZEPAM 0.5 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>90<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"DOCTOR, BAD"</span> <span class="na">title=</span><span class="s">"DOCTOR, BAD[br][br][br] [br]DEA #:BD4135326"</span><span class="nt">&gt;</span>BA DOC<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>DrugWa<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>90.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>01/02/2015<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>HYDROCODON-ACETAMINOPHN 10-325<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>180<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>90<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"HEADACHE, BRENDA"</span> <span class="na">title=</span><span class="s">"HEADACHE, BRENDA[br][br][br] [br]DEA #:BH0012221"</span><span class="nt">&gt;</span>BR HEA<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Real C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>1,800.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>20.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>11/19/2014<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"margin:0;padding:0;"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"superscript darkred"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"left"</span> <span class="na">style=</span><span class="s">"min-width:290px;"</span><span class="nt">&gt;</span>ALPRAZOLAM 1 MG TABLET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>120<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>30<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"html-tooltip"</span> <span class="na">data-for-sort=</span><span class="s">"PILL, JOHN"</span> <span class="na">title=</span><span class="s">"PILL, JOHN[br][br][br] [br]DEA #:JP3187588"</span><span class="nt">&gt;</span>JO PIL<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Fake C<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>0<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>240.00<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"right"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">style=</span><span class="s">"cursor:help;min-width:98px;"</span> <span class="na">title=</span><span class="s">"Commercial Insurance coverage"</span> <span class="na">data-for-sort=</span><span class="s">"Comm Ins"</span><span class="nt">&gt;</span>Comm Ins<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"centered"</span><span class="nt">&gt;</span>KS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;/tbody&gt;</span>
+                <span class="nt">&lt;/table&gt;</span>
+
+
+        <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"narx-table-title-bar"</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"title title-space"</span><span class="nt">&gt;</span>Providers<span class="nt">&lt;/span&gt;</span>
+           <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"title-extra"</span><span class="nt">&gt;</span>Total Providers: 7<span class="nt">&lt;/span&gt;</span>
+       <span class="nt">&lt;/div&gt;</span>
+        
+                <span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">"providers-table"</span> <span class="na">class=</span><span class="s">"datatable"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;thead&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:300px;"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:220px;"</span><span class="nt">&gt;</span>Address<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:140px;"</span><span class="nt">&gt;</span>City<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:100px;"</span><span class="nt">&gt;</span>State<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:100px;"</span><span class="nt">&gt;</span>Zipcode<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:100px;"</span><span class="nt">&gt;</span>DEA<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;/thead&gt;</span>
+                    <span class="nt">&lt;tbody&gt;</span>
+
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>DOC, GOOD<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>GD0006406<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>DOC, OHIO<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>OD0017120<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>DOCTOR, BAD<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>BD4135326<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>FAMILYDOC, CANDICE<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>CF0726200<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HEADACHE, BRENDA<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>BH0012221<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HOSPITAL, FAKE<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>FH0005769<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>PILL, JOHN<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>JP3187588<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;/tbody&gt;</span>
+                <span class="nt">&lt;/table&gt;</span>
+
+
+        <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"narx-table-title-bar"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"title title-space"</span><span class="nt">&gt;</span>Pharmacies<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"title-extra"</span><span class="nt">&gt;</span>Total Pharmacies: 8<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        
+                <span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">"pharmacies-table"</span> <span class="na">class=</span><span class="s">"datatable"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;thead&gt;</span>
+                    <span class="nt">&lt;tr&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:300px;"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:220px;"</span><span class="nt">&gt;</span>Address<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:140px;"</span><span class="nt">&gt;</span>City<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:100px;"</span><span class="nt">&gt;</span>State<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:100px;"</span><span class="nt">&gt;</span>Zipcode<span class="nt">&lt;/th&gt;</span>
+                        <span class="nt">&lt;th</span> <span class="na">style=</span><span class="s">"width:100px;"</span><span class="nt">&gt;</span>DEA<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;/thead&gt;</span>
+                    <span class="nt">&lt;tbody&gt;</span>
+
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>DrugWarehouse<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>9878 ANY STREET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>COLUMBUS<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>43215<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HO0777889<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Fake Chain Store 1<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>123 FAKE STREET<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>COLUMBUS<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>43215<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HO1109796<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Fake Chain Store 2<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>365 MARLARKY LN<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>DAYTON<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>44567<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HO1565778<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>PillsNStuff<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>64568 BLUE ST<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>CLEVELAND<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>44123<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HO2055879<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Real Chain Store 1<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>897 LIKELY ST<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>WORTHINGTON<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>43080<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HO2697994<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Real Chain Store 2<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>987 ORANGE RD<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>GROVE CITY<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>43123<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HO2973750<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>Script Factory<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>8789 LUCKY RD<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>COLUMBUS<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>43215<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HO3058953<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>We Fill Scripts<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>5645 DEADEND DR<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>COLUMBUS<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>43215<span class="nt">&lt;/td&gt;</span>
+                            <span class="nt">&lt;td&gt;</span>HO1955650<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;/tbody&gt;</span>
+                <span class="nt">&lt;/table&gt;</span>
+
+
+        <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+
+        <span class="c">&lt;!-- Overlays --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"demo-overlay"</span> <span class="na">class=</span><span class="s">"shadow border font12"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"demo-titlebar"</span> <span class="na">class=</span><span class="s">"border-bottom ui-dialog-titlebar ui-widget-header"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hover-title"</span><span class="nt">&gt;</span>Patient Demographics<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"ui-icon ui-icon-close close-button"</span> <span class="na">onclick=</span><span class="s">"demoClose();"</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"max-height:200px;overflow-y:auto;overflow-x:hidden;"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">"demo-table"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;</span>First Name<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th&gt;</span>Last Name<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th&gt;</span>Address<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th&gt;</span>City<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th&gt;</span>State<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th&gt;</span>Zip<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th&gt;</span>DOB<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th&gt;</span>Prescriptions Count<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+
+                    <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_odd"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>BETTY<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>TESTPATIENT<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>123 BROADWAY<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>COLUMBUS<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>43215<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>1/1/1970<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>11<span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+                    <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"drug_even"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>BETTY<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>TESTPATIENT<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>234 N WEST ST<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>WESTERVILLE<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>OH<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>43081<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>1/1/1970<span class="nt">&lt;/td&gt;</span>
+                        <span class="nt">&lt;td&gt;</span>7<span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;/table&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+
+        <span class="kd">var</span> <span class="nx">demoOverlayOpen</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+        <span class="c1">//Demographics</span>
+
+        <span class="kd">function</span> <span class="nx">demoClose</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#demo-overlay"</span><span class="p">).</span><span class="nx">fadeOut</span><span class="p">();</span>
+            <span class="nx">demoOverlayOpen</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s2">".demo-toggle"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">demoOverlayOpen</span><span class="p">){</span>
+                <span class="nx">demoClose</span><span class="p">();</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="nx">demoOverlayOpen</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+
+            <span class="kd">var</span> <span class="nx">offset</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="s1">'.demo-toggle'</span><span class="p">).</span><span class="nx">offset</span><span class="p">();</span>
+
+            <span class="kd">var</span> <span class="nx">e</span><span class="o">=</span><span class="nx">evt</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">docX</span><span class="p">,</span><span class="nx">docY</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">pageX</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// IE case</span>
+                <span class="kd">var</span> <span class="nx">d</span><span class="o">=</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span> <span class="o">&amp;&amp;</span>
+                        <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollLeft</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">?</span>
+                       <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span> <span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+                <span class="nx">docX</span><span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clientX</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">scrollLeft</span><span class="p">;</span>
+                <span class="nx">docY</span><span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="c1">// all other browsers</span>
+                <span class="nx">docX</span><span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">pageX</span><span class="p">;</span>
+                <span class="nx">docY</span><span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">pageY</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#demo-overlay"</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span>
+                <span class="na">position</span><span class="p">:</span> <span class="s1">'absolute'</span><span class="p">,</span>
+                <span class="na">display</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span>
+                <span class="na">top</span><span class="p">:</span> <span class="nx">docY</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span>
+                <span class="na">left</span><span class="p">:</span> <span class="nx">offset</span><span class="p">.</span><span class="nx">left</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s1">'font-size'</span><span class="p">:</span> <span class="s1">'14px;'</span><span class="p">,</span>
+                <span class="s1">'font-family'</span><span class="p">:</span> <span class="s1">'Arial, Verdana, sans-serif'</span>
+            <span class="p">}).</span><span class="nx">fadeIn</span><span class="p">(</span><span class="mi">175</span><span class="p">);</span>
+        <span class="p">});</span>
+
+
+
+        <span class="kd">function</span> <span class="nx">init_table_sorting</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// SEE http://tablesorter.com/docs/</span>
+
+            <span class="c1">// new zebra widget to keep the unidentified drugs.</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">tablesorter</span><span class="p">.</span><span class="nx">addWidget</span><span class="p">({</span>
+                <span class="c1">// give the widget a id</span>
+                <span class="na">id</span><span class="p">:</span> <span class="s2">"prescriptionZebra"</span><span class="p">,</span>
+                <span class="na">format</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">table</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">var</span> <span class="nx">$tr</span><span class="p">,</span> <span class="nx">row</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="nx">odd</span><span class="p">;</span>
+                    <span class="c1">// loop through the visible rows</span>
+                    <span class="nx">$</span><span class="p">(</span><span class="s2">"tr:visible"</span><span class="p">,</span> <span class="nx">table</span><span class="p">.</span><span class="nx">tBodies</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">$tr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+                        <span class="c1">// style children rows the same way the parent</span>
+                        <span class="c1">// row was styled</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">$tr</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">cssChildRow</span><span class="p">))</span> <span class="nx">row</span><span class="o">++</span><span class="p">;</span>
+                        <span class="nx">odd</span> <span class="o">=</span> <span class="p">(</span><span class="nx">row</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+                        <span class="nx">$tr</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">widgetZebra</span><span class="p">.</span><span class="nx">css</span><span class="p">[</span><span class="nx">odd</span> <span class="p">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="mi">1</span><span class="p">]).</span>
+                                <span class="nx">addClass</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">widgetZebra</span><span class="p">.</span><span class="nx">css</span><span class="p">[</span><span class="nx">odd</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">]);</span>
+                    <span class="p">});</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+
+            <span class="c1">//Write table parser</span>
+            <span class="c1">// add parser through the tablesorter addParser method</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">tablesorter</span><span class="p">.</span><span class="nx">addParser</span><span class="p">({</span>
+                <span class="na">id</span><span class="p">:</span> <span class="s1">'data-for-sort'</span><span class="p">,</span>
+                <span class="na">is</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// return false so this parser is not auto detected</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">},</span>
+                <span class="na">format</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">td</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">//return td.dataset.forSort; //this is the "correct" way to do but not until ie11+.</span>
+                    <span class="k">return</span> <span class="nx">td</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">"data-for-sort"</span><span class="p">);</span> <span class="c1">//slower way to do it.</span>
+                <span class="p">},</span>
+                <span class="na">type</span><span class="p">:</span> <span class="s1">'text'</span>
+            <span class="p">});</span>
+
+
+
+            <span class="c1">// Table sorting</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#prescriptions-table"</span><span class="p">).</span><span class="nx">tablesorter</span><span class="p">({</span>
+                <span class="na">textExtraction</span><span class="p">:</span> <span class="s2">"complex"</span><span class="p">,</span>
+                <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="mi">5</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">sorter</span><span class="p">:</span> <span class="s1">'data-for-sort'</span>
+                    <span class="p">},</span>
+                    <span class="mi">10</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">sorter</span><span class="p">:</span> <span class="s1">'data-for-sort'</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="na">widgets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'prescriptionZebra'</span><span class="p">],</span> <span class="c1">//defined above.</span>
+                <span class="na">widgetZebra</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">css</span><span class="p">:</span> <span class="p">[</span><span class="s2">"drug_even"</span><span class="p">,</span> <span class="s2">"drug_odd"</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#providers-table"</span><span class="p">).</span><span class="nx">tablesorter</span><span class="p">({</span>
+                <span class="na">widgets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'zebra'</span><span class="p">],</span>
+                <span class="na">widgetZebra</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">css</span><span class="p">:</span> <span class="p">[</span><span class="s2">"drug_even"</span><span class="p">,</span> <span class="s2">"drug_odd"</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+
+            <span class="nx">$</span><span class="p">(</span><span class="s2">"#pharmacies-table"</span><span class="p">).</span><span class="nx">tablesorter</span><span class="p">({</span>
+                <span class="na">widgets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'zebra'</span><span class="p">],</span>
+                <span class="na">widgetZebra</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">css</span><span class="p">:</span> <span class="p">[</span><span class="s2">"drug_even"</span><span class="p">,</span> <span class="s2">"drug_odd"</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+
+        <span class="p">}</span>
+
+
+        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+            <span class="nx">$</span><span class="p">(</span><span class="s1">'#demo-overlay'</span><span class="p">).</span><span class="nx">draggable</span><span class="p">({</span> <span class="na">containment</span><span class="p">:</span> <span class="s1">'window'</span><span class="p">,</span> <span class="na">scroll</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="na">handle</span><span class="p">:</span> <span class="s1">'#demo-titlebar'</span> <span class="p">});</span>
+            <span class="nx">init_table_sorting</span><span class="p">();</span>
+
+            <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">'.html-tooltip'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">({</span>
+                <span class="na">content</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="c1">//Need to handle each tag we will allow manually replace the markup.</span>
+                    <span class="kd">var</span> <span class="nx">tooltipContent</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'title'</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\[</span><span class="sr">br</span><span class="se">\]</span><span class="sr">/g</span><span class="p">,</span> <span class="s2">"&lt;br /&gt;"</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="nx">tooltipContent</span><span class="p">;</span>
+                <span class="p">},</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+
+
+
+    <span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>    </div>
+  </div><!-- .method-code -->
+</section>
+
 
   <section class="method" id="report-response-disallowed">
   <div class="method-copy">
@@ -807,8 +1913,7 @@
     <span class="nt">&lt;Source&gt;</span>GATEWAY<span class="nt">&lt;/Source&gt;</span>
   <span class="nt">&lt;/Disallowed&gt;</span>
 <span class="nt">&lt;/ReportResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -832,8 +1937,7 @@
     <span class="nt">&lt;Source&gt;</span>GATEWAY<span class="nt">&lt;/Source&gt;</span>
   <span class="nt">&lt;/Error&gt;</span>
 <span class="nt">&lt;/ReportResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 

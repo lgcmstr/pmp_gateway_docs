@@ -16,8 +16,8 @@
   </div>
   <nav>
     <ul>
-      <li><a class="active" href="../">API Documentation</a></li>
-      <li><a class="" href="../faqs.html">FAQs</a></li>
+      <li><a href="../" class="active">API Documentation</a></li>
+      <li><a href="../faqs.html" class="">FAQs</a></li>
       <li><a href="https://github.com/Appriss-Operations/pmp_gateway_docs">GitHub</a></li>
     </ul>
   </nav>
@@ -25,8 +25,8 @@
 
     <div class="side-nav">
   <ul class="api-versions">
-  <li><a class="" href="../v5/">v5</a></li>
-  <li><a class="active" href="../v4/">v4</a></li>
+  <li><a href="../v5/" class="">v5</a></li>
+  <li><a href="../v4/" class="active">v4</a></li>
 </ul>
 
   <ul class="toc">
@@ -93,9 +93,9 @@
     <p>This API is <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>ful and uses XML formatted requests and responses.</p>
     <h3>Questions & Feedback</h3>
     <p>This documentation and all example code is available on GitHub. If you have questions or feedback the best way to contact us is to
-      <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs/issues">open an "issue"</a>
+      <a href="https://github.com/Appriss-Operations/pmp_gateway_docs/issues" target="_blank">open an "issue"</a>
       on our
-      <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs">GitHub project space</a>.
+      <a href="https://github.com/Appriss-Operations/pmp_gateway_docs" target="_blank">GitHub project space</a>.
     </p>
   </div><!-- .method-copy -->
 
@@ -125,7 +125,7 @@
   </div><!-- .method-copy -->
 
   <div class="method-code">
-    <a href="../images/gateway_diagram.png"><img alt="PMP Diagram" src="../images/gateway_diagram.png" /></a>
+    <a href="../images/gateway_diagram.png"><img src="../images/gateway_diagram.png" alt="PMP Diagram" /></a>
   </div><!-- .method-code -->
 </section>
   <section class="method" id="authentication">
@@ -151,14 +151,12 @@
     <div class="method-example method-example-definition">
       <h3>Testing API Endpoint</h3>
 <pre class="highlight shell"><code>https://gateway-prep.pmp.appriss.com
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-definition">
       <h3>Production API Endpoint</h3>
 <pre class="highlight shell"><code>https://pmpgateway.net
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -216,8 +214,7 @@
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
 <pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/search_request/create
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request">
       <h3>Example Request</h3>
@@ -226,8 +223,7 @@
   -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
   -d @gateway_request.xml
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Request Data</h3>
@@ -309,8 +305,7 @@
     <span class="nt">&lt;/Patient&gt;</span>
  <span class="nt">&lt;/PrescriptionRequest&gt;</span>
 <span class="nt">&lt;/GatewayRequest&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Response</h3>
@@ -327,8 +322,7 @@
   <span class="nt">&lt;/Response&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/GatewayResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -343,8 +337,7 @@
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
 <pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/search_request/create
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request">
       <h3>Example Request</h3>
@@ -353,8 +346,7 @@
   -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
   -d @gateway_request__minimal.xml
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Request Data</h3>
@@ -399,8 +391,7 @@
     <span class="nt">&lt;/Patient&gt;</span>
  <span class="nt">&lt;/PrescriptionRequest&gt;</span>
 <span class="nt">&lt;/GatewayRequest&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
 
     <div class="method-example method-example-request-data">
       <h3>Example Response</h3>
@@ -734,8 +725,7 @@
   <span class="nt">&lt;/Response&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/GatewayResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -792,8 +782,7 @@
   <span class="nt">&lt;/Response&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/GatewayResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -829,8 +818,7 @@
   <span class="nt">&lt;/Response&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/GatewayResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
@@ -874,8 +862,7 @@
   <span class="nt">&lt;/Response&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;&lt;/Disclaimer&gt;</span>
 <span class="nt">&lt;/GatewayResponse&gt;</span>
-</code></pre>
-    </div>
+</code></pre>    </div>
   </div><!-- .method-code -->
 </section>
 
