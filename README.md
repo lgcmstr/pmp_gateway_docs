@@ -3,9 +3,11 @@ This app is built with [Middleman](https://middlemanapp.com/).
 The documentation is hosted at: http://appriss-operations.github.io/narxcheck_docs.
 
 ## Setup local dev environment
+## Need to install bundler since ruby version set to 2.2.2
 
 Install gems to local repo
 ````
+$ gem install bundler
 $ bundle install --path vendor/bundle
 ````
 

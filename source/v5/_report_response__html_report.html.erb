@@ -1,0 +1,23 @@
+<section class="method" id="report-response-html-report">
+  <div class="method-copy">
+    <h2>HTML Report</h2>
+
+    <p>If you do not include the <code>&#60;ReportLink /&#62;</code> node in a Report Request, the Report Response will include the HTML data for the report.</p>
+  </div><!-- .method-copy -->
+
+  <% filename = "report_response__html_report.html" %>
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Response Data</h3>
+      <p class="filename"><%filename%></p>
+      <span class="download">
+        <a href=<%"./data/#{filename}"%> download>download</a>
+      </span>
+<% code('html') do %>
+  <% File.open("#{root}/source/v5/data/#{filename}", 'rb').read %>
+<% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
