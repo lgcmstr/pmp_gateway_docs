@@ -8,7 +8,7 @@
 
     <p>The example request on the right includes all required elements and most of the optional elements. For the conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
 
-    <p><code>&#60;RequestDestinations&#62;</code> - Optional. If omitted, the request will be made against the PMP systems configured for your Licensee account. If included, requests will be sent to the PMP(s) listed under this element. Your Licensee permissions will still restrict which PMPs are accessible.</p>
+    <p><code>&#60;RequestDestinations&#62;</code> - Optional. If omitted, the request will be made against the PMP systems configured for your Licensee account. If included, the listed destinations override your account configuration and requests will be sent to the PMP(s) listed under this element. Your Licensee permissions will still restrict which PMPs are accessible. Note: When several state PMPs are needed to gather information for a request, calls to these PMPs are made in parallel. The time needed to generate a response does not depend on the number of PMPs called.</p>
 
     <p><code>&#60;LicenseeRequestID&#62;</code> - Optional. Allows you to pass your own custom request ID, which will be returned in the Patient Response.</p>
 
