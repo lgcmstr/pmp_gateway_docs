@@ -148,8 +148,8 @@
       <li>POST a Report Request to the Report Request URL</li>
       <li>Receive one of the following</li>
       <ul>
-        <li>the report content (e.g. html, pdf)</li>
-        <li>a Report Response with a URL where the report can be viewed</li>
+        <li>the report content as html</li>
+        <li>a Report Response with a URL from which the report can be retrieved</li>
       </ul>
     </ol>
     <p>The figure on the right illustrates this sequence of events. It also shows Gateway's various response types.</p>
@@ -163,6 +163,7 @@
     </div>
   </div><!-- .method-code -->
 </section>
+
   <section class="method" id="pmp-network">
   <div class="method-copy">
     <h1>PMP Network</h1>
@@ -281,7 +282,7 @@
 
     <p>The example request on the right includes all required elements and most of the optional elements. For the conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
 
-    <p><code>&#60;RequestDestinations&#62;</code> - Optional. If omitted, the request will be made against the PMP systems configured for your Licensee account. If included, requests will be sent to the PMP(s) listed under this element. Your Licensee permissions will still restrict which PMPs are accessible.</p>
+    <p><code>&#60;RequestDestinations&#62;</code> - Optional. If omitted, the request will be made against the PMP systems configured for your Licensee account. If included, the listed destinations override your account configuration and requests will be sent to the PMP(s) listed under this element. Your Licensee permissions will still restrict which PMPs are accessible. Note: When several state PMPs are needed to gather information for a request, calls to these PMPs are made in parallel. The time needed to generate a response does not depend on the number of PMPs called.</p>
 
     <p><code>&#60;LicenseeRequestID&#62;</code> - Optional. Allows you to pass your own custom request ID, which will be returned in the Patient Response.</p>
 
@@ -759,7 +760,7 @@
   <div class="method-copy">
     <h1>Report Response</h1>
 
-    <p>The response will be either the actual report content (e.g. html, pdf) or a Report Response. Depending upon the Licensee's configuration, the report type will be either a Prescription History report or a NARxCHECK report.</p>
+    <p>The response will be either the actual report content in html or a Report Response. Depending upon the Licensee's configuration, the report type will be either a Prescription History report or a NARxCHECK report.</p>
   </div><!-- .method-copy -->
 
   <div class="method-code">
