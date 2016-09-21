@@ -282,11 +282,11 @@
 
     <p>The example request on the right includes all required elements and most of the optional elements. For the conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
 
+    <p><code>&#60;MedicalRecordID&#62;</code> - <strong>Required</strong> for licensees configured to use a Medical Record ID for the report URL. Otherwise optional. If used, it must be unique for each licensee. Otherwise there is the possibility of returning the wrong information for a patient and violating PHI.<br/><br/>It is also used for accounts configured to recieve NARxCHECK reports. If you provide the same Medical Record ID for the same patient in each Patient Request, the returned NARxCHECK report will include historical NARxCHECK Score information for the patient.</p>
     <p><code>&#60;RequestDestinations&#62;</code> - Optional. If omitted, the request will be made against the PMP systems configured for your Licensee account. If included, the listed destinations override your account configuration and requests will be sent to the PMP(s) listed under this element. Your Licensee permissions will still restrict which PMPs are accessible. Note: When several state PMPs are needed to gather information for a request, calls to these PMPs are made in parallel. The time needed to generate a response does not depend on the number of PMPs called.</p>
 
     <p><code>&#60;LicenseeRequestID&#62;</code> - Optional. Allows you to pass your own custom request ID, which will be returned in the Patient Response.</p>
 
-    <p><code>&#60;MedicalRecordID&#62;</code> - Optional. This element is useful for only those accounts that are configured to recieve NARxCHECK reports. If you provide the same Medical Record ID for the same patient in each Patient Request, the returned NARxCHECK report will include historical NARxCHECK Score information for the patient.</aside>
 
     <p>Note: Some optional elements have been omitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <a href="data/gateway_v5_schema.xsd">Gateway v5 schema</a>.</p>
   </div><!-- .method-copy -->
@@ -640,12 +640,14 @@
   <div class="method-copy">
     <h1>Report Request</h1>
 
-    <p>To make a Report Request, you must first make a successful Patient Request. The Patient Response you receive in return, will contain the URL where you send Report Requests for that patient.</p>
+    <p>To make a Report Request, you must first make a successful Patient Request. The Patient Response includes the URL where you POST Report Requests for that patient. We need to use a POST command for retrieving the report to track who makes the request.</p>
+    <p>The URL returned in a Patient Response expires 24 hours after the Patient Request was made. To retrieve another URL, you will need to make another Patient Request.</p>
+    <p>Note: The last element of the URL can be either a report identifier or a Medical Record ID, depending on whether the licensee has been configured to use a patient's Medical Record ID for the report URL. This will be the same Medical Record ID used in the corresponding Patient Request.</p>
 
-    <aside>The URL where you send the Report Request, can be found in the Patient Response at: <code>xpath //PatientResponse/Report/ReportRequestURLs/ViewableReport</code></aside>
+    <aside>The URL where you send the Report Request can be found in the Patient Response at: <br/><code>xpath //PatientResponse/Report/ReportRequestURLs/ViewableReport</code></aside>
 
     <h3>Report Details</h3>
-    <p>If the Report Request is successul, the response will include a report.</p>
+    <p>If the Report Request is successful, the response will include a report.</p>
 
     <p>Reports can be returned in one of two ways. You specify the method by including or excluding the <code>&#60;ReportLink /&#62;</code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
 
@@ -661,7 +663,7 @@
   <div class="method-code">
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
-<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/report/<span class="k">*</span>VARIES<span class="k">*</span>
 </code></pre>
     </div>
 
