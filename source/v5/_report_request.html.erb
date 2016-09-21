@@ -2,12 +2,14 @@
   <div class="method-copy">
     <h1>Report Request</h1>
 
-    <p>To make a Report Request, you must first make a successful Patient Request. The Patient Response you receive in return, will contain the URL where you send Report Requests for that patient.</p>
+    <p>To make a Report Request, you must first make a successful Patient Request. The Patient Response includes the URL where you POST Report Requests for that patient. We need to use a POST command for retrieving the report to track who makes the request.</p>
+    <p>The URL returned in a Patient Response expires 24 hours after the Patient Request was made. To retrieve another URL, you will need to make another Patient Request.</p>
+    <p>Note: The last element of the URL can be either a report identifier or a Medical Record ID, depending on whether the licensee has been configured to use a patient's Medical Record ID for the report URL. This will be the same Medical Record ID used in the corresponding Patient Request.</p>
 
-    <aside>The URL where you send the Report Request, can be found in the Patient Response at: <code>xpath //PatientResponse/Report/ReportRequestURLs/ViewableReport</code></aside>
+    <aside>The URL where you send the Report Request can be found in the Patient Response at: <br/><code>xpath //PatientResponse/Report/ReportRequestURLs/ViewableReport</code></aside>
 
     <h3>Report Details</h3>
-    <p>If the Report Request is successul, the response will include a report.</p>
+    <p>If the Report Request is successful, the response will include a report.</p>
 
     <p>Reports can be returned in one of two ways. You specify the method by including or excluding the <code>&#60;ReportLink /&#62;</code> element from your request. If you exclude it, the report will be returned as raw HTML. If you include it, the response will include a URL where the report can be accessed once.</p>
 
@@ -24,7 +26,7 @@
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
 <% code('shell') do %>
-POST https://gateway-prep.pmp.appriss.com/v5/report/{REPORT_ID}
+POST https://gateway-prep.pmp.appriss.com/v5/report/*VARIES*
 <% end %>
     </div>
 
