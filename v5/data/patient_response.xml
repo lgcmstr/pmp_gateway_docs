@@ -12,7 +12,7 @@
       <Sedatives>120</Sedatives>
     </NarxCheckScore>
     <ReportRequestURLs>
-      <ViewableReport Content-Type="text/html">https://gateway-prep.pmp.appriss.com/v5/report/141.html</ViewableReport>
+      <ViewableReport Content-Type="text/html">https://gateway-prep.pmp.appriss.com/v5/report/141</ViewableReport>
     </ReportRequestURLs>
   </Report>
   <Disclaimer>...</Disclaimer>

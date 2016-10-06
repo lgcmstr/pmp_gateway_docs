@@ -123,6 +123,7 @@
     <p>Welcome to the PMP Gateway API documentation. This API reference provides information on available endpoints and how to interact with them.</p>
     <p>Using the PMP Gateway API, you can integrate patient prescription history data into your applications.</p>
     <p>This API is <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>ful and uses XML formatted requests and responses.</p>
+    <p>NOTE: XML interprets certain characters in ways that may cause unexpected errors. In particular you should be careful about using the &amp; (ampersand) character in data elements.</p>
     <h3>Questions & Feedback</h3>
     <p>This documentation and all example code is available on GitHub. If you have questions or feedback the best way to contact us is to
       <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs/issues">open an "issue"</a>
@@ -137,6 +138,7 @@
     </div>
   </div><!-- .method-code -->
 </section>
+
   <section class="method" id="overview">
   <div class="method-copy">
     <h1>Overview</h1>
@@ -248,7 +250,7 @@
           </tr>
           <tr>
             <th>400 Bad Request</th>
-            <td>The request was invalid, often due to a missing required element.</td>
+            <td>The request was invalid, often due to a missing required element. This can also be caused by including an &amp; (ampersand) character in a data element.</td>
           </tr>
           <tr>
             <th>401 Unauthorized</th>
@@ -407,7 +409,7 @@
       <span class="nt">&lt;Sedatives&gt;</span>120<span class="nt">&lt;/Sedatives&gt;</span>
     <span class="nt">&lt;/NarxCheckScore&gt;</span>
     <span class="nt">&lt;ReportRequestURLs&gt;</span>
-      <span class="nt">&lt;ViewableReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/v5/report/141.html<span class="nt">&lt;/ViewableReport&gt;</span>
+      <span class="nt">&lt;ViewableReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/v5/report/141<span class="nt">&lt;/ViewableReport&gt;</span>
     <span class="nt">&lt;/ReportRequestURLs&gt;</span>
   <span class="nt">&lt;/Report&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
@@ -497,7 +499,7 @@
       <span class="nt">&lt;Sedatives&gt;</span>120<span class="nt">&lt;/Sedatives&gt;</span>
     <span class="nt">&lt;/NarxCheckScore&gt;</span>
     <span class="nt">&lt;ReportRequestURLs&gt;</span>
-      <span class="nt">&lt;ViewableReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/v5/report/144.html<span class="nt">&lt;/ViewableReport&gt;</span>
+      <span class="nt">&lt;ViewableReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/v5/report/144<span class="nt">&lt;/ViewableReport&gt;</span>
     <span class="nt">&lt;/ReportRequestURLs&gt;</span>
   <span class="nt">&lt;/Report&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
@@ -537,7 +539,7 @@
       <span class="nt">&lt;Sedatives&gt;</span>120<span class="nt">&lt;/Sedatives&gt;</span>
     <span class="nt">&lt;/NarxCheckScore&gt;</span>
     <span class="nt">&lt;ReportRequestURLs&gt;</span>
-      <span class="nt">&lt;ViewableReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/v5/report/141.html<span class="nt">&lt;/ViewableReport&gt;</span>
+      <span class="nt">&lt;ViewableReport</span> <span class="na">Content-Type=</span><span class="s">"text/html"</span><span class="nt">&gt;</span>https://gateway-prep.pmp.appriss.com/v5/report/141<span class="nt">&lt;/ViewableReport&gt;</span>
     <span class="nt">&lt;/ReportRequestURLs&gt;</span>
   <span class="nt">&lt;/Report&gt;</span>
   <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
@@ -724,7 +726,7 @@
   <div class="method-code">
     <div class="method-example method-example-definition">
       <h3>Definition</h3>
-<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/report/<span class="o">{</span>REPORT_ID<span class="o">}</span>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/v5/report/<span class="k">*</span>VARIES<span class="k">*</span>
 </code></pre>
     </div>
 
