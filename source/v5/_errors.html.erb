@@ -15,7 +15,7 @@
           </tr>
           <tr>
             <th>400 Bad Request</th>
-            <td>The request was invalid, often due to a missing required element. This can also be caused by including an &amp; (ampersand) character in a data element.</td>
+            <td>The XML document contained errors. This can be due to a missing required element or by not <a href="https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references">encoding</a> characters in data elements.</p>
           </tr>
           <tr>
             <th>401 Unauthorized</th>
@@ -23,7 +23,7 @@
           </tr>
           <tr>
             <th>410 Gone</th>
-            <td>The resource has expired.</td>
+            <td>The resource has expired. This can be caused by sending a report request more than 24 hours after a patient request.</td>
           </tr>
           <tr>
             <th>500 Internal Server Error</th>
