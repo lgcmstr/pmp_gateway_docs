@@ -1,0 +1,29 @@
+<section class="method" id="test-scenarios-error-conditions">
+  <div class="method-copy">
+    <h2>Error Conditions</h2>
+
+    <h3>Patient Requests</h3>
+    <p><u>Location not authorized</u>: This happens when a state does not allow queries from another state. In the test environment this happens when RequestDestination is OH and the Address in the Location element is KY.</p>
+    <p><u>Invalid Role</u>: Specifies a role not included in the schema, e.g. Veterinarian. This will return a 400 error.<p>
+    <p><u>Disallowed Role</u>: Specifies a role not allowed to be queried by the state. For example, in the test environment, OH does not allow queries from  a Nurse Practitioner. This will return a 200 code with a message in the response.<p>
+
+    <h3>Report Request</h3>
+    <p><u>Using expired link from patient response</u>: The link returned in the PatientResponse is good for 24 hours. Try using a link returned more than 24 hours before sending the report request. This should return a 410 error code.</p>
+    <p><u>Report not generated yet</u>: This should be rare, but can happen when the patient response returns before the report has been generated. It should return a 504 error code. Contact Appriss to set up data for this scenario.</p>
+
+    <h3>Both Patient and Report Request</h3>
+    <p><u>Connecting to the wrong URL</u>: This can happen if the endpoint is not entered properly. It should return a 404 error.</p>
+    <p><u>Bad account credentials</u>: Should return a 401 error.</p>
+    <p><u>Badly formed XML</u>: Should return a 400 error.</p>
+    <p><u>Role Omitted</u>: Should return a 400 error since this element is required by the XML schema.</p>
+    <p><u>Invalid Role</u>: Specifies a role not included in the schema, e.g. Veterinarian. This will return a 400 error.<p>
+
+
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+    </div>
+  </div><!-- .method-code -->
+</section>
+

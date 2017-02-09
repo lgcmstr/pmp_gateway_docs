@@ -1,86 +1,119 @@
 <div class="side-nav">
-  <%= partial 'versions_nav' %>
 
-  <ul class="toc">
-    <li class="active">
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#intro">Introduction</a>
-    </li>
-    <li>
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#overview">Overview</a>
-    </li>
-    <li>
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#pmp-network">PMP Network</a>
-    </li>
-    <li>
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#authentication">Authentication</a>
-    </li>
-    <li>
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#endpoints">Endpoints</a>
-    </li>
-    <li>
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#errors">Errors</a>
-    </li>
-    <li>
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#patient-request">Patient Request</a>
-      <ul class="sidebar-nav-items">
-        <li>
-          <span class="active-marker">&nbsp;</span>
-          <a class="sidebar-nav-item" href="#patient-request-minimal">Minimal Example</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#patient-response">Patient Response</a>
-      <ul class="sidebar-nav-items">
-        <li>
-          <span class="active-marker">&nbsp;</span>
-          <a class="sidebar-nav-item" href="#patient-response-disallowed">Disallowed</a>
-        </li>
-        <li>
-          <span class="active-marker">&nbsp;</span>
-          <a class="sidebar-nav-item" href="#patient-response-error">Error</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#report-request">Report Request</a>
-      <ul class="sidebar-nav-items">
-        <li>
-          <span class="active-marker">&nbsp;</span>
-          <a class="sidebar-nav-item" href="#report-request-minimal">Minimal Example</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <span class="active-marker">&nbsp;</span>
-      <a class="sidebar-nav-item" href="#report-response">Report Response</a>
-      <ul class="sidebar-nav-items">
-        <li>
-          <span class="active-marker">&nbsp;</span>
-          <a class="sidebar-nav-item" href="#report-response-report-link">Report Link</a>
-        </li>
-        <li>
-          <span class="active-marker">&nbsp;</span>
-          <a class="sidebar-nav-item" href="#report-response-html-report">HTML Report</a>
-        </li>
-        <li>
-          <span class="active-marker">&nbsp;</span>
-          <a class="sidebar-nav-item" href="#report-response-disallowed">Disallowed</a>
-        </li>
-        <li>
-          <span class="active-marker">&nbsp;</span>
-          <a class="sidebar-nav-item" href="#report-response-error">Error</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
+  <div id="side-nav-inner">
+    <%= partial 'versions_nav' %>
+
+    <ul class="toc">
+      <li class="active">
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#intro">Introduction</a>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#overview">Overview</a>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#pmp-network">PMP Network</a>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#authentication">Authentication</a>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#endpoints">Endpoints</a>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#errors">Errors</a>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#patient-request">Patient Request</a>
+        <ul class="sidebar-nav-items">
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#patient-request-minimal">Minimal Example</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#patient-response">Patient Response</a>
+        <ul class="sidebar-nav-items">
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#patient-response-disallowed">Disallowed</a>
+          </li>
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#patient-response-error">Error</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#report-request">Report Request</a>
+        <ul class="sidebar-nav-items">
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#report-request-minimal">Minimal Example</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#report-response">Report Response</a>
+        <ul class="sidebar-nav-items">
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#report-response-report-link">Report Link</a>
+          </li>
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#report-response-html-report">HTML Report</a>
+          </li>
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#report-response-disallowed">Disallowed</a>
+          </li>
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#report-response-error">Error</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#test-scenarios">Test Scenarios</a>
+        <ul class="sidebar-nav-items">
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#test-scenarios-error-conditions">Error Conditions</a>
+          </li>
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#test-scenarios-single-state">Single State</a>
+          </li>
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#test-scenarios-multiple-states">Multiple States</a>
+          </li>
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#test-scenarios-user-matching">User Matching</a>
+          </li>
+          <li>
+            <span class="active-marker">&nbsp;</span>
+            <a class="sidebar-nav-item" href="#test-scenarios-special-cases">Special Cases</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <span class="active-marker">&nbsp;</span>
+        <a class="sidebar-nav-item" href="#test-patients">Test Patients</a>
+      </li>
+    </ul>
+  </div>
 </div>

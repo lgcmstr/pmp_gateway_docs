@@ -1,0 +1,18 @@
+<section class="method" id="test-scenarios-multiple-states">
+  <div class="method-copy">
+    <h2>Patient Request to Multiple States</h2>
+
+    <p>In all these scenarios, the RequestDestination element should contain both KS and OH, and the Location should be OH.</p>
+
+    <p><u>Patient has result in both states</u>: Test user Betty Testpatient.</p>
+    <p><u>Patient has result in one state</u>: Test user Alice Testpatient. Response will include a Message element with the text "No prescription data is available from your state PMP for this patient."</p>
+    <p><u>Patient has results in neither state</u>: Test user Nobody Testpatient. Response will also include a Message element with the text "No prescription data is available from your state PMP for this patient."</p>
+
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+    </div>
+  </div><!-- .method-code -->
+</section>
+
