@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Schema to check each Medication Dispensed Node as they are created to make sure they are valid. -->
+<xs:schema xmlns="http://www.ncpdp.org/schema/SCRIPT" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ncpdp.org/schema/SCRIPT" elementFormDefault="qualified">
+  <xs:include schemaLocation="../SCRIPT_XML_10_6.xsd"/>
+  <xs:element name="MedicationDispensed" type="HistoryDispensedMedicationType">
+    <xs:annotation>
+      <xs:documentation>Provides the ability to check each Medication Dispensed Node individually.</xs:documentation>
+    </xs:annotation>
+    </xs:element>
+</xs:schema>

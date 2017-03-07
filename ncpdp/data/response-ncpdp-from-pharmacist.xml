@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sample Response from a Request from Pharmacist -->
+<Message HighestVersionSupported="" release="006" version="010"
+    xsi:schemaLocation="http://www.ncpdp.org/schema/SCRIPT SCRIPT_XML_10_6.xsd"
+    xmlns="http://www.ncpdp.org/schema/SCRIPT"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Header>
+    <To Qualifier="P">7701630</To>
+    <From Qualifier="P">3428903284</From> <!-- Required. Qualifier = [P]harmacy, [D]octor, or [C]linic -->
+    <MessageID>PMP113</MessageID>
+    <RelatesToMessageID>123456789AA001</RelatesToMessageID>
+    <SentTime>2014-08-21T16:01:47Z</SentTime>
+    <Security>
+      <UsernameToken>
+        <Username/>
+        <Password Type="PasswordDigest">String</Password>
+        <Nonce/>
+        <Created>2014-08-21T16:01:47Z</Created>
+      </UsernameToken>
+      <Sender>
+        <SecondaryIdentification>PASSWORD</SecondaryIdentification>
+        <TertiaryIdentification/>
+      </Sender>
+      <Receiver>
+        <SecondaryIdentification/>
+        <TertiaryIdentification/>
+      </Receiver>
+    </Security>
+  </Header>
+  <Body>
+    <RxHistoryResponse>
+      <Response>
+        <Approved></Approved>
+      </Response>
+      <Patient>
+        <Identification>
+          <SocialSecurity>123456789</SocialSecurity>
+        </Identification>
+        <Name>
+          <LastName>FLEMING</LastName>
+          <FirstName>ALEXANDER</FirstName>
+        </Name>
+        <Gender>M</Gender>
+        <DateOfBirth>
+          <Date>1981-08-08</Date>
+        </DateOfBirth>
+        <Address>
+          <AddressLine1>1000 ABC ST</AddressLine1>
+          <City>SOMEWHERE</City>
+          <State>VA</State>
+          <ZipCode>12345</ZipCode>
+        </Address>
+      </Patient>
+      <BenefitsCoordination>
+        <EffectiveDate>
+          <Date>2014-08-01</Date>
+        </EffectiveDate>
+        <ExpirationDate>
+          <Date>2014-08-20</Date>
+        </ExpirationDate>
+        <Consent>N</Consent>
+      </BenefitsCoordination>
+      <MedicationDispensed>
+        <DrugDescription>OXYMORPHONE 20MG TABLET</DrugDescription>
+        <DrugCoded>
+          <ProductCode>60951079401</ProductCode>
+          <ProductCodeQualifier>ND</ProductCodeQualifier>
+          <Strength>20</Strength>
+          <FormSourceCode>AA</FormSourceCode>
+          <FormCode>C42998</FormCode>
+          <StrengthSourceCode>AB</StrengthSourceCode>
+          <StrengthCode>C28253</StrengthCode>
+        </DrugCoded>
+        <Quantity>
+          <Value>10</Value>
+          <CodeListQualifier>87</CodeListQualifier>
+          <UnitSourceCode>AC</UnitSourceCode>
+          <PotencyUnitCode>C48542</PotencyUnitCode>
+        </Quantity>
+        <DaysSupply>10</DaysSupply>
+        <!-- PMT Type=Type ame|Name=First Last|DOB=YYYY-MM-DD|Address=Street, City, ST, Zipplus4 -->
+        <Note>PMT Type=Indian Nations|Name=John Smith|DOB=1900-01-01|Address=123 Main St, Louisville, KY, 402010000</Note>
+        <Refills>
+          <Qualifier>R</Qualifier>
+          <Value>0</Value>
+        </Refills>
+        <WrittenDate>
+          <Date>2014-08-02</Date>
+        </WrittenDate>
+        <LastFillDate>
+          <Date>2014-08-02</Date>
+        </LastFillDate>
+        <Pharmacy>
+          <Identification>
+            <NPI>78787878</NPI>
+            <DEANumber>AB1234563</DEANumber>
+          </Identification>
+          <StoreName>ABCD EFGH PHARMACY</StoreName>
+          <Address>
+            <AddressLine1>200 CDE ST</AddressLine1>
+            <City>STAUNTON</City>
+            <State>VA</State>
+            <ZipCode>015660000</ZipCode>
+          </Address>
+          <CommunicationNumbers>
+            <Communication>
+              <Number>123456789</Number>
+              <Qualifier>TE</Qualifier>
+            </Communication>
+          </CommunicationNumbers>
+        </Pharmacy>
+
+        <Prescriber>
+          <Identification>
+            <NPI>3209998001</NPI>
+            <DEANumber>CD3456781</DEANumber>
+          </Identification>
+          <Name>
+            <LastName>DAVIS</LastName>
+            <FirstName>MILES</FirstName>
+          </Name>
+          <Address>
+            <AddressLine1>3000 FGH DRIVE</AddressLine1>
+            <City>ALEXANDRIA</City>
+            <State>VA</State>
+            <ZipCode>12345</ZipCode>
+          </Address>
+          <CommunicationNumbers>
+            <Communication>
+              <Number>5088425594</Number>
+              <Qualifier>TE</Qualifier>
+            </Communication>
+            <Communication>
+              <Number>5088420989</Number>
+              <Qualifier>FX</Qualifier>
+            </Communication>
+          </CommunicationNumbers>
+        </Prescriber>
+        <HistorySource>
+          <SourceReference>987654321</SourceReference>
+          <FillNumber>0</FillNumber>
+        </HistorySource>
+      </MedicationDispensed>
+    </RxHistoryResponse>
+  </Body>
+</Message>

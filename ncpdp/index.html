@@ -1,0 +1,999 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>PMP Gateway API Documentation</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400|Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="../stylesheets/all.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+  <div class="logo">
+    <h1 class="brand"><a href="../">PMP Gateway</a></h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a class="" href="../">API Documentation</a></li>
+      <li><a class="" href="../faqs.html">FAQs</a></li>
+      <li><a href="https://github.com/Appriss-Operations/pmp_gateway_docs">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+    <div class="side-nav">
+  <ul class="api-versions">
+  <li><a class="" href="../v5/">v5</a></li>
+  <li><a class="" href="../v4/">(LEGACY) V4</a></li>
+  <li><a class="active" href="../ncpdp/">NCPDP</a></li>
+</ul>
+
+  <ul class="toc">
+    <li class="active">
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#intro">Introduction</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#architecture">Architecture</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#authentication">Authentication</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#endpoints">Endpoints</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#errors">Errors</a>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#gateway-request">Gateway Request</a>
+      <ul class="sidebar-nav-items">
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#gateway-request-minimal">Minimal Example</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#responses">Gateway Responses</a>
+      <ul class="sidebar-nav-items">
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#responses-no-data">No Data</a>
+        </li>
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#responses-error">Error</a>
+        </li>
+        <li>
+          <span class="active-marker">&nbsp;</span>
+          <a class="sidebar-nav-item" href="#responses-disallowed">Disallowed</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="code-background">
+  <div class="code-background-actual"></div>
+</div>
+<div class="main-content">
+  <section class="method" id="intro">
+  <div class="method-copy">
+    <h1>Introduction</h1>
+    <p>Welcome to the PMP Gateway NCPDP API documentation. This API reference provides information on available endpoints and how to interact with them.</p>
+    <p>PMP Gateway is an API that simplifies integration of controlled substance prescription history into health IT systems. Using the PMP Gateway API, you can integrate patient prescription history data into your applications.</p>
+	<h1>Overview</h1>
+	<p>A "Client System" makes a request against PMP Gateway. The permissions of the system and Health care role of the user making the request are checked. If the request is not allowed by the PMP systems then the request will be stopped at gateway and a Disallowed response will be generated for those PMP systems. The request will be relayed to InterConnect which will forward it on to the state PMP systems. The responses are consolidated and sent back to the "Client System".</p>
+    <p>This API is <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>ful and uses XML formatted requests and responses.</p>
+    <h3>Questions & Feedback</h3>
+    <p>This documentation and all example code is available on GitHub. If you have questions or feedback the best way to contact us is to
+      <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs/issues">open an "issue"</a>
+      on our
+      <a target="_blank" href="https://github.com/Appriss-Operations/pmp_gateway_docs">GitHub project space</a>.
+    </p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+      <p>Example code is provided for each API request. To get started, you can make requests against the testing environment using the code examples and the XML request data they reference.</p>
+    </div>
+  </div><!-- .method-code -->
+</section>
+  <section class="method" id="architecture">
+  <div class="method-copy">
+    <h1>The Life cycle of a Gateway Request</h1>
+    <ul>
+        <li>A transaction over PMP Gateway is begun by an HTTP POST of a gateway request document to the gateway service.</li>
+        <li>The web service uses
+        <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">Basic Http Authentication</a> to check
+        if the user credentials supplied are authorized to make requests over gateway.
+        The user information supplied will be linked to a "Licensee"
+        <div class="note"><b>Note:</b> A Licensee can be thought of as an account.</div></li>
+          <li>Based on the user making the request and the destination PMP systems requested there are two checks.<br /><i>For each PMP:</i></li>
+        <ol>
+          <li>Is this licensee account able to make a request against the destination PMP?</li>
+          <li>Is the origin State of the request able to make a request to the Destination State on the Health Care Provider Role specified</li>
+        </ol>
+        <li>If either of these checks fail for a PMP the request for that specific PMP is not forwarded on to InterConnect.</li>
+        <li>The parts of the requests that are allowed are forwarded on to InterConnect which then forwards them on to the PMP systems. </li>
+        <li>The response from the PMP Systems are consolidated along with any other responses that may have failed a permissions check and the entire response is delivered on to the requester. </li>
+      </ul>
+
+
+    <p><strong>State PMP Systems</strong> store prescription data for patients and allow authorized users to request or commit prescription data.</p>
+    <p><strong><a href="http://www.nabp.net/programs/pmp-interconnect/nabp-pmp-interconnect">PMP Interconnect</a></strong> facilitates communications between state PMP systems. One role of PMP Interconnect is to manage permissions for how state PMP systems communicate with each other.</p>
+    <p><strong>PMP Gateway</strong> connects to PMP Interconnect, providing an interface for healthcare providers to query patient prescription data.</p>
+
+    <div class="copy-group">
+      <h3>Consequences of Distributed Architecture</h3>
+      <p>The distributed architecture of the PMP system impacts how PMP Gateway functions. Some of the consequences:</p>
+      <ul>
+        <li>Prescription data requests can only be as fast as the slowest PMP being queried. Consequently, the average response time is 7 seconds.</li>
+        <li>Errors may occur at any point in the network. XML Responses will describe where in the network an error occured.</li>
+      </ul>
+    </div>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <a href="../images/gateway_diagram.png"><img alt="PMP Diagram" src="../images/gateway_diagram.png" /></a>
+  </div><!-- .method-code -->
+</section>
+  <section class="method" id="authentication">
+  <div class="method-copy">
+    <h1>Authentication</h1>
+    <p>You must authenticate with a username and password for all API requests.</p>
+    <p>All requests must be made over HTTPS. Calls made over plain HTTP will fail.</p>
+    <aside class="notice">Your username and password is provided to you by the Appriss Project Manager who is handling your account.</aside>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+  </div>
+</section>
+
+  <section class="method" id="endpoints">
+  <div class="method-copy">
+    <h1>API Endpoints</h1>
+    <p>A testing environment is available for testing and development purposes. The testing environment is populated with test data and contains no real-world patient data.</p>
+    <p>The production environment contains real HIPAA protected patient data that must be properly handled.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Testing API Endpoint</h3>
+<pre class="highlight shell"><code>https://gateway-prep.pmp.appriss.com/ncpdp_requests
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-definition">
+      <h3>Production API Endpoint</h3>
+<pre class="highlight shell"><code>https://pmpgateway.net/ncpdp_requests
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="errors">
+  <div class="method-copy">
+    <h1>Errors</h1>
+    <p>PMP Gateway uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided information (e.g. a required parameter was missing) and codes in the 5xx range indicate an error with PMP Gateway.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+      <h3>HTTP Status Codes</h3>
+      <table>
+        <tbody>
+          <tr>
+            <th>200 OK</th>
+            <td>Everything worked as expected or the request was missing required XML nodes and the response XML will describe the error.</td>
+          </tr>
+          <tr>
+            <th>401 Unauthorized</th>
+            <td>Invalid login credentials.</td>
+          </tr>
+          <tr>
+            <th>500 Internal Server Error</th>
+            <td>Something went wrong. The response body will be a Gateway Response with an Error section.</td>
+          </tr>
+        <tbody>
+      </table>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="gateway-request">
+  <div class="method-copy">
+    <h1>NCPDP Schema AND Request Validation</h1>
+
+    <div class="schema-files">
+      <p>Schema, Pharmacist AND Prescriber Request/Response files:</p>
+      <ul>
+        <li><a href="data/schema/SCRIPT_XML_10_6.xsd">NCPDP schema</a></li>
+		<li><a href="data/validate.sh">NCPDP Request Validation</a></li>
+		<li><a href="data/request-ncpdp.xml">NCPDP Request</a></li>
+		<li><a href="data/request-ncpdp-pharmacist.xml">NCPDP Pharmacist Request</a></li>
+		<li><a href="data/response-ncpdp-error.xml">NCPDP Error</a></li>
+		<li><a href="data/response-ncpdp-from-pharmacist.xml">NCPDP Pharmacist Response</a></li>
+		<li><a href="data/response-ncpdp-from-prescriber.xml">NCPDP Prescriber Response</a></li>
+      </ul>
+    </div>
+
+   <h4>How states to be queried are determined:</h4>
+   <ul>
+      <li>States that the licensee has been granted access to will be the maximal set of states that will be queried</li>
+      <li>The location state of the requestor/requesting facility will be used in conjunction with the roles determined from the <b>From Qualifier</b> and <b>Speciality</b> to determine if that requestor role can make the request from the requesting state to the destination state.</li>
+   </ul>
+
+
+   <h4>Taxonomy Code Mappings</h4>
+
+   <p>Taxonomy code mappings are determined using a combination of the Qualifier attribute on the From element and the text of the Specialty node. The following example maps to a "Phamacist with prescriptive authority":</p>
+   <pre class="round-border prettyprint">
+  &lt;Header&gt;
+...
+    &lt;From Qualifier=&quot;P&quot;&gt;FROMSYSTEM&lt;/From&gt;
+...
+  &lt;/Header&gt;
+  &lt;Body&gt;
+    &lt;RxHistoryRequest&gt;
+      &lt;Prescriber&gt;
+...
+        &lt;Specialty&gt;1835P0018X&lt;/Specialty&gt;
+   </pre>
+   <p>Below is a table of the mappings which currently exist in Gateway for Taxonomy codes. An asterisk means that if the characters before it match, it is considered a match.</p>
+   <table class="table-data" border="1">
+     <tr>
+     <th>From Qualifier</th>
+     <th>Taxonomy Code Mask for Speciality Node</th>
+     <th>Gateway Role</th>
+     </tr>
+     <tr>
+       <td rowspan="11">D or C</td>
+       <td>1223*</td>
+       <td>Dentist</td>
+     </tr>
+     <tr>
+       <td>175F00000X</td>
+       <td>Naturopathic Physician with prescriptive authority</td>
+     </tr>
+     <tr>
+       <td>363L*</td>
+       <td>Nurse Practitioner</td>
+     </tr>
+     <tr>
+       <td>152W*</td>
+       <td>Optometrist with prescriptive authority</td>
+     </tr>
+     <tr>
+       <td>1835P0018X</td>
+       <td>Pharmacist with prescriptive authority</td>
+     </tr>
+     <tr>
+       <td>207*</td>
+       <td rowspan="3">Physician</td>
+     </tr>
+     <tr>
+       <td>208*</td>
+     </tr>
+     <tr>
+       <td>213E*</td>
+     </tr>
+     <tr>
+       <td>363A*</td>
+       <td>Physician Assistant with prescritive authority</td>
+     </tr>
+     <tr>
+       <td>103T*</td>
+       <td>Psychologist with prescritive authority</td>
+     </tr>
+     <tr>
+       <td>174M00000X</td>
+       <td>Veterinarian</td>
+     </tr>
+     <tr>
+       <td rowspan="3">P</td>
+       <td>1835*</td>
+       <td>Pharmacist</td>
+     </tr>
+     <tr>
+       <td>3336*</td>
+       <td>Pharmacy</td>
+     </tr>
+     <tr>
+       <td>183700000X</td>
+       <td>Pharmacist's Delegate - Licensed</td>
+     </tr>
+   </table>	
+	
+	
+    <p>When a Gateway request is recieved, PMP Gateway requests patient prescription data from the required PMP systems.</p>
+    <p>If the PMP systems are successfully queried, the Gateway response will include the patient prescription data.</p>
+
+    <p>The Gateway request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
+    <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <a href="data/schema/gateway_request_types.xsd">gateway request types XML schema</a>.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/search_request/create
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<pre class="highlight shell"><code>curl https://gateway-prep.pmp.appriss.com/search_request/create <span class="se">\</span>
+  -u username:password <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
+  -d @gateway_request.xml
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">request-ncpdp.xml</p>
+      <span class="download">
+        <a href="./data/request-ncpdp.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="nt">&lt;Message</span> <span class="na">xmlns=</span><span class="s">"http://www.ncpdp.org/schema/SCRIPT"</span> <span class="na">release=</span><span class="s">"006"</span> <span class="na">version=</span><span class="s">"010"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Header&gt;</span>
+    <span class="nt">&lt;To</span> <span class="na">Qualifier=</span><span class="s">"ZZZ"</span><span class="nt">&gt;</span>PMPGATEWAY<span class="nt">&lt;/To&gt;</span>
+    <span class="nt">&lt;From</span> <span class="na">Qualifier=</span><span class="s">"D"</span><span class="nt">&gt;</span>FROMSYSTEM<span class="nt">&lt;/From&gt;</span> <span class="c">&lt;!-- Required. Qualifier = [P]harmacy, [D]octor, or [C]linic --&gt;</span>
+    <span class="nt">&lt;MessageID&gt;</span>501990<span class="nt">&lt;/MessageID&gt;</span>
+    <span class="nt">&lt;SentTime&gt;</span>2014-08-22T14:06:26.0Z<span class="nt">&lt;/SentTime&gt;</span>
+    <span class="nt">&lt;Security&gt;</span>
+      <span class="nt">&lt;Sender&gt;</span>
+        <span class="c">&lt;!-- The facility identifier where the prescriber request originates is required. --&gt;</span>
+        <span class="c">&lt;!-- ID type will be determined by format. --&gt;</span>
+        <span class="nt">&lt;TertiaryIdentification&gt;</span>AB1234567<span class="nt">&lt;/TertiaryIdentification&gt;</span>
+      <span class="nt">&lt;/Sender&gt;</span>
+      <span class="nt">&lt;Receiver&gt;</span>
+        <span class="nt">&lt;TertiaryIdentification&gt;</span>PMPGATEWAY<span class="nt">&lt;/TertiaryIdentification&gt;</span>
+      <span class="nt">&lt;/Receiver&gt;</span>
+    <span class="nt">&lt;/Security&gt;</span>
+    <span class="nt">&lt;TestMessage&gt;</span>1<span class="nt">&lt;/TestMessage&gt;</span>
+  <span class="nt">&lt;/Header&gt;</span>
+  <span class="nt">&lt;Body&gt;</span>
+    <span class="nt">&lt;RxHistoryRequest&gt;</span>
+      <span class="nt">&lt;Prescriber&gt;</span>
+        <span class="nt">&lt;Identification&gt;</span>
+          <span class="c">&lt;!-- The individual prescriber identifier of the requestor is required. --&gt;</span>
+          <span class="nt">&lt;NPI&gt;</span>1132767439<span class="nt">&lt;/NPI&gt;</span> <span class="c">&lt;!-- DEANumber or NPI required for requestor--&gt;</span>
+        <span class="nt">&lt;/Identification&gt;</span>
+        <span class="nt">&lt;Specialty&gt;</span>1835P0018X<span class="nt">&lt;/Specialty&gt;</span> <span class="c">&lt;!-- Required. Combines with From Qualifier for role name --&gt;</span>
+        <span class="nt">&lt;ClinicName&gt;</span>Health Clinic<span class="nt">&lt;/ClinicName&gt;</span> <span class="c">&lt;!-- ClinicName is required for Prescribers --&gt;</span>
+
+        <span class="nt">&lt;Name&gt;</span> <span class="c">&lt;!-- Name of prescriber is required --&gt;</span>
+          <span class="nt">&lt;LastName&gt;</span>Stolldorf<span class="nt">&lt;/LastName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+          <span class="nt">&lt;FirstName&gt;</span>Bob<span class="nt">&lt;/FirstName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+        <span class="nt">&lt;/Name&gt;</span>
+        <span class="nt">&lt;Address&gt;</span>
+          <span class="c">&lt;!-- The address of the facility from where the request originates --&gt;</span>
+          <span class="nt">&lt;AddressLine1&gt;</span>10401 Linn Station Rd<span class="nt">&lt;/AddressLine1&gt;</span>
+          <span class="nt">&lt;City&gt;</span>Louisville<span class="nt">&lt;/City&gt;</span>
+          <span class="nt">&lt;State&gt;</span>KY<span class="nt">&lt;/State&gt;</span> <span class="c">&lt;!-- Required to determine originating state of request --&gt;</span>
+          <span class="nt">&lt;ZipCode&gt;</span>40223<span class="nt">&lt;/ZipCode&gt;</span> <span class="c">&lt;!-- Zip or Phone Number required for patient --&gt;</span>
+        <span class="nt">&lt;/Address&gt;</span>
+        <span class="nt">&lt;CommunicationNumbers&gt;</span>
+          <span class="nt">&lt;Communication&gt;</span>
+            <span class="nt">&lt;Number&gt;</span>5025551234<span class="nt">&lt;/Number&gt;</span>
+            <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span> <span class="c">&lt;!-- Zip or Phone Number required for patient --&gt;</span>
+          <span class="nt">&lt;/Communication&gt;</span>
+          <span class="nt">&lt;Communication&gt;</span>
+            <span class="nt">&lt;Number&gt;</span>5025551235<span class="nt">&lt;/Number&gt;</span>
+            <span class="nt">&lt;Qualifier&gt;</span>FX<span class="nt">&lt;/Qualifier&gt;</span>
+          <span class="nt">&lt;/Communication&gt;</span>
+        <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+      <span class="nt">&lt;/Prescriber&gt;</span>
+      <span class="nt">&lt;Patient&gt;</span>
+        <span class="nt">&lt;Identification&gt;</span>
+          <span class="nt">&lt;MedicalRecordIdentificationNumberEHR&gt;</span>770560<span class="nt">&lt;/MedicalRecordIdentificationNumberEHR&gt;</span>
+        <span class="nt">&lt;/Identification&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>
+          <span class="nt">&lt;LastName&gt;</span>Smith<span class="nt">&lt;/LastName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+          <span class="nt">&lt;FirstName&gt;</span>Tim<span class="nt">&lt;/FirstName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+        <span class="nt">&lt;/Name&gt;</span>
+        <span class="nt">&lt;Gender&gt;</span>M<span class="nt">&lt;/Gender&gt;</span>
+        <span class="nt">&lt;DateOfBirth&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>1983-01-01<span class="nt">&lt;/Date&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+        <span class="nt">&lt;/DateOfBirth&gt;</span>
+        <span class="nt">&lt;Address&gt;</span>
+          <span class="nt">&lt;AddressLine1&gt;</span>123 Main St<span class="nt">&lt;/AddressLine1&gt;</span>
+          <span class="nt">&lt;City&gt;</span>MADISON<span class="nt">&lt;/City&gt;</span>
+          <span class="nt">&lt;State&gt;</span>WI<span class="nt">&lt;/State&gt;</span>
+          <span class="nt">&lt;ZipCode&gt;</span>53719<span class="nt">&lt;/ZipCode&gt;</span> <span class="c">&lt;!-- Zip or phone required for patient --&gt;</span>
+        <span class="nt">&lt;/Address&gt;</span>
+        <span class="nt">&lt;CommunicationNumbers&gt;</span>
+          <span class="nt">&lt;Communication&gt;</span>
+            <span class="nt">&lt;Number&gt;</span>6085551234<span class="nt">&lt;/Number&gt;</span>
+            <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span>
+          <span class="nt">&lt;/Communication&gt;</span>
+        <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+      <span class="nt">&lt;/Patient&gt;</span>
+      <span class="nt">&lt;BenefitsCoordination&gt;</span>
+        <span class="nt">&lt;EffectiveDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2013-08-23<span class="nt">&lt;/Date&gt;</span><span class="c">&lt;!-- The Begin date range, required. --&gt;</span>
+        <span class="nt">&lt;/EffectiveDate&gt;</span>
+        <span class="nt">&lt;ExpirationDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2014-08-22<span class="nt">&lt;/Date&gt;</span><span class="c">&lt;!-- The end date range, required. --&gt;</span>
+        <span class="nt">&lt;/ExpirationDate&gt;</span>
+        <span class="nt">&lt;Consent&gt;</span>Y<span class="nt">&lt;/Consent&gt;</span>
+      <span class="nt">&lt;/BenefitsCoordination&gt;</span>
+    <span class="nt">&lt;/RxHistoryRequest&gt;</span>
+  <span class="nt">&lt;/Body&gt;</span>
+<span class="nt">&lt;/Message&gt;</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="c">&lt;!-- Sample of a Response to a Request from a Prescriber --&gt;</span>
+<span class="nt">&lt;Message</span> <span class="na">xmlns=</span><span class="s">"http://www.ncpdp.org/schema/SCRIPT"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">HighestVersionSupported=</span><span class="s">""</span> <span class="na">release=</span><span class="s">"006"</span> <span class="na">version=</span><span class="s">"010"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.ncpdp.org/schema/SCRIPT SCRIPT_XML_10_6.xsd"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Header&gt;</span>
+    <span class="nt">&lt;To</span> <span class="na">Qualifier=</span><span class="s">"C"</span><span class="nt">&gt;</span>ASEUROWEDF<span class="nt">&lt;/To&gt;</span>
+    <span class="nt">&lt;From</span> <span class="na">Qualifier=</span><span class="s">"ZZZ"</span><span class="nt">&gt;</span>3428903284<span class="nt">&lt;/From&gt;</span>
+    <span class="nt">&lt;MessageID&gt;</span>PMP112<span class="nt">&lt;/MessageID&gt;</span>
+    <span class="nt">&lt;RelatesToMessageID&gt;</span>123456789AA001<span class="nt">&lt;/RelatesToMessageID&gt;</span>
+    <span class="nt">&lt;SentTime&gt;</span>2014-08-21T16:01:47Z<span class="nt">&lt;/SentTime&gt;</span>
+    <span class="nt">&lt;Security&gt;</span>
+      <span class="nt">&lt;UsernameToken&gt;</span>
+        <span class="nt">&lt;Username/&gt;</span>
+        <span class="nt">&lt;Password</span> <span class="na">Type=</span><span class="s">"PasswordDigest"</span><span class="nt">&gt;</span>String<span class="nt">&lt;/Password&gt;</span>
+        <span class="nt">&lt;Nonce/&gt;</span>
+        <span class="nt">&lt;Created&gt;</span>2001-12-17T09:30:47Z<span class="nt">&lt;/Created&gt;</span>
+      <span class="nt">&lt;/UsernameToken&gt;</span>
+      <span class="nt">&lt;Sender&gt;</span>
+        <span class="nt">&lt;SecondaryIdentification&gt;</span>PASSWORD<span class="nt">&lt;/SecondaryIdentification&gt;</span>
+        <span class="nt">&lt;TertiaryIdentification/&gt;</span>
+      <span class="nt">&lt;/Sender&gt;</span>
+      <span class="nt">&lt;Receiver&gt;</span>
+        <span class="nt">&lt;SecondaryIdentification/&gt;</span>
+        <span class="nt">&lt;TertiaryIdentification/&gt;</span>
+      <span class="nt">&lt;/Receiver&gt;</span>
+    <span class="nt">&lt;/Security&gt;</span>
+  <span class="nt">&lt;/Header&gt;</span>
+  <span class="nt">&lt;Body&gt;</span>
+    <span class="nt">&lt;RxHistoryResponse&gt;</span>
+      <span class="nt">&lt;Response&gt;</span>
+        <span class="nt">&lt;Approved/&gt;</span>
+      <span class="nt">&lt;/Response&gt;</span>
+      <span class="nt">&lt;Patient&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>
+          <span class="nt">&lt;LastName&gt;</span>JONES<span class="nt">&lt;/LastName&gt;</span>
+          <span class="nt">&lt;FirstName&gt;</span>DEAN<span class="nt">&lt;/FirstName&gt;</span>
+        <span class="nt">&lt;/Name&gt;</span>
+        <span class="nt">&lt;Gender&gt;</span>M<span class="nt">&lt;/Gender&gt;</span>
+        <span class="nt">&lt;DateOfBirth&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>1960-03-18<span class="nt">&lt;/Date&gt;</span>
+        <span class="nt">&lt;/DateOfBirth&gt;</span>
+        <span class="nt">&lt;Address&gt;</span>
+          <span class="nt">&lt;AddressLine1&gt;</span>18991 STATE STREET<span class="nt">&lt;/AddressLine1&gt;</span>
+          <span class="nt">&lt;City&gt;</span>SHREWSBURY<span class="nt">&lt;/City&gt;</span>
+          <span class="nt">&lt;State&gt;</span>MA<span class="nt">&lt;/State&gt;</span>
+          <span class="nt">&lt;ZipCode&gt;</span>015450000<span class="nt">&lt;/ZipCode&gt;</span>
+        <span class="nt">&lt;/Address&gt;</span>
+      <span class="nt">&lt;/Patient&gt;</span>
+      <span class="nt">&lt;BenefitsCoordination&gt;</span>
+        <span class="nt">&lt;EffectiveDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2014-08-01<span class="nt">&lt;/Date&gt;</span>
+        <span class="nt">&lt;/EffectiveDate&gt;</span>
+        <span class="nt">&lt;ExpirationDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2014-08-20<span class="nt">&lt;/Date&gt;</span>
+        <span class="nt">&lt;/ExpirationDate&gt;</span>
+        <span class="nt">&lt;Consent&gt;</span>N<span class="nt">&lt;/Consent&gt;</span>
+      <span class="nt">&lt;/BenefitsCoordination&gt;</span>
+      <span class="nt">&lt;MedicationDispensed&gt;</span>
+        <span class="c">&lt;!-- If a compound drug, DrugDescription will be "Compound Drug" --&gt;</span>
+        <span class="nt">&lt;DrugDescription&gt;</span>HYDROCODONE 12.5 MG TABLET PAR<span class="nt">&lt;/DrugDescription&gt;</span>
+        <span class="nt">&lt;DrugCoded&gt;</span>
+          <span class="nt">&lt;ProductCode&gt;</span>00228205710<span class="nt">&lt;/ProductCode&gt;</span>
+          <span class="nt">&lt;ProductCodeQualifier&gt;</span>ND<span class="nt">&lt;/ProductCodeQualifier&gt;</span>
+          <span class="nt">&lt;Strength/&gt;</span>
+        <span class="nt">&lt;/DrugCoded&gt;</span>
+        <span class="nt">&lt;Quantity&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>90<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;CodeListQualifier&gt;</span>38<span class="nt">&lt;/CodeListQualifier&gt;</span>
+          <span class="nt">&lt;UnitSourceCode&gt;</span>AC<span class="nt">&lt;/UnitSourceCode&gt;</span>
+          <span class="nt">&lt;PotencyUnitCode&gt;</span>C48542<span class="nt">&lt;/PotencyUnitCode&gt;</span>
+        <span class="nt">&lt;/Quantity&gt;</span>
+        <span class="nt">&lt;DaysSupply&gt;</span>30<span class="nt">&lt;/DaysSupply&gt;</span>
+        <span class="c">&lt;!-- PMT Type=Type ame|Name=First Last|DOB=YYYY-MM-DD|Address=Street, City, ST, Zipplus4 --&gt;</span>
+        <span class="nt">&lt;Note&gt;</span>PMT Type=Indian Nations|Name=John Smith|DOB=1900-01-01|Address=123 Main St, Louisville, KY, 402010000<span class="nt">&lt;/Note&gt;</span>
+        <span class="nt">&lt;Refills&gt;</span>
+          <span class="nt">&lt;Qualifier&gt;</span>R<span class="nt">&lt;/Qualifier&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>1<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Refills&gt;</span>
+        <span class="nt">&lt;WrittenDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2014-08-01<span class="nt">&lt;/Date&gt;</span>
+        <span class="nt">&lt;/WrittenDate&gt;</span>
+        <span class="nt">&lt;LastFillDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2014-08-01<span class="nt">&lt;/Date&gt;</span>
+        <span class="nt">&lt;/LastFillDate&gt;</span>
+        <span class="nt">&lt;Pharmacy&gt;</span>
+          <span class="nt">&lt;Identification&gt;</span>
+            <span class="nt">&lt;NPI&gt;</span>78787878<span class="nt">&lt;/NPI&gt;</span>
+            <span class="nt">&lt;DEANumber&gt;</span>BC123233<span class="nt">&lt;/DEANumber&gt;</span>
+          <span class="nt">&lt;/Identification&gt;</span>
+          <span class="nt">&lt;StoreName&gt;</span>ABC PHARMACY<span class="nt">&lt;/StoreName&gt;</span>
+          <span class="nt">&lt;Address&gt;</span>
+            <span class="nt">&lt;AddressLine1&gt;</span>1 STATE STREET<span class="nt">&lt;/AddressLine1&gt;</span>
+            <span class="nt">&lt;City&gt;</span>HOPKINTON<span class="nt">&lt;/City&gt;</span>
+            <span class="nt">&lt;State&gt;</span>MA<span class="nt">&lt;/State&gt;</span>
+            <span class="nt">&lt;ZipCode&gt;</span>015660000<span class="nt">&lt;/ZipCode&gt;</span>
+          <span class="nt">&lt;/Address&gt;</span>
+          <span class="nt">&lt;CommunicationNumbers&gt;</span>
+            <span class="nt">&lt;Communication&gt;</span>
+              <span class="nt">&lt;Number&gt;</span>5554440222<span class="nt">&lt;/Number&gt;</span>
+              <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span>
+            <span class="nt">&lt;/Communication&gt;</span>
+          <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+        <span class="nt">&lt;/Pharmacy&gt;</span>
+        <span class="nt">&lt;Prescriber&gt;</span>
+          <span class="nt">&lt;Identification&gt;</span>
+            <span class="nt">&lt;NPI&gt;</span>3209998001<span class="nt">&lt;/NPI&gt;</span>
+            <span class="nt">&lt;DEANumber&gt;</span>BF2820199<span class="nt">&lt;/DEANumber&gt;</span>
+          <span class="nt">&lt;/Identification&gt;</span>
+          <span class="nt">&lt;Name&gt;</span>
+            <span class="nt">&lt;LastName&gt;</span>FAHEY<span class="nt">&lt;/LastName&gt;</span>
+            <span class="nt">&lt;FirstName&gt;</span>DAVID<span class="nt">&lt;/FirstName&gt;</span>
+            <span class="nt">&lt;MiddleName&gt;</span>A<span class="nt">&lt;/MiddleName&gt;</span>
+          <span class="nt">&lt;/Name&gt;</span>
+          <span class="nt">&lt;Address&gt;</span>
+            <span class="nt">&lt;AddressLine1&gt;</span>26 JULIO DR<span class="nt">&lt;/AddressLine1&gt;</span>
+            <span class="nt">&lt;City&gt;</span>SHREWSBURY<span class="nt">&lt;/City&gt;</span>
+            <span class="nt">&lt;State&gt;</span>MA<span class="nt">&lt;/State&gt;</span>
+            <span class="nt">&lt;ZipCode&gt;</span>015450000<span class="nt">&lt;/ZipCode&gt;</span>
+          <span class="nt">&lt;/Address&gt;</span>
+          <span class="nt">&lt;CommunicationNumbers&gt;</span>
+            <span class="nt">&lt;Communication&gt;</span>
+              <span class="nt">&lt;Number&gt;</span>5088425594<span class="nt">&lt;/Number&gt;</span>
+              <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span>
+            <span class="nt">&lt;/Communication&gt;</span>
+            <span class="nt">&lt;Communication&gt;</span>
+              <span class="nt">&lt;Number&gt;</span>5088420989<span class="nt">&lt;/Number&gt;</span>
+              <span class="nt">&lt;Qualifier&gt;</span>FX<span class="nt">&lt;/Qualifier&gt;</span>
+            <span class="nt">&lt;/Communication&gt;</span>
+          <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+        <span class="nt">&lt;/Prescriber&gt;</span>
+      <span class="nt">&lt;/MedicationDispensed&gt;</span>
+      <span class="nt">&lt;MedicationDispensed&gt;</span>
+        <span class="nt">&lt;DrugDescription&gt;</span>METFORMIN HCL 500 MG TABLETMYL<span class="nt">&lt;/DrugDescription&gt;</span>
+        <span class="nt">&lt;DrugCoded&gt;</span>
+          <span class="nt">&lt;ProductCode&gt;</span>00228205710<span class="nt">&lt;/ProductCode&gt;</span>
+          <span class="nt">&lt;ProductCodeQualifier&gt;</span>ND<span class="nt">&lt;/ProductCodeQualifier&gt;</span>
+          <span class="nt">&lt;Strength/&gt;</span>
+        <span class="nt">&lt;/DrugCoded&gt;</span>
+        <span class="nt">&lt;Quantity&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>60<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;CodeListQualifier&gt;</span>38<span class="nt">&lt;/CodeListQualifier&gt;</span>
+          <span class="nt">&lt;UnitSourceCode&gt;</span>AC<span class="nt">&lt;/UnitSourceCode&gt;</span>
+          <span class="nt">&lt;PotencyUnitCode&gt;</span>C48542<span class="nt">&lt;/PotencyUnitCode&gt;</span>
+        <span class="nt">&lt;/Quantity&gt;</span>
+        <span class="nt">&lt;DaysSupply&gt;</span>30<span class="nt">&lt;/DaysSupply&gt;</span>
+        <span class="nt">&lt;Refills&gt;</span>
+          <span class="nt">&lt;Qualifier&gt;</span>R<span class="nt">&lt;/Qualifier&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>5<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Refills&gt;</span>
+        <span class="nt">&lt;WrittenDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2014-08-06<span class="nt">&lt;/Date&gt;</span>
+        <span class="nt">&lt;/WrittenDate&gt;</span>
+        <span class="nt">&lt;LastFillDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2014-08-07<span class="nt">&lt;/Date&gt;</span>
+        <span class="nt">&lt;/LastFillDate&gt;</span>
+        <span class="nt">&lt;Pharmacy&gt;</span>
+          <span class="nt">&lt;Identification&gt;</span>
+            <span class="nt">&lt;NPI&gt;</span>78787878<span class="nt">&lt;/NPI&gt;</span>
+            <span class="nt">&lt;DEANumber&gt;</span>BC123233<span class="nt">&lt;/DEANumber&gt;</span>
+          <span class="nt">&lt;/Identification&gt;</span>
+          <span class="nt">&lt;StoreName&gt;</span>ABC PHARMACY<span class="nt">&lt;/StoreName&gt;</span>
+          <span class="nt">&lt;Address&gt;</span>
+            <span class="nt">&lt;AddressLine1&gt;</span>1 STATE STREET<span class="nt">&lt;/AddressLine1&gt;</span>
+            <span class="nt">&lt;City&gt;</span>BOSTON<span class="nt">&lt;/City&gt;</span>
+            <span class="nt">&lt;State&gt;</span>MA<span class="nt">&lt;/State&gt;</span>
+            <span class="nt">&lt;ZipCode&gt;</span>015660000<span class="nt">&lt;/ZipCode&gt;</span>
+          <span class="nt">&lt;/Address&gt;</span>
+          <span class="nt">&lt;CommunicationNumbers&gt;</span>
+            <span class="nt">&lt;Communication&gt;</span>
+              <span class="nt">&lt;Number&gt;</span>5554440222<span class="nt">&lt;/Number&gt;</span>
+              <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span>
+            <span class="nt">&lt;/Communication&gt;</span>
+          <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+        <span class="nt">&lt;/Pharmacy&gt;</span>
+        <span class="nt">&lt;Prescriber&gt;</span>
+          <span class="nt">&lt;Identification&gt;</span>
+            <span class="nt">&lt;NPI&gt;</span>3209998001<span class="nt">&lt;/NPI&gt;</span>
+            <span class="nt">&lt;DEANumber&gt;</span>AS5563386<span class="nt">&lt;/DEANumber&gt;</span>
+          <span class="nt">&lt;/Identification&gt;</span>
+          <span class="nt">&lt;Name&gt;</span>
+            <span class="nt">&lt;LastName&gt;</span>STARR<span class="nt">&lt;/LastName&gt;</span>
+            <span class="nt">&lt;FirstName&gt;</span>JEROME<span class="nt">&lt;/FirstName&gt;</span>
+            <span class="nt">&lt;MiddleName&gt;</span>I<span class="nt">&lt;/MiddleName&gt;</span>
+          <span class="nt">&lt;/Name&gt;</span>
+          <span class="nt">&lt;Address&gt;</span>
+            <span class="nt">&lt;AddressLine1&gt;</span>67 BELMONT ST<span class="nt">&lt;/AddressLine1&gt;</span>
+            <span class="nt">&lt;City&gt;</span>WORCESTER<span class="nt">&lt;/City&gt;</span>
+            <span class="nt">&lt;State&gt;</span>MA<span class="nt">&lt;/State&gt;</span>
+            <span class="nt">&lt;ZipCode&gt;</span>016050000<span class="nt">&lt;/ZipCode&gt;</span>
+            <span class="nt">&lt;PlaceLocationQualifier&gt;</span>AD2<span class="nt">&lt;/PlaceLocationQualifier&gt;</span>
+          <span class="nt">&lt;/Address&gt;</span>
+          <span class="nt">&lt;CommunicationNumbers&gt;</span>
+            <span class="nt">&lt;Communication&gt;</span>
+              <span class="nt">&lt;Number&gt;</span>5087541707<span class="nt">&lt;/Number&gt;</span>
+              <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span>
+            <span class="nt">&lt;/Communication&gt;</span>
+            <span class="nt">&lt;Communication&gt;</span>
+              <span class="nt">&lt;Number&gt;</span>5083345331<span class="nt">&lt;/Number&gt;</span>
+              <span class="nt">&lt;Qualifier&gt;</span>FX<span class="nt">&lt;/Qualifier&gt;</span>
+            <span class="nt">&lt;/Communication&gt;</span>
+          <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+        <span class="nt">&lt;/Prescriber&gt;</span>
+      <span class="nt">&lt;/MedicationDispensed&gt;</span>
+    <span class="nt">&lt;/RxHistoryResponse&gt;</span>
+  <span class="nt">&lt;/Body&gt;</span>
+<span class="nt">&lt;/Message&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="gateway-request-minimal">
+  <div class="method-copy">
+    <h2>Sample Request from a Pharmacy:</h2>
+    <p>This example is the most minimalistic request possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<pre class="highlight shell"><code>POST https://gateway-prep.pmp.appriss.com/search_request/create
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<pre class="highlight shell"><code>curl https://gateway-prep.pmp.appriss.com/search_request/create <span class="se">\</span>
+  -u username:password <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/xml"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/xml"</span> <span class="se">\</span>
+  -d @request-ncpdp-pharmacist.xml.xml
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">request-ncpdp-pharmacist.xml</p>
+      <span class="download">
+        <a href="./data/request-ncpdp-pharmacist.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;Message</span> <span class="na">xmlns=</span><span class="s">"http://www.ncpdp.org/schema/SCRIPT"</span> <span class="na">release=</span><span class="s">"006"</span> <span class="na">version=</span><span class="s">"010"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Header&gt;</span>
+    <span class="nt">&lt;To</span> <span class="na">Qualifier=</span><span class="s">"ZZZ"</span><span class="nt">&gt;</span>PMPGATEWAY<span class="nt">&lt;/To&gt;</span>
+    <span class="c">&lt;!-- From Required. Qualifier = [P]harmacy, [D]octor, or [C]linic --&gt;</span>
+    <span class="c">&lt;!-- For Pharmacy, the From element's text contains the identifier of the individual requestor. --&gt;</span>
+    <span class="c">&lt;!-- ID type will be determined by format. --&gt;</span>
+    <span class="nt">&lt;From</span> <span class="na">Qualifier=</span><span class="s">"P"</span><span class="nt">&gt;</span>AB1234567<span class="nt">&lt;/From&gt;</span>
+    <span class="nt">&lt;MessageID&gt;</span>501990<span class="nt">&lt;/MessageID&gt;</span>
+    <span class="nt">&lt;SentTime&gt;</span>2014-08-22T14:06:26.0Z<span class="nt">&lt;/SentTime&gt;</span>
+  <span class="nt">&lt;/Header&gt;</span>
+  <span class="nt">&lt;Body&gt;</span>
+    <span class="nt">&lt;RxHistoryRequest&gt;</span>
+      <span class="nt">&lt;Pharmacy&gt;</span>
+        <span class="nt">&lt;Identification&gt;</span>
+          <span class="c">&lt;!-- The pharmacy identifier where the request originates is required. --&gt;</span>
+          <span class="nt">&lt;NPI&gt;</span>1234567890<span class="nt">&lt;/NPI&gt;</span><span class="c">&lt;!-- Facility DEANumber, NCPDP, or NPI required --&gt;</span>
+        <span class="nt">&lt;/Identification&gt;</span>
+        <span class="nt">&lt;Specialty&gt;</span>1835P0018X<span class="nt">&lt;/Specialty&gt;</span> <span class="c">&lt;!-- Required. Combines with From Qualifier for role name --&gt;</span>
+        <span class="nt">&lt;Pharmacist&gt;</span>
+          <span class="nt">&lt;LastName&gt;</span>BARTON<span class="nt">&lt;/LastName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+          <span class="nt">&lt;FirstName&gt;</span>CLARA<span class="nt">&lt;/FirstName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+        <span class="nt">&lt;/Pharmacist&gt;</span>
+        <span class="nt">&lt;StoreName&gt;</span>Pharmacy Name<span class="nt">&lt;/StoreName&gt;</span> <span class="c">&lt;!-- StoreName is required for Pharmacies --&gt;</span>
+        <span class="nt">&lt;Address&gt;</span>
+          <span class="c">&lt;!-- The address of the facility from where the request originates --&gt;</span>
+          <span class="nt">&lt;AddressLine1&gt;</span>1 STATE STREET<span class="nt">&lt;/AddressLine1&gt;</span>
+          <span class="nt">&lt;City&gt;</span>ALEXANDRIA<span class="nt">&lt;/City&gt;</span>
+          <span class="nt">&lt;State&gt;</span>VA<span class="nt">&lt;/State&gt;</span> <span class="c">&lt;!-- Required to determine originating state of request --&gt;</span>
+          <span class="nt">&lt;ZipCode&gt;</span>223010000<span class="nt">&lt;/ZipCode&gt;</span>
+        <span class="nt">&lt;/Address&gt;</span>
+        <span class="nt">&lt;CommunicationNumbers&gt;</span>
+          <span class="nt">&lt;Communication&gt;</span>
+            <span class="nt">&lt;Number&gt;</span>5554440222<span class="nt">&lt;/Number&gt;</span>
+            <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span>
+          <span class="nt">&lt;/Communication&gt;</span>
+        <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+      <span class="nt">&lt;/Pharmacy&gt;</span>
+      <span class="nt">&lt;Patient&gt;</span>
+        <span class="nt">&lt;Identification&gt;</span>
+          <span class="nt">&lt;MedicalRecordIdentificationNumberEHR&gt;</span>770560<span class="nt">&lt;/MedicalRecordIdentificationNumberEHR&gt;</span>
+        <span class="nt">&lt;/Identification&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>
+          <span class="nt">&lt;LastName&gt;</span>Stolldorf<span class="nt">&lt;/LastName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+          <span class="nt">&lt;FirstName&gt;</span>Tim<span class="nt">&lt;/FirstName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+        <span class="nt">&lt;/Name&gt;</span>
+        <span class="nt">&lt;Gender&gt;</span>M<span class="nt">&lt;/Gender&gt;</span>
+        <span class="nt">&lt;DateOfBirth&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>1983-01-01<span class="nt">&lt;/Date&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+        <span class="nt">&lt;/DateOfBirth&gt;</span>
+        <span class="nt">&lt;Address&gt;</span>
+          <span class="nt">&lt;AddressLine1&gt;</span>123 Main St<span class="nt">&lt;/AddressLine1&gt;</span>
+          <span class="nt">&lt;City&gt;</span>MADISON<span class="nt">&lt;/City&gt;</span>
+          <span class="nt">&lt;State&gt;</span>WI<span class="nt">&lt;/State&gt;</span>
+          <span class="nt">&lt;ZipCode&gt;</span>53719<span class="nt">&lt;/ZipCode&gt;</span> <span class="c">&lt;!-- Zip or Phone Number required for patient --&gt;</span>
+        <span class="nt">&lt;/Address&gt;</span>
+        <span class="nt">&lt;CommunicationNumbers&gt;</span>
+          <span class="nt">&lt;Communication&gt;</span>
+            <span class="nt">&lt;Number&gt;</span>6082719000<span class="nt">&lt;/Number&gt;</span> <span class="c">&lt;!-- Zip or Phone Number required for patient --&gt;</span>
+            <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span>
+          <span class="nt">&lt;/Communication&gt;</span>
+        <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+      <span class="nt">&lt;/Patient&gt;</span>
+      <span class="nt">&lt;BenefitsCoordination&gt;</span>
+        <span class="nt">&lt;EffectiveDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2013-08-23<span class="nt">&lt;/Date&gt;</span>
+          <span class="c">&lt;!-- The Begin date range, required. --&gt;</span>
+        <span class="nt">&lt;/EffectiveDate&gt;</span>
+        <span class="nt">&lt;ExpirationDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2014-08-22<span class="nt">&lt;/Date&gt;</span>
+          <span class="c">&lt;!-- The end date range, required. --&gt;</span>
+        <span class="nt">&lt;/ExpirationDate&gt;</span>
+        <span class="nt">&lt;Consent&gt;</span>Y<span class="nt">&lt;/Consent&gt;</span>
+      <span class="nt">&lt;/BenefitsCoordination&gt;</span>
+    <span class="nt">&lt;/RxHistoryRequest&gt;</span>
+  <span class="nt">&lt;/Body&gt;</span>
+<span class="nt">&lt;/Message&gt;</span>
+</code></pre>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;Message</span> <span class="na">xmlns=</span><span class="s">"http://www.ncpdp.org/schema/SCRIPT"</span> <span class="na">release=</span><span class="s">"006"</span> <span class="na">version=</span><span class="s">"010"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Header&gt;</span>
+    <span class="nt">&lt;To</span> <span class="na">Qualifier=</span><span class="s">"ZZZ"</span><span class="nt">&gt;</span>PMPGATEWAY<span class="nt">&lt;/To&gt;</span>
+    <span class="c">&lt;!-- From Required. Qualifier = [P]harmacy, [D]octor, or [C]linic --&gt;</span>
+    <span class="c">&lt;!-- For Pharmacy, the From element's text contains the identifier of the individual requestor. --&gt;</span>
+    <span class="c">&lt;!-- ID type will be determined by format. --&gt;</span>
+    <span class="nt">&lt;From</span> <span class="na">Qualifier=</span><span class="s">"P"</span><span class="nt">&gt;</span>AB1234567<span class="nt">&lt;/From&gt;</span>
+    <span class="nt">&lt;MessageID&gt;</span>501990<span class="nt">&lt;/MessageID&gt;</span>
+    <span class="nt">&lt;SentTime&gt;</span>2014-08-22T14:06:26.0Z<span class="nt">&lt;/SentTime&gt;</span>
+  <span class="nt">&lt;/Header&gt;</span>
+  <span class="nt">&lt;Body&gt;</span>
+    <span class="nt">&lt;RxHistoryRequest&gt;</span>
+      <span class="nt">&lt;Pharmacy&gt;</span>
+        <span class="nt">&lt;Identification&gt;</span>
+          <span class="c">&lt;!-- The pharmacy identifier where the request originates is required. --&gt;</span>
+          <span class="nt">&lt;NPI&gt;</span>1234567890<span class="nt">&lt;/NPI&gt;</span><span class="c">&lt;!-- Facility DEANumber, NCPDP, or NPI required --&gt;</span>
+        <span class="nt">&lt;/Identification&gt;</span>
+        <span class="nt">&lt;Specialty&gt;</span>1835P0018X<span class="nt">&lt;/Specialty&gt;</span> <span class="c">&lt;!-- Required. Combines with From Qualifier for role name --&gt;</span>
+        <span class="nt">&lt;Pharmacist&gt;</span>
+          <span class="nt">&lt;LastName&gt;</span>BARTON<span class="nt">&lt;/LastName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+          <span class="nt">&lt;FirstName&gt;</span>CLARA<span class="nt">&lt;/FirstName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+        <span class="nt">&lt;/Pharmacist&gt;</span>
+        <span class="nt">&lt;StoreName&gt;</span>Pharmacy Name<span class="nt">&lt;/StoreName&gt;</span> <span class="c">&lt;!-- StoreName is required for Pharmacies --&gt;</span>
+        <span class="nt">&lt;Address&gt;</span>
+          <span class="c">&lt;!-- The address of the facility from where the request originates --&gt;</span>
+          <span class="nt">&lt;AddressLine1&gt;</span>1 STATE STREET<span class="nt">&lt;/AddressLine1&gt;</span>
+          <span class="nt">&lt;City&gt;</span>ALEXANDRIA<span class="nt">&lt;/City&gt;</span>
+          <span class="nt">&lt;State&gt;</span>VA<span class="nt">&lt;/State&gt;</span> <span class="c">&lt;!-- Required to determine originating state of request --&gt;</span>
+          <span class="nt">&lt;ZipCode&gt;</span>223010000<span class="nt">&lt;/ZipCode&gt;</span>
+        <span class="nt">&lt;/Address&gt;</span>
+        <span class="nt">&lt;CommunicationNumbers&gt;</span>
+          <span class="nt">&lt;Communication&gt;</span>
+            <span class="nt">&lt;Number&gt;</span>5554440222<span class="nt">&lt;/Number&gt;</span>
+            <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span>
+          <span class="nt">&lt;/Communication&gt;</span>
+        <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+      <span class="nt">&lt;/Pharmacy&gt;</span>
+      <span class="nt">&lt;Patient&gt;</span>
+        <span class="nt">&lt;Identification&gt;</span>
+          <span class="nt">&lt;MedicalRecordIdentificationNumberEHR&gt;</span>770560<span class="nt">&lt;/MedicalRecordIdentificationNumberEHR&gt;</span>
+        <span class="nt">&lt;/Identification&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>
+          <span class="nt">&lt;LastName&gt;</span>Stolldorf<span class="nt">&lt;/LastName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+          <span class="nt">&lt;FirstName&gt;</span>Tim<span class="nt">&lt;/FirstName&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+        <span class="nt">&lt;/Name&gt;</span>
+        <span class="nt">&lt;Gender&gt;</span>M<span class="nt">&lt;/Gender&gt;</span>
+        <span class="nt">&lt;DateOfBirth&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>1983-01-01<span class="nt">&lt;/Date&gt;</span> <span class="c">&lt;!-- Required --&gt;</span>
+        <span class="nt">&lt;/DateOfBirth&gt;</span>
+        <span class="nt">&lt;Address&gt;</span>
+          <span class="nt">&lt;AddressLine1&gt;</span>123 Main St<span class="nt">&lt;/AddressLine1&gt;</span>
+          <span class="nt">&lt;City&gt;</span>MADISON<span class="nt">&lt;/City&gt;</span>
+          <span class="nt">&lt;State&gt;</span>WI<span class="nt">&lt;/State&gt;</span>
+          <span class="nt">&lt;ZipCode&gt;</span>53719<span class="nt">&lt;/ZipCode&gt;</span> <span class="c">&lt;!-- Zip or Phone Number required for patient --&gt;</span>
+        <span class="nt">&lt;/Address&gt;</span>
+        <span class="nt">&lt;CommunicationNumbers&gt;</span>
+          <span class="nt">&lt;Communication&gt;</span>
+            <span class="nt">&lt;Number&gt;</span>6082719000<span class="nt">&lt;/Number&gt;</span> <span class="c">&lt;!-- Zip or Phone Number required for patient --&gt;</span>
+            <span class="nt">&lt;Qualifier&gt;</span>TE<span class="nt">&lt;/Qualifier&gt;</span>
+          <span class="nt">&lt;/Communication&gt;</span>
+        <span class="nt">&lt;/CommunicationNumbers&gt;</span>
+      <span class="nt">&lt;/Patient&gt;</span>
+      <span class="nt">&lt;BenefitsCoordination&gt;</span>
+        <span class="nt">&lt;EffectiveDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2013-08-23<span class="nt">&lt;/Date&gt;</span>
+          <span class="c">&lt;!-- The Begin date range, required. --&gt;</span>
+        <span class="nt">&lt;/EffectiveDate&gt;</span>
+        <span class="nt">&lt;ExpirationDate&gt;</span>
+          <span class="nt">&lt;Date&gt;</span>2014-08-22<span class="nt">&lt;/Date&gt;</span>
+          <span class="c">&lt;!-- The end date range, required. --&gt;</span>
+        <span class="nt">&lt;/ExpirationDate&gt;</span>
+        <span class="nt">&lt;Consent&gt;</span>Y<span class="nt">&lt;/Consent&gt;</span>
+      <span class="nt">&lt;/BenefitsCoordination&gt;</span>
+    <span class="nt">&lt;/RxHistoryRequest&gt;</span>
+  <span class="nt">&lt;/Body&gt;</span>
+<span class="nt">&lt;/Message&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="responses">
+  <div class="method-copy">
+    <h1>Gateway Responses</h1>
+
+    <div class="schema-files">
+      <p>Schema files:</p>
+      <ul class="schema-files">
+        <li><a href="./data/gateway_response_schema.xsd">gateway_response_schema.xsd</a></li>
+        <li><a href="./data/gateway_constraints.xsd">gateway_constraints.xsd</a></li>
+        <li><a href="./data/gateway_response_types.xsd">gateway_response_types.xsd</a></li>
+      </ul>
+    </div>
+
+    <p>Because of the distributed <a href="#architecture">architecture of the PMP network</a>, there are many factors which impact the response to a Gateway request. This section explains some of the common responses and what they mean.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="responses-no-data">
+  <div class="method-copy">
+    <h2>No Data</h2>
+    <p>If a PMP system has no prescription data for the specified patient, it returns a <code>NoData</code> response.</p>
+    <div class="copy-group">
+  <h3>Response Details</h3>
+  <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
+  <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting.</p>
+</div>
+
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">response__no_data.xml</p>
+      <span class="download">
+        <a href="./data/response__no_data.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;GatewayResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;RequestID&gt;</span>5424<span class="nt">&lt;/RequestID&gt;</span>
+  <span class="nt">&lt;Response&gt;</span>
+    <span class="nt">&lt;Pmp&gt;</span>OH<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;NoData&gt;</span>
+      <span class="nt">&lt;Message&gt;</span>No data.<span class="nt">&lt;/Message&gt;</span>
+      <span class="nt">&lt;Details&gt;</span><span class="cp">&lt;![CDATA[No Data]]&gt;</span><span class="nt">&lt;/Details&gt;</span>
+      <span class="nt">&lt;Source&gt;</span>PMP<span class="nt">&lt;/Source&gt;</span>
+    <span class="nt">&lt;/NoData&gt;</span>
+  <span class="nt">&lt;/Response&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/GatewayResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="responses-error">
+  <div class="method-copy">
+    <h2>Error</h2>
+    <p>If something prevented the request from being processed, the response will be an error. This could be accompanied by an non-200 HTTP response code.</p>
+    <div class="copy-group">
+  <h3>Response Details</h3>
+  <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
+  <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting.</p>
+</div>
+
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">response-ncpdp-error.xml</p>
+      <span class="download">
+        <a href="./data/response-ncpdp-error.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;Message</span> <span class="na">xmlns=</span><span class="s">"http://www.ncpdp.org/schema/SCRIPT"</span> <span class="na">version=</span><span class="s">"010"</span> <span class="na">release=</span><span class="s">"006"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Header&gt;</span>
+    <span class="nt">&lt;To</span> <span class="na">Qualifier=</span><span class="s">"ZZZ"</span><span class="nt">&gt;</span>EHR<span class="nt">&lt;/To&gt;</span>
+    <span class="nt">&lt;From</span> <span class="na">Qualifier=</span><span class="s">"ZZZ"</span><span class="nt">&gt;</span>PMPGATEWAY<span class="nt">&lt;/From&gt;</span> <span class="c">&lt;!-- Required. Qualifier = [P]harmacy, [D]octor, or [C]linic --&gt;</span>
+    <span class="nt">&lt;MessageID&gt;</span>050277017<span class="nt">&lt;/MessageID&gt;</span>
+    <span class="nt">&lt;RelatesToMessageID&gt;</span>501990<span class="nt">&lt;/RelatesToMessageID&gt;</span>
+    <span class="nt">&lt;SentTime&gt;</span>2014-08-22T14:06:28<span class="nt">&lt;/SentTime&gt;</span>
+    <span class="nt">&lt;TestMessage&gt;</span>1<span class="nt">&lt;/TestMessage&gt;</span>
+    <span class="nt">&lt;TertiaryIdentifier&gt;</span>FIL<span class="nt">&lt;/TertiaryIdentifier&gt;</span>
+  <span class="nt">&lt;/Header&gt;</span>
+  <span class="nt">&lt;Body&gt;</span>
+    <span class="nt">&lt;Error&gt;</span>
+      <span class="nt">&lt;Code&gt;</span>900<span class="nt">&lt;/Code&gt;</span>
+      <span class="nt">&lt;DescriptionCode&gt;</span>210<span class="nt">&lt;/DescriptionCode&gt;</span>
+      <span class="nt">&lt;Description&gt;</span>[ERROR] https://pmpgateway.net/ncpdp_request_errors/12039<span class="nt">&lt;/Description&gt;</span> <span class="c">&lt;!-- [NODATA] will not contain a URL after the type of error --&gt;</span>
+    <span class="nt">&lt;/Error&gt;</span>
+  <span class="nt">&lt;/Body&gt;</span>
+<span class="nt">&lt;/Message&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="responses-disallowed">
+  <div class="method-copy">
+    <h2>Disallowed</h2>
+    <p>Your account with PMP Gateway does not have permission to query the specified PMP system.</p>
+    <p>Because of the distributed <a href="#architecture">architecture of the PMP network</a>, each PMP has its own administrator who manages permissions. To gain permission to query a specific PMP, contact the Appriss Project Manager who handles your account. Our project managers work with the PMP administrators to manage permissions requests.</p>
+    <div class="copy-group">
+  <h3>Response Details</h3>
+  <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
+  <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting.</p>
+</div>
+
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">response__disallowed.xml</p>
+      <span class="download">
+        <a href="./data/response__disallowed.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;GatewayResponse</span> <span class="na">xmlns=</span><span class="s">"http://xml.appriss.com/gateway"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;RequestID&gt;</span>5424<span class="nt">&lt;/RequestID&gt;</span>
+  <span class="nt">&lt;Response&gt;</span>
+    <span class="nt">&lt;Pmp&gt;</span>IN<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;Disallowed&gt;</span>
+      <span class="nt">&lt;Message&gt;</span>Your licensee is not allowed to make requests to IN<span class="nt">&lt;/Message&gt;</span>
+      <span class="nt">&lt;Source&gt;</span>GATEWAY<span class="nt">&lt;/Source&gt;</span>
+    <span class="nt">&lt;/Disallowed&gt;</span>
+  <span class="nt">&lt;/Response&gt;</span>
+  <span class="nt">&lt;Response&gt;</span>
+    <span class="nt">&lt;Pmp&gt;</span>VA<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;Disallowed&gt;</span>
+      <span class="nt">&lt;Message&gt;</span>A Optometrist from OH is not allowed to make requests to VA<span class="nt">&lt;/Message&gt;</span>
+      <span class="nt">&lt;Source&gt;</span>INTERCONNECT<span class="nt">&lt;/Source&gt;</span>
+    <span class="nt">&lt;/Disallowed&gt;</span>
+  <span class="nt">&lt;/Response&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/GatewayResponse&gt;</span>
+</code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+</div>
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="../javascripts/all.js"></script>
+</html>

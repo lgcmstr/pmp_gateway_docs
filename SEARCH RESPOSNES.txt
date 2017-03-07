@@ -1,0 +1,565 @@
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2564</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[The document has no document element.
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RequestID>2562</RequestID>
+  <Response>
+    <Pmp>KS</Pmp>
+    <NoData>
+      <Message>No data.</Message>
+      <Details><![CDATA[No Data Found.]]></Details>
+      <Details><![CDATA[PMPI Plain text data: No Data Found.]]></Details>
+      <Source>PMP</Source>
+    </NoData>
+  </Response>
+  <Disclaimer>Disclaimer: All prescription history information is provided on an “as is,” “as available” basis. You agree that you are solely responsible for the medical decisions made using this information and disclaimer: You agree to indemnify and hold harmless the providers of this service and the information for all claims based on your use thereof.</Disclaimer>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RequestID>2563</RequestID>
+  <Response>
+    <Pmp>KS</Pmp>
+    <NoData>
+      <Message>No data.</Message>
+      <Details><![CDATA[No Data Found.]]></Details>
+      <Details><![CDATA[PMPI Plain text data: No Data Found.]]></Details>
+      <Source>PMP</Source>
+    </NoData>
+  </Response>
+  <Disclaimer>Disclaimer: All prescription history information is provided on an “as is,” “as available” basis. You agree that you are solely responsible for the medical decisions made using this information and disclaimer: You agree to indemnify and hold harmless the providers of this service and the information for all claims based on your use thereof.</Disclaimer>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2567</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[The document has no document element.
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2565</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[The document has no document element.
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2566</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[The document has no document element.
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2570</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '12'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0031_11111' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0031_11111' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '13'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0032_222222' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0032_222222' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}Location': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}NPINumber, {http://xml.appriss.com/gateway}NCPDPNumber, {http://xml.appriss.com/gateway}Address ).
+Element '{http://xml.appriss.com/gateway}PrescriptionRequest': Missing child element(s). Expected is ( {http://xml.appriss.com/gateway}Patient ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2569</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[The document has no document element.
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2568</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[The document has no document element.
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2573</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '12'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0031_11111' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0031_11111' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '13'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0032_222222' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0032_222222' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}Location': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}NPINumber, {http://xml.appriss.com/gateway}NCPDPNumber, {http://xml.appriss.com/gateway}Address ).
+Element '{http://xml.appriss.com/gateway}PrescriptionRequest': Missing child element(s). Expected is ( {http://xml.appriss.com/gateway}Patient ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RequestID>2778</RequestID>
+  <Response>
+    <Pmp>SC</Pmp>
+    <NoData>
+      <Message>No data.</Message>
+      <Details><![CDATA[]]></Details>
+      <Source>PMP</Source>
+    </NoData>
+  </Response>
+  <Response>
+    <Pmp>KS</Pmp>
+    <PrescriptionData>
+      <ReportInfo>
+        <DocumentPublicationTime>19:28:52</DocumentPublicationTime>
+        <ExecutionDate>2015-07-29</ExecutionDate>
+        <ExecutionTime>19:28:52</ExecutionTime>
+        <DateRange>
+          <Begin>2010-01-01</Begin>
+          <End>2015-07-29</End>
+        </DateRange>
+      </ReportInfo>
+      <Prescription>
+        <PrescriptionNumber>B00003</PrescriptionNumber>
+        <RefillNumber source="1">1</RefillNumber>
+        <FilledDate>2015-03-27</FilledDate>
+        <WrittenDate>2015-03-27</WrittenDate>
+        <RefillsAuthorizedCount source="0">0</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="8.0">8.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ENDOCET 10-325 MG TABLET</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>60951071270</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Alice's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1111 FAKE ST SEC A</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3165555555</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <First>BOB</First>
+            <Last>TESTPATIENT</Last>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <First>BOB</First>
+            <Last>TESTPRESCRIBER</Last>
+          </Name>
+          <Address>
+            <Street>8888 NOWHERE ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Prescriber>
+      </Prescription>
+      <Prescription>
+        <PrescriptionNumber>B00002</PrescriptionNumber>
+        <RefillNumber source="0">0</RefillNumber>
+        <FilledDate>2015-02-27</FilledDate>
+        <WrittenDate>2015-02-27</WrittenDate>
+        <RefillsAuthorizedCount source="0">0</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="120.0">120.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ACETAMINOPHEN-COD #3 TABLET</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>00406048462</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Alice's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1111 FAKE ST SEC A</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3165555555</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <First>BOB</First>
+            <Last>TESTPATIENT</Last>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <First>ALICE</First>
+            <Last>TESTPRESCRIBER</Last>
+          </Name>
+          <Address>
+            <Street>1111 FAKE ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Prescriber>
+      </Prescription>
+      <Prescription>
+        <PrescriptionNumber>B00001</PrescriptionNumber>
+        <RefillNumber source="0">0</RefillNumber>
+        <FilledDate>2015-04-13</FilledDate>
+        <WrittenDate>2015-03-02</WrittenDate>
+        <RefillsAuthorizedCount source="1">1</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="30.0">30.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ZOLPIDEM TART ER 12.5 MG TAB</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>10370011610</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Alice's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1111 FAKE ST SEC A</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3165555555</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <First>BOB</First>
+            <Last>TESTPATIENT</Last>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <First>ALICE</First>
+            <Last>TESTPRESCRIBER</Last>
+          </Name>
+          <Address>
+            <Street>1111 FAKE ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Prescriber>
+      </Prescription>
+      <Prescription>
+        <PrescriptionNumber>B00001</PrescriptionNumber>
+        <RefillNumber source="1">1</RefillNumber>
+        <FilledDate>2015-03-02</FilledDate>
+        <WrittenDate>2015-03-02</WrittenDate>
+        <RefillsAuthorizedCount source="1">1</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="30.0">30.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ZOLPIDEM TART ER 12.5 MG TAB</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>10370011610</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Alice's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1111 FAKE ST SEC A</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3165555555</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <First>BOB</First>
+            <Last>TESTPATIENT</Last>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <First>ALICE</First>
+            <Last>TESTPRESCRIBER</Last>
+          </Name>
+          <Address>
+            <Street>1111 FAKE ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Prescriber>
+      </Prescription>
+      <Prescription>
+        <PrescriptionNumber>B00004</PrescriptionNumber>
+        <RefillNumber source="1">1</RefillNumber>
+        <FilledDate>2015-04-13</FilledDate>
+        <WrittenDate>2015-04-13</WrittenDate>
+        <RefillsAuthorizedCount source="1">1</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="8.0">8.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ENDOCET 10-325 MG TABLET</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>60951071270</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Bob's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1234 NOT-A-REAL-PLACE DR </Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3160000000</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <First>BOB</First>
+            <Last>TESTPATIENT</Last>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <First>CAROL</First>
+            <Last>TESTPRESCRIBER</Last>
+          </Name>
+          <Address>
+            <Street>2910 HIGH ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+          <DEANumber>XC5555555</DEANumber>
+        </Prescriber>
+      </Prescription>
+    </PrescriptionData>
+  </Response>
+  <Disclaimer>Disclaimer: All prescription history information is provided on an “as is,” “as available” basis. You agree that you are solely responsible for the medical decisions made using this information and disclaimer: You agree to indemnify and hold harmless the providers of this service and the information for all claims based on your use thereof.</Disclaimer>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2571</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '12'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0031_11111' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0031_11111' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '13'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0032_222222' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0032_222222' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}Location': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}NPINumber, {http://xml.appriss.com/gateway}NCPDPNumber, {http://xml.appriss.com/gateway}Address ).
+Element '{http://xml.appriss.com/gateway}PrescriptionRequest': Missing child element(s). Expected is ( {http://xml.appriss.com/gateway}Patient ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2576</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}Location': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}NPINumber, {http://xml.appriss.com/gateway}NCPDPNumber, {http://xml.appriss.com/gateway}Address ).
+Element '{http://xml.appriss.com/gateway}PrescriptionRequest': Missing child element(s). Expected is ( {http://xml.appriss.com/gateway}Patient ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2572</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '12'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0031_11111' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0031_11111' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '13'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0032_222222' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0032_222222' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}Location': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}NPINumber, {http://xml.appriss.com/gateway}NCPDPNumber, {http://xml.appriss.com/gateway}Address ).
+Element '{http://xml.appriss.com/gateway}PrescriptionRequest': Missing child element(s). Expected is ( {http://xml.appriss.com/gateway}Patient ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2575</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '12'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0031_11111' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0031_11111' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '13'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0032_222222' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0032_222222' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}Location': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}NPINumber, {http://xml.appriss.com/gateway}NCPDPNumber, {http://xml.appriss.com/gateway}Address ).
+Element '{http://xml.appriss.com/gateway}PrescriptionRequest': Missing child element(s). Expected is ( {http://xml.appriss.com/gateway}Patient ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2574</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '12'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0031_11111' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0031_11111' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'length'] The value has a length of '13'; this differs from the allowed length of '9'.
+Element '{http://xml.appriss.com/gateway}DEANumber': [facet 'pattern'] The value '_x0032_222222' is not accepted by the pattern '[A-Z]{2}\d{7}'.
+Element '{http://xml.appriss.com/gateway}DEANumber': '_x0032_222222' is not a valid value of the atomic type '{http://xml.appriss.com/gateway}DEANumberConstraint'.
+Element '{http://xml.appriss.com/gateway}Location': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}NPINumber, {http://xml.appriss.com/gateway}NCPDPNumber, {http://xml.appriss.com/gateway}Address ).
+Element '{http://xml.appriss.com/gateway}PrescriptionRequest': Missing child element(s). Expected is ( {http://xml.appriss.com/gateway}Patient ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2577</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}Location': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}NCPDPNumber, {http://xml.appriss.com/gateway}Address ).
+Element '{http://xml.appriss.com/gateway}PrescriptionRequest': Missing child element(s). Expected is ( {http://xml.appriss.com/gateway}Patient ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2578</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}Location': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}NCPDPNumber, {http://xml.appriss.com/gateway}Address ).
+Element '{http://xml.appriss.com/gateway}PrescriptionRequest': Missing child element(s). Expected is ( {http://xml.appriss.com/gateway}Patient ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2582</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[Element '{http://xml.appriss.com/gateway}Patient': Missing child element(s). Expected is one of ( {http://xml.appriss.com/gateway}SexCode, {http://xml.appriss.com/gateway}Address, {http://xml.appriss.com/gateway}Phone ).
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RequestID>2740</RequestID>
+  <Response>
+    <Pmp>KS</Pmp>
+    <NoData>
+      <Message>No data.</Message>
+      <Details><![CDATA[No Data Found.]]></Details>
+      <Details><![CDATA[PMPI Plain text data: No Data Found.]]></Details>
+      <Source>PMP</Source>
+    </NoData>
+  </Response>
+  <Disclaimer>Disclaimer: All prescription history information is provided on an “as is,” “as available” basis. You agree that you are solely responsible for the medical decisions made using this information and disclaimer: You agree to indemnify and hold harmless the providers of this service and the information for all claims based on your use thereof.</Disclaimer>
+</GatewayResponse>
+"

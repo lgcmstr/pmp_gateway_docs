@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Message xmlns="http://www.ncpdp.org/schema/SCRIPT" version="010" release="006">
+  <Header>
+    <To Qualifier="ZZZ">EHR</To>
+    <From Qualifier="ZZZ">PMPGATEWAY</From> <!-- Required. Qualifier = [P]harmacy, [D]octor, or [C]linic -->
+    <MessageID>050277017</MessageID>
+    <RelatesToMessageID>501990</RelatesToMessageID>
+    <SentTime>2014-08-22T14:06:28</SentTime>
+    <TestMessage>1</TestMessage>
+    <TertiaryIdentifier>FIL</TertiaryIdentifier>
+  </Header>
+  <Body>
+    <Error>
+      <Code>900</Code>
+      <DescriptionCode>210</DescriptionCode>
+      <Description>[ERROR] https://pmpgateway.net/ncpdp_request_errors/12039</Description> <!-- [NODATA] will not contain a URL after the type of error -->
+    </Error>
+  </Body>
+</Message>
