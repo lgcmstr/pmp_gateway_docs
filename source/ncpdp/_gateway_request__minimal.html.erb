@@ -1,0 +1,44 @@
+<section class="method" id="gateway-request-minimal">
+  <div class="method-copy">
+    <h2>Sample Request from a Pharmacy:</h2>
+    <p>This example is the most minimalistic request possible. It includes all required elements and the conditional elements which are most commonly used. Providing less information will result in XML validation errors.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<% code('shell') do %>
+POST https://gateway-prep.pmp.appriss.com/search_request/create
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<% code('shell') do %>
+curl https://gateway-prep.pmp.appriss.com/search_request/create \
+  -u username:password \
+  -H "Content-Type: application/xml" \
+  -H "Accept: application/xml" \
+  -d @request-ncpdp-pharmacist.xml.xml
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">request-ncpdp-pharmacist.xml</p>
+      <span class="download">
+        <a href="./data/request-ncpdp-pharmacist.xml" download>download</a>
+      </span>
+      <% code('xml') do %>
+        <% File.open("#{root}/source/ncpdp/data/request-ncpdp-pharmacist.xml", 'rb').read %>
+      <% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+      <% code('xml') do %>
+        <% File.open("#{root}/source/ncpdp/data/request-ncpdp-pharmacist.xml", 'rb').read %>
+      <% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>

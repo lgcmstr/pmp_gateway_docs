@@ -1,0 +1,39 @@
+<section class="method" id="architecture">
+  <div class="method-copy">
+    <h1>The Life cycle of a Gateway Request</h1>
+    <ul>
+        <li>A transaction over PMP Gateway is begun by an HTTP POST of a gateway request document to the gateway service.</li>
+        <li>The web service uses
+        <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">Basic Http Authentication</a> to check
+        if the user credentials supplied are authorized to make requests over gateway.
+        The user information supplied will be linked to a "Licensee"
+        <div class="note"><b>Note:</b> A Licensee can be thought of as an account.</div></li>
+          <li>Based on the user making the request and the destination PMP systems requested there are two checks.<br /><i>For each PMP:</i></li>
+        <ol>
+          <li>Is this licensee account able to make a request against the destination PMP?</li>
+          <li>Is the origin State of the request able to make a request to the Destination State on the Health Care Provider Role specified</li>
+        </ol>
+        <li>If either of these checks fail for a PMP the request for that specific PMP is not forwarded on to InterConnect.</li>
+        <li>The parts of the requests that are allowed are forwarded on to InterConnect which then forwards them on to the PMP systems. </li>
+        <li>The response from the PMP Systems are consolidated along with any other responses that may have failed a permissions check and the entire response is delivered on to the requester. </li>
+      </ul>
+
+
+    <p><strong>State PMP Systems</strong> store prescription data for patients and allow authorized users to request or commit prescription data.</p>
+    <p><strong><%= link_to 'PMP Interconnect', 'http://www.nabp.net/programs/pmp-interconnect/nabp-pmp-interconnect' %></strong> facilitates communications between state PMP systems. One role of PMP Interconnect is to manage permissions for how state PMP systems communicate with each other.</p>
+    <p><strong>PMP Gateway</strong> connects to PMP Interconnect, providing an interface for healthcare providers to query patient prescription data.</p>
+
+    <div class="copy-group">
+      <h3>Consequences of Distributed Architecture</h3>
+      <p>The distributed architecture of the PMP system impacts how PMP Gateway functions. Some of the consequences:</p>
+      <ul>
+        <li>Prescription data requests can only be as fast as the slowest PMP being queried. Consequently, the average response time is 7 seconds.</li>
+        <li>Errors may occur at any point in the network. XML Responses will describe where in the network an error occured.</li>
+      </ul>
+    </div>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <%= link_to (image_tag 'gateway_diagram.png', alt: 'PMP Diagram'), '/images/gateway_diagram.png' %>
+  </div><!-- .method-code -->
+</section>

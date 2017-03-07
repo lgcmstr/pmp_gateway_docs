@@ -1,0 +1,87 @@
+<Message xmlns="http://www.ncpdp.org/schema/SCRIPT" release="006" version="010">
+  <Header>
+    <To Qualifier="ZZZ">PMPGATEWAY</To>
+    <From Qualifier="D">FROMSYSTEM</From> <!-- Required. Qualifier = [P]harmacy, [D]octor, or [C]linic -->
+    <MessageID>501990</MessageID>
+    <SentTime>2014-08-22T14:06:26.0Z</SentTime>
+    <Security>
+      <Sender>
+        <!-- The facility identifier where the prescriber request originates is required. -->
+        <!-- ID type will be determined by format. -->
+        <TertiaryIdentification>AB1234567</TertiaryIdentification>
+      </Sender>
+      <Receiver>
+        <TertiaryIdentification>PMPGATEWAY</TertiaryIdentification>
+      </Receiver>
+    </Security>
+    <TestMessage>1</TestMessage>
+  </Header>
+  <Body>
+    <RxHistoryRequest>
+      <Prescriber>
+        <Identification>
+          <!-- The individual prescriber identifier of the requestor is required. -->
+          <NPI>1132767439</NPI> <!-- DEANumber or NPI required for requestor-->
+        </Identification>
+        <Specialty>1835P0018X</Specialty> <!-- Required. Combines with From Qualifier for role name -->
+        <ClinicName>Health Clinic</ClinicName> <!-- ClinicName is required for Prescribers -->
+
+        <Name> <!-- Name of prescriber is required -->
+          <LastName>Stolldorf</LastName> <!-- Required -->
+          <FirstName>Bob</FirstName> <!-- Required -->
+        </Name>
+        <Address>
+          <!-- The address of the facility from where the request originates -->
+          <AddressLine1>10401 Linn Station Rd</AddressLine1>
+          <City>Louisville</City>
+          <State>KY</State> <!-- Required to determine originating state of request -->
+          <ZipCode>40223</ZipCode> <!-- Zip or Phone Number required for patient -->
+        </Address>
+        <CommunicationNumbers>
+          <Communication>
+            <Number>5025551234</Number>
+            <Qualifier>TE</Qualifier> <!-- Zip or Phone Number required for patient -->
+          </Communication>
+          <Communication>
+            <Number>5025551235</Number>
+            <Qualifier>FX</Qualifier>
+          </Communication>
+        </CommunicationNumbers>
+      </Prescriber>
+      <Patient>
+        <Identification>
+          <MedicalRecordIdentificationNumberEHR>770560</MedicalRecordIdentificationNumberEHR>
+        </Identification>
+        <Name>
+          <LastName>Smith</LastName> <!-- Required -->
+          <FirstName>Tim</FirstName> <!-- Required -->
+        </Name>
+        <Gender>M</Gender>
+        <DateOfBirth>
+          <Date>1983-01-01</Date> <!-- Required -->
+        </DateOfBirth>
+        <Address>
+          <AddressLine1>123 Main St</AddressLine1>
+          <City>MADISON</City>
+          <State>WI</State>
+          <ZipCode>53719</ZipCode> <!-- Zip or phone required for patient -->
+        </Address>
+        <CommunicationNumbers>
+          <Communication>
+            <Number>6085551234</Number>
+            <Qualifier>TE</Qualifier>
+          </Communication>
+        </CommunicationNumbers>
+      </Patient>
+      <BenefitsCoordination>
+        <EffectiveDate>
+          <Date>2013-08-23</Date><!-- The Begin date range, required. -->
+        </EffectiveDate>
+        <ExpirationDate>
+          <Date>2014-08-22</Date><!-- The end date range, required. -->
+        </ExpirationDate>
+        <Consent>Y</Consent>
+      </BenefitsCoordination>
+    </RxHistoryRequest>
+  </Body>
+</Message>

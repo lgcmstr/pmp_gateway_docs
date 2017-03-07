@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://xml.appriss.com/gateway" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://xml.appriss.com/gateway" elementFormDefault="qualified">
+  <xs:include schemaLocation="constrained_base_types.xsd"/>
+  <!-- *****************************************************************************************
+  This document contains all of the common types used for Gateway to construct the metadata required in a request/response.  This is information about the person who is making the request and the provider with prescriptive authority who's action of writing a prescription or contemplating writing a prescription caused this request to be needed.
+ ********************************************************************************************* -->
+  <!-- *****************************************************************************************
+
+       Elements Related to the Requester Type
+
+    ********************************************************************************************* -->
+  <xs:complexType name="GatewayRequestType">
+    <xs:annotation>
+      <xs:documentation>Root element for a Search Request.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Requester" type="RequesterType"/>
+      <xs:element name="PrescriptionRequest" minOccurs="0">
+        <xs:complexType>
+          <xs:choice>
+            <xs:sequence>
+              <xs:element name="DateRange" type="DateRangeType">
+                <xs:annotation>
+                  <xs:documentation>The date range which will limit the search request to some time period. </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Patient" type="RequestPatientType">
+                <xs:annotation>
+                  <xs:documentation>The Patient Information for the search request.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:element ref="NIEMRawSchema"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RequesterType">
+    <xs:annotation>
+      <xs:documentation>Contains the information about who is making a request and where that request should go.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GatewayID" type="ComputerFriendlyNameType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Legacy field for future removal. Do not use.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="SenderSoftware" minOccurs="0"/>
+      <xs:element name="RequestDestinations" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>This is to which parties (PMPs) that the request will be sent to.
+            This accepts valid postal codes for the PMP which can answer. Like "OH", "KY".
+            If this is not provided then the settings in gateway for your web service user account will determine to
+            which parties this request will goto.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="RequestDestination" minOccurs="1" maxOccurs="50"/>
+          </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="RequestingPmpFieldsMustBeUnique">
+          <xs:selector xpath="Pmp"/>
+          <xs:field xpath="."/>
+        </xs:unique>
+        <xs:unique name="RequestingNonPmpFieldsMustBeUnique">
+          <xs:selector xpath="NonPmp"/>
+          <xs:field xpath="."/>
+        </xs:unique>
+      </xs:element>
+      <xs:element ref="Provider"/>
+      <xs:element ref="Delegate" minOccurs="0"/>
+      <xs:element ref="Location"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="RequestDestination" abstract="true" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Abstract type. Must be Pmp or NonPmp instance.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Pmp" substitutionGroup="RequestDestination" type="USStateCodeBaseType">
+    <xs:annotation>
+      <xs:documentation>Main way to send a request. By the PMP State code.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="NonPmp" substitutionGroup="RequestDestination" type="ComputerFriendlyNameType">
+    <xs:annotation>
+      <xs:documentation>Alternative way to send a request. This is for possible future expansion to request to non pmp systems and can be ignored.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Provider">
+    <xs:annotation>
+      <xs:documentation>Information about the provider.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="LocationStateCode" type="USStateCodeType" minOccurs="0" />
+        <xs:element name="Role" type="ProviderRoleType">
+          <xs:annotation>
+            <xs:documentation>The Providers Role.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="FirstName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>First name of the Provider.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="LastName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Last name of the Provider.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:group ref="ProviderIdentifiersGroup"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Delegate">
+    <xs:annotation>
+      <xs:documentation>Information about the person who is making a request on behalf of the provider specified.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="LocationStateCode" type="USStateCodeType" />
+        <xs:element name="Role" type="DelegateRoleType">
+          <xs:annotation>
+            <xs:documentation>The Delegates Role.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="FirstName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>First name of the Delegate.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="LastName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Last name of the Delegate.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:choice>
+          <xs:choice>
+            <xs:annotation>
+              <xs:documentation>A System ID or Professional License Number or both.</xs:documentation>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element name="SystemID" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>A Identifier for the delegate in the software system making the request.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element ref="ProfessionalLicenseNumber" minOccurs="0"/>
+            </xs:sequence>
+            <xs:element ref="ProfessionalLicenseNumber"/>
+          </xs:choice>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Location">
+    <xs:annotation>
+      <xs:documentation>Information about the location making the request.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Name" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Pharmacy, hospital, clinic name</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:group ref="LocationIdentifiersGroup"/>
+        <xs:element name="Address">
+          <xs:annotation>
+            <xs:documentation>The Facility Address with at least the US StateCode where the facility is located.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Street" type="xs:string" minOccurs="0" maxOccurs="2"/>
+              <xs:element name="City" type="xs:string" minOccurs="0"/>
+              <xs:element name="StateCode" type="USStateCodeType" minOccurs="1"/>
+              <xs:element name="ZipCode" type="ZipCodeType" minOccurs="0"/>
+              <xs:element name="ZipPlusFour" type="ZipCodePlusFourType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SenderSoftware">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Developer" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Identifies entity responsible for the software that generates the transaction. Software Vendor information.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Product" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Identifies the software developer’s product.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Version" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Identifies the version and release of the software product</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="RequestPatientType">
+    <xs:annotation>
+      <xs:documentation>Contains Patient Information for a request.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:documentation>For the patient in the request use the Given name and Surname and optionally the Middle Name.</xs:documentation>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element name="First" type="LimitedStringType"/>
+            <xs:element name="Middle" type="LimitedStringType" minOccurs="0"/>
+            <xs:element name="Last" type="LimitedStringType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Birthdate" type="xs:date"/>
+      <xs:element name="SexCode" type="SexCodeType" minOccurs="0"/>
+      <xs:choice>
+         <xs:annotation>
+          <xs:documentation>An Address with a zip or a Phone number is required.</xs:documentation>
+         </xs:annotation>
+        <xs:sequence>
+          <xs:element name="Address" type="AddressRequiredZipType" />
+          <xs:element name="Phone" type="USPhoneType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:element name="Phone" type="USPhoneType" minOccurs="1"/>
+      </xs:choice>
+      <xs:element name="SSN" type="SSNType" minOccurs="0"/>
+      <xs:element name="DriversLicenseIdentifier" type="DriversLicenseIdentifierType" minOccurs="0"/>
+      <xs:element name="VeterinaryPrescription" type="VeterinaryPrescriptionType" minOccurs="0"/>
+      <xs:element name="PharmacyBenefitsMemberID" type="LimitedStringType" minOccurs="0" />
+      <xs:element name="MedicalBenefitsMemeberID" type="LimitedStringType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--************************************
+
+     ELEMENT, TYPE AND GROUP DEFINITIONS
+     Used by both Request and Response
+
+  ****************************************-->
+   <xs:complexType name="AddressRequiredZipType">
+     <xs:annotation>
+       <xs:documentation>zip code is required for the rx search.</xs:documentation>
+     </xs:annotation>
+     <xs:sequence>
+       <xs:group ref="StreetCityStateGroup"/>
+       <xs:element name="ZipCode" type="ZipCodeType" minOccurs="1"/>
+       <xs:element name="ZipPlusFour" type="ZipCodePlusFourType" minOccurs="0"/>
+     </xs:sequence>
+   </xs:complexType>
+
+  <xs:group name="LocationIdentifiersGroup">
+    <xs:annotation>
+      <xs:documentation>Must be 1 or more of DEA Number, NPI Number or NDCPDP</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="DEANumber" type="DEANumberType"/>
+        <xs:element name="NPINumber" type="NPINumberType" minOccurs="0"/>
+        <xs:element name="NCPDPNumber" type="NCPDPNumberType" minOccurs="0"/>
+      </xs:sequence>
+      <xs:sequence>
+        <xs:element name="NPINumber" type="NPINumberType" />
+        <xs:element name="NCPDPNumber" type="NCPDPNumberType" minOccurs="0"/>
+      </xs:sequence>
+      <xs:element name="NCPDPNumber" type="NCPDPNumberType"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="ProviderIdentifiersGroup">
+    <xs:annotation>
+      <xs:documentation>Must be 1 or more of DEA Number, NPI Number or Professional License Number</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="DEANumber" type="DEANumberType"/>
+        <xs:element name="NPINumber" type="NPINumberType" minOccurs="0"/>
+        <xs:element ref="ProfessionalLicenseNumber" minOccurs="0"/>
+      </xs:sequence>
+      <xs:sequence>
+        <xs:element name="NPINumber" type="NPINumberType"/>
+        <xs:element ref="ProfessionalLicenseNumber" minOccurs="0"/>
+      </xs:sequence>
+      <xs:sequence>
+        <xs:element ref="ProfessionalLicenseNumber"/>
+      </xs:sequence>
+    </xs:choice>
+  </xs:group>
+
+  <xs:element name="ProfessionalLicenseNumber">
+    <xs:annotation>
+      <xs:documentation>A Professional License Number within the Jurisdiction of a State.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Type" type="LimitedStringType" /><!-- Can there be multiple types of professional License number. -->
+        <xs:element name="Value" type="LimitedStringType"/>
+        <xs:element name="StateCode" type="USStateCodeType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="DriversLicenseIdentifierType">
+    <xs:annotation>
+      <xs:documentation>A Professional License Number within the Jurisdiction of a State.</xs:documentation>
+    </xs:annotation>
+      <xs:sequence>
+        <xs:element name="Value" type="LimitedStringType"/>
+        <xs:element name="StateCode" type="USStateCodeType"/>
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VeterinaryPrescriptionType">
+    <xs:annotation>
+      <xs:documentation>If this Veterinary Patient Node is included this is considered a Animal otherwise it is Human by default.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AnimalName" type="LimitedStringType"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

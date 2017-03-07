@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RequestID>5410</RequestID>
+  <Response>
+    <Pmp>KS</Pmp>
+    <PrescriptionData>
+      <ReportInfo>
+        <DocumentPublicationTime>00:15:24</DocumentPublicationTime>
+        <ExecutionDate>2015-10-26</ExecutionDate>
+        <ExecutionTime>00:15:24</ExecutionTime>
+        <DateRange>
+          <Begin>2015-01-01</Begin>
+          <End>2015-12-31</End>
+        </DateRange>
+      </ReportInfo>
+      <Prescription>
+        <PrescriptionNumber>B00003</PrescriptionNumber>
+        <RefillNumber source="1">1</RefillNumber>
+        <FilledDate>2015-03-27</FilledDate>
+        <WrittenDate>2015-03-27</WrittenDate>
+        <RefillsAuthorizedCount source="0">0</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="8.0">8.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ENDOCET 10-325 MG TABLET</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>60951071270</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Alice's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1111 FAKE ST SEC A</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3165555555</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <Prefix/>
+            <First>BOB</First>
+            <Middle/>
+            <Last>TESTPATIENT</Last>
+            <Suffix/>
+            <FullName>BOB TESTPATIENT</FullName>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <Prefix/>
+            <First>BOB</First>
+            <Middle/>
+            <Last>TESTPRESCRIBER</Last>
+            <Suffix/>
+            <FullName>BOB TESTPRESCRIBER</FullName>
+          </Name>
+          <Address>
+            <Street>8888 NOWHERE ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Prescriber>
+      </Prescription>
+      <Prescription>
+        <PrescriptionNumber>B00002</PrescriptionNumber>
+        <RefillNumber source="0">0</RefillNumber>
+        <FilledDate>2015-02-27</FilledDate>
+        <WrittenDate>2015-02-27</WrittenDate>
+        <RefillsAuthorizedCount source="0">0</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="120.0">120.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ACETAMINOPHEN-COD #3 TABLET</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>00406048462</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Alice's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1111 FAKE ST SEC A</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3165555555</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <Prefix/>
+            <First>BOB</First>
+            <Middle/>
+            <Last>TESTPATIENT</Last>
+            <Suffix/>
+            <FullName>BOB TESTPATIENT</FullName>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <Prefix/>
+            <First>ALICE</First>
+            <Middle/>
+            <Last>TESTPRESCRIBER</Last>
+            <Suffix/>
+            <FullName>ALICE TESTPRESCRIBER</FullName>
+          </Name>
+          <Address>
+            <Street>1111 FAKE ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Prescriber>
+      </Prescription>
+      <Prescription>
+        <PrescriptionNumber>B00001</PrescriptionNumber>
+        <RefillNumber source="0">0</RefillNumber>
+        <FilledDate>2015-04-13</FilledDate>
+        <WrittenDate>2015-03-02</WrittenDate>
+        <RefillsAuthorizedCount source="1">1</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="30.0">30.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ZOLPIDEM TART ER 12.5 MG TAB</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>10370011610</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Alice's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1111 FAKE ST SEC A</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3165555555</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <Prefix/>
+            <First>BOB</First>
+            <Middle/>
+            <Last>TESTPATIENT</Last>
+            <Suffix/>
+            <FullName>BOB TESTPATIENT</FullName>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <Prefix/>
+            <First>ALICE</First>
+            <Middle/>
+            <Last>TESTPRESCRIBER</Last>
+            <Suffix/>
+            <FullName>ALICE TESTPRESCRIBER</FullName>
+          </Name>
+          <Address>
+            <Street>1111 FAKE ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Prescriber>
+      </Prescription>
+      <Prescription>
+        <PrescriptionNumber>B00001</PrescriptionNumber>
+        <RefillNumber source="1">1</RefillNumber>
+        <FilledDate>2015-03-02</FilledDate>
+        <WrittenDate>2015-03-02</WrittenDate>
+        <RefillsAuthorizedCount source="1">1</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="30.0">30.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ZOLPIDEM TART ER 12.5 MG TAB</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>10370011610</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Alice's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1111 FAKE ST SEC A</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3165555555</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <Prefix/>
+            <First>BOB</First>
+            <Middle/>
+            <Last>TESTPATIENT</Last>
+            <Suffix/>
+            <FullName>BOB TESTPATIENT</FullName>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <Prefix/>
+            <First>ALICE</First>
+            <Middle/>
+            <Last>TESTPRESCRIBER</Last>
+            <Suffix/>
+            <FullName>ALICE TESTPRESCRIBER</FullName>
+          </Name>
+          <Address>
+            <Street>1111 FAKE ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Prescriber>
+      </Prescription>
+      <Prescription>
+        <PrescriptionNumber>B00004</PrescriptionNumber>
+        <RefillNumber source="1">1</RefillNumber>
+        <FilledDate>2015-04-13</FilledDate>
+        <WrittenDate>2015-04-13</WrittenDate>
+        <RefillsAuthorizedCount source="1">1</RefillsAuthorizedCount>
+        <DaysSupplyCount source="30">30</DaysSupplyCount>
+        <DispensedQuantity source="8.0">8.0</DispensedQuantity>
+        <MethodOfPaymentCode>01</MethodOfPaymentCode>
+        <Drug>
+          <ProductName>ENDOCET 10-325 MG TABLET</ProductName>
+          <Strength/>
+          <UnitOfMeasure>each</UnitOfMeasure>
+          <ProductIdentifier>
+            <Type>NDC</Type>
+            <Value>60951071270</Value>
+          </ProductIdentifier>
+        </Drug>
+        <Dispenser>
+          <OrganizationName>Bob's PHARMACY</OrganizationName>
+          <Address>
+            <Street>1234 NOT-A-REAL-PLACE DR </Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67202</ZipCode>
+          </Address>
+          <Phone>3160000000</Phone>
+        </Dispenser>
+        <Patient>
+          <Name>
+            <Prefix/>
+            <First>BOB</First>
+            <Middle/>
+            <Last>TESTPATIENT</Last>
+            <Suffix/>
+            <FullName>BOB TESTPATIENT</FullName>
+          </Name>
+          <Birthdate>1900-01-01</Birthdate>
+          <Address>
+            <Street>1023 NOT REAL ST</Street>
+            <City>WITCHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+        </Patient>
+        <Prescriber>
+          <Name>
+            <Prefix/>
+            <First>CAROL</First>
+            <Middle/>
+            <Last>TESTPRESCRIBER</Last>
+            <Suffix/>
+            <FullName>CAROL TESTPRESCRIBER</FullName>
+          </Name>
+          <Address>
+            <Street>2910 HIGH ST</Street>
+            <City>WICHITA</City>
+            <StateCode>KS</StateCode>
+            <ZipCode>67203</ZipCode>
+          </Address>
+          <DEANumber>XC5555555</DEANumber>
+        </Prescriber>
+      </Prescription>
+    </PrescriptionData>
+  </Response>
+  <Disclaimer></Disclaimer>
+</GatewayResponse>

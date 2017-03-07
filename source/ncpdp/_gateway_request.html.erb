@@ -1,0 +1,151 @@
+<section class="method" id="gateway-request">
+  <div class="method-copy">
+    <h1>NCPDP Schema AND Request Validation</h1>
+
+    <div class="schema-files">
+      <p>Schema, Pharmacist AND Prescriber Request/Response files:</p>
+      <ul>
+        <li><%= link_to 'NCPDP schema', './data/schema/SCRIPT_XML_10_6.xsd' %></li>
+		<li><%= link_to 'NCPDP Request Validation', './data/validate.sh' %></li>
+		<li><%= link_to 'NCPDP Request', './data/request-ncpdp.xml' %></li>
+		<li><%= link_to 'NCPDP Pharmacist Request', './data/request-ncpdp-pharmacist.xml' %></li>
+		<li><%= link_to 'NCPDP Error', './data/response-ncpdp-error.xml' %></li>
+		<li><%= link_to 'NCPDP Pharmacist Response', './data/response-ncpdp-from-pharmacist.xml' %></li>
+		<li><%= link_to 'NCPDP Prescriber Response', './data/response-ncpdp-from-prescriber.xml' %></li>
+      </ul>
+    </div>
+
+   <h4>How states to be queried are determined:</h4>
+   <ul>
+      <li>States that the licensee has been granted access to will be the maximal set of states that will be queried</li>
+      <li>The location state of the requestor/requesting facility will be used in conjunction with the roles determined from the <b>From Qualifier</b> and <b>Speciality</b> to determine if that requestor role can make the request from the requesting state to the destination state.</li>
+   </ul>
+
+
+   <h4>Taxonomy Code Mappings</h4>
+
+   <p>Taxonomy code mappings are determined using a combination of the Qualifier attribute on the From element and the text of the Specialty node. The following example maps to a "Phamacist with prescriptive authority":</p>
+   <pre class="round-border prettyprint">
+  &lt;Header&gt;
+...
+    &lt;From Qualifier=&quot;P&quot;&gt;FROMSYSTEM&lt;/From&gt;
+...
+  &lt;/Header&gt;
+  &lt;Body&gt;
+    &lt;RxHistoryRequest&gt;
+      &lt;Prescriber&gt;
+...
+        &lt;Specialty&gt;1835P0018X&lt;/Specialty&gt;
+   </pre>
+   <p>Below is a table of the mappings which currently exist in Gateway for Taxonomy codes. An asterisk means that if the characters before it match, it is considered a match.</p>
+   <table class="table-data" border="1">
+     <tr>
+     <th>From Qualifier</th>
+     <th>Taxonomy Code Mask for Speciality Node</th>
+     <th>Gateway Role</th>
+     </tr>
+     <tr>
+       <td rowspan="11">D or C</td>
+       <td>1223*</td>
+       <td>Dentist</td>
+     </tr>
+     <tr>
+       <td>175F00000X</td>
+       <td>Naturopathic Physician with prescriptive authority</td>
+     </tr>
+     <tr>
+       <td>363L*</td>
+       <td>Nurse Practitioner</td>
+     </tr>
+     <tr>
+       <td>152W*</td>
+       <td>Optometrist with prescriptive authority</td>
+     </tr>
+     <tr>
+       <td>1835P0018X</td>
+       <td>Pharmacist with prescriptive authority</td>
+     </tr>
+     <tr>
+       <td>207*</td>
+       <td rowspan="3">Physician</td>
+     </tr>
+     <tr>
+       <td>208*</td>
+     </tr>
+     <tr>
+       <td>213E*</td>
+     </tr>
+     <tr>
+       <td>363A*</td>
+       <td>Physician Assistant with prescritive authority</td>
+     </tr>
+     <tr>
+       <td>103T*</td>
+       <td>Psychologist with prescritive authority</td>
+     </tr>
+     <tr>
+       <td>174M00000X</td>
+       <td>Veterinarian</td>
+     </tr>
+     <tr>
+       <td rowspan="3">P</td>
+       <td>1835*</td>
+       <td>Pharmacist</td>
+     </tr>
+     <tr>
+       <td>3336*</td>
+       <td>Pharmacy</td>
+     </tr>
+     <tr>
+       <td>183700000X</td>
+       <td>Pharmacist's Delegate - Licensed</td>
+     </tr>
+   </table>	
+	
+	
+    <p>When a Gateway request is recieved, PMP Gateway requests patient prescription data from the required PMP systems.</p>
+    <p>If the PMP systems are successfully queried, the Gateway response will include the patient prescription data.</p>
+
+    <p>The Gateway request has many optional data elements. Additionally, some elements are conditional, meaning that your request must include at least one element out of a set of possible elements.</p>
+    <p>This example includes all required elements and most of the optional elements. For conditional elements, this example includes all possible options. There are notes where conditional elements are present.</p>
+    <p>Note: Some optional elements have been ommitted because they are not useful for the vast majority of users. For more information on these rarely used elements, consult the <%= link_to 'gateway request types XML schema', './data/schema/gateway_request_types.xsd' %>.</p>
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example method-example-definition">
+      <h3>Definition</h3>
+<% code('shell') do %>
+POST https://gateway-prep.pmp.appriss.com/search_request/create
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request">
+      <h3>Example Request</h3>
+<% code('shell') do %>
+curl https://gateway-prep.pmp.appriss.com/search_request/create \
+  -u username:password \
+  -H "Content-Type: application/xml" \
+  -H "Accept: application/xml" \
+  -d @gateway_request.xml
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Request Data</h3>
+      <p class="filename">request-ncpdp.xml</p>
+      <span class="download">
+        <a href="./data/request-ncpdp.xml" download>download</a>
+      </span>
+<% code('xml') do %>
+  <% File.open("#{root}/source/ncpdp/data/request-ncpdp.xml", 'rb').read %>
+<% end %>
+    </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response</h3>
+<% code('xml') do %>
+  <% File.open("#{root}/source/ncpdp/data/response-ncpdp-from-prescriber.xml", 'rb').read %>
+<% end %>
+    </div>
+  </div><!-- .method-code -->
+</section>
