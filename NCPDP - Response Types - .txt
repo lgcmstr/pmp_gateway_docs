@@ -6,6 +6,40 @@ FROM NCPDP_RESPONSES
 "Disallowed"
 "NoData"
 
+SELECT distinct details
+FROM NCPDP_RESPONSES
+WHERE RESPONSE_TYPE = 'error'
+--AND INTERCONNECT_RESPONSE_TYPE = 'error'
+LIMIT 200
+
+INTERCONNECT RESPONSE TYPE = "refused"
+RESPONSE TYE = NoDatea
+
+
+
+
+INTERCONNECT RESPONSE TYPE = "refused"
+RESPONSE TYE = NoDatea
+
+"There has either been an error on the disclosing PMP side or the PMP refused to send this data, unspecified error. PMPI Plain text data: There has either been an error on the disclosing PMP side or the PMP refused to send this data, unspecified error. "
+
+"There has either been an error on the disclosing PMP side or the PMP refused to send this data, unspecified error. "
+
+
+
+"<?xml version="1.0" encoding="UTF-8"?>
+<GatewayResponse xmlns="http://xml.appriss.com/gateway">
+  <RequestID>2564</RequestID>
+  <Error>
+    <Message>Invalid request xml document.</Message>
+    <Details><![CDATA[The document has no document element.
+]]></Details>
+    <Source>GATEWAY</Source>
+  </Error>
+</GatewayResponse>
+"
+
+
 
 "Disallowed"
 
@@ -17,80 +51,15 @@ FROM NCPDP_RESPONSES
 " There was a problem filling request"
 
 
-
-"
-    getaddrinfo: Name or service not known
-  "
-"
-    Request timed out.  Timeout is a value between 10 and 120, the configured value for your account is 20
-  "
-"
-    getaddrinfo: No address associated with hostname
   "
 "PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. Root element is missing.PMPI Plain text data: PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. Root element is missing."
-"PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. The remote name could not be resolved: 'pmpinterconnect.net'"
-"No space left on device @ fptr_finalize - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-18928-70k6jt"
-"PMPI_Interface unable to complete request to the PMP : Failed to login to PMPI Hub after multiple attempts."
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-202-19jvsxw"
-"PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. The underlying connection was closed: A connection that was expected to be kept alive was closed by the server.PMPI Plain text data: PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. The underlying connection was closed: A connection that was expected to be kept alive was closed by the server."
-"Report Deferred
-	-- Note --
-    Gateway does not support deferred responses.
-  "
-"PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. Unable to connect to the remote server"
-"PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. An error occurred while receiving the HTTP response to http://localhost:8081/IncomingWebService/Operator.svc. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details."
-"No space left on device @ fptr_finalize - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-202-1g2o2lv"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-199-rskjq7"
-"PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. The underlying connection was closed: An unexpected error occurred on a receive."
-"No space left on device @ fptr_finalize - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-13132-uhpj77"
-"
-    No route to host - connect(2) for "www.azrxreporting.com" port 8080
-  PMPI Plain text data: 
-    No route to host - connect(2) for "www.azrxreporting.com" port 8080
-  "
-"
-    Connection reset by peer - SSL_connect
-  "
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-199-1ff2nt"
-"No space left on device @ fptr_finalize - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-15698-1il7kby"
-"
-    undefined method `gsub' for nil:NilClass
-  PMPI Plain text data: 
-    undefined method `gsub' for nil:NilClass
-  "
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-13132-1vwtmvu"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-18928-1nazgt6"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-13132-qlowj0"
-"
-    There was an HTTP error from trying to contact Arizona. response code : 400
-  PMPI Plain text data: 
-    There was an HTTP error from trying to contact Arizona. response code : 400
+
+
+
   "
 " PmpiInterface::SearchResponse set response_type to pmperror because response from disclosing pmp 11 unable to decrypt response xml from disclosing pmp 11response_type 'pmperror' original response_type 'complete'"
-" PmpiInterface::SearchResponse set response_type to pmperror because response pmix xml from disclosing pmp 11 not valid  : Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.Element '{http://xml.ijis.org/niem/2.0/extension}RefillsAuthorizedCount': '' is not a valid value of the atomic type 'xs:nonNegativeInteger'.response_type 'pmperror' original response_type 'complete'"
 "PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding."
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-13132-pqp44k"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-13132-djwzoy"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-15698-5gs92z"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-199-1337dkr"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-10941-v4s383"
-"
-    getaddrinfo: Name or service not known
-  PMPI Plain text data: 
-    getaddrinfo: Name or service not known
-  "
-"PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. Root element is missing."
-"Search resulted in a found response but created pmix xml was not valid : Element '{http://niem.gov/niem/niem-core/2.0}LocationStateUSPostalServiceCode': [facet 'enumeration'] The value 'Z8' is not an element of the set {'AA', 'AE', 'AK', 'AL', 'AP', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'FM', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MH', 'MI', 'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'PW', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'}.Element '{http://niem.gov/niem/niem-core/2.0}LocationStateUSPostalServiceCode': 'Z8' is not a valid value of the atomic type '{http://niem.gov/niem/usps_states/2.0}USStateCodeSimpleType'."
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-10941-bg02aa"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-13132-36d0zy"
-"
-    Request timed out.  Timeout is a value between 10 and 120, the configured value for your account is 30
-  "
-"PMPI_Interface unable to complete request to the PMP : The underlying connection was closed: A connection that was expected to be kept alive was closed by the server."
-" PmpiInterface::SearchResponse set response_type to pmperror because response pmix xml from disclosing pmp 1 not valid  : Element '{http://niem.gov/niem/niem-core/2.0}LocationStateUSPostalServiceCode': [facet 'enumeration'] The value '' is not an element of the set {'AA', 'AE', 'AK', 'AL', 'AP', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'FM', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MH', 'MI', 'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'PW', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'}.Element '{http://niem.gov/niem/niem-core/2.0}LocationStateUSPostalServiceCode': '' is not a valid value of the atomic type '{http://niem.gov/niem/usps_states/2.0}USStateCodeSimpleType'.response_type 'pmperror' original response_type 'complete'"
-"No space left on device @ fptr_finalize - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-202-1jludrq"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-13132-1q4m1d3"
-"No space left on device @ rb_sysopen - /home/app/rails/tmp/cache/az_aws_prod%3Asettings%3Adisclosure.verbose_logging20170201-13132-1i83b6d"
+
 "PMPI_Optimum_Interface layer unable to complete request to the PMP unspecified reason. The underlying connection was closed: A connection that was expected to be kept alive was closed by the server."
 "PMPI_Interface unable to complete request to the PMP : An error occurred while receiving the HTTP response to http://localhost:8081/IncomingWebService/Operator.svc. This could be due to the service endpoint binding not using the HTTP protocol. This   be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details."
 "

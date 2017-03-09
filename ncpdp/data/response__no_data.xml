@@ -11,3 +11,27 @@
   </Response>
   <Disclaimer></Disclaimer>
 </GatewayResponse>
+
+
+
+"No Data Found.PMPI Plain text data: No Data Found."
+
+"<?xml version="1.0" encoding="UTF-8"?>
+<pmix:PMPRequest xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pmix="http://xml.ijis.org/niem/2.0/" xmlns:pmp="http://xml.ijis.org/niem/2.0/extension" xsi:schemaLocation="http://xml.ijis.org/niem/2.0/ PMIX_NIEM_2.0_Request_Schema.xsd">
+  <pmp:RequestPrescriptionDateRange>
+    <pmp:RequestPrescriptionDateRangeBegin>2014-03-31</pmp:RequestPrescriptionDateRangeBegin>
+    <pmp:RequestPrescriptionDateRangeEnd>2015-03-31</pmp:RequestPrescriptionDateRangeEnd>
+  </pmp:RequestPrescriptionDateRange>
+  <pmp:RequestPatient>
+    <nc:PersonBirthDate>
+      <nc:Date>1958-04-04</nc:Date>
+    </nc:PersonBirthDate>
+    <nc:PersonName>
+      <nc:PersonGivenName>Cherrill L</nc:PersonGivenName>
+      <nc:PersonSurName>McKay</nc:PersonSurName>
+    </nc:PersonName>
+    <pmp:PersonPrimaryContactInformation/>
+  </pmp:RequestPatient>
+</pmix:PMPRequest>
+"
+
