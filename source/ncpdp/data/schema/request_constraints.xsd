@@ -453,14 +453,6 @@
       <xs:enumeration value="Medical Resident with prescriptive authority"/>
       <xs:enumeration value="Medical Intern with prescriptive authority" />
       <xs:enumeration value="Dentist"/>
-      <xs:enumeration value="Medical Resident with no independent prescriptive authority"/>
-      <xs:enumeration value="Medical Intern with no independent prescriptive authority"/>
-      <xs:enumeration value="Prescriber Delegate - Licensed"/>
-      <xs:enumeration value="Prescriber Delegate - Unlicensed"/>
-      <xs:enumeration value="Pharmacist's Delegate - Licensed" />
-      <xs:enumeration value="Pharmacist's Delegate - Unlicensed" />
-      <xs:enumeration value="Other - Non Prescriber" />
-      <xs:enumeration value="Other Prescriber" />
     </xs:restriction>
   </xs:simpleType>
 
