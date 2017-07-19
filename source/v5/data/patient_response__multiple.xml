@@ -1,0 +1,15 @@
+<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<PatientResponse xmlns=\"http://xml.appriss.com/gateway/v5\">
+  <RequestId>234</RequestId>
+  <Response>
+    <ResponseDestinations>
+      <Pmp>KS</Pmp>
+    </ResponseDestinations>
+    <Disallowed>
+      <Message>There was a permissions problem making this request</Message>
+      <Details><![CDATA[Based on the patient details submitted, the responding state PMP could not identify a unique patient. Please manually search for the patient in the state's PMP website.]]></Details>
+      <Source>PMP</Source>
+    </Disallowed>
+  </Response>
+  <Disclaimer>...</Disclaimer>
+</PatientResponse>
