@@ -16,7 +16,7 @@
 
   <div class="method-code">
     <div class="method-example method-example-request-data">
-      <h3>Example Request Data</h3>
+      <h3>Example Request Data: Unauthorized Role</h3>
       <p class="filename">patient_response__disallowed.xml</p>
       <span class="download">
         <a href="./data/patient_response__disallowed.xml" download>download</a>
@@ -25,5 +25,17 @@
         <% File.open("#{root}/source/v5/data/patient_response__disallowed.xml", 'rb').read %>
       <% end %>
     </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response Data: Multiple Match</h3>
+      <p class="filename">patient_response__multiple.xml</p>
+      <span class="download">
+        <a href="./data/patient_response__multiple.xml" download>download</a>
+      </span>
+      <% code('xml') do %>
+        <% File.open("#{root}/source/v5/data/patient_response__multiple.xml", 'rb').read %>
+      <% end %>
+    </div>
+
   </div><!-- .method-code -->
 </section>
