@@ -568,6 +568,7 @@
   <h3>Response Details</h3>
   <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
   <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Details</code> node will be present if there are details about the error beyond the message. This is especially important for responses involving multiple matches, as it is what indicates that the error was a multiple match error in particular.</p>
   <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting.</p>
 </div>
 
@@ -575,7 +576,7 @@
 
   <div class="method-code">
     <div class="method-example method-example-request-data">
-      <h3>Example Request Data</h3>
+      <h3>Example Request Data: Unauthorized Role</h3>
       <p class="filename">patient_response__disallowed.xml</p>
       <span class="download">
         <a href="./data/patient_response__disallowed.xml" download>download</a>
@@ -596,6 +597,31 @@
 <span class="nt">&lt;/PatientResponse&gt;</span>
 </code></pre>
     </div>
+
+    <div class="method-example method-example-request-data">
+      <h3>Example Response Data: Multiple Match</h3>
+      <p class="filename">patient_response__multiple.xml</p>
+      <span class="download">
+        <a href="./data/patient_response__multiple.xml" download>download</a>
+      </span>
+<pre class="highlight xml"><code><span class="cp">&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;</span>
+<span class="nt">&lt;PatientResponse</span> <span class="na">xmlns=</span><span class="s">\"http://xml.appriss.com/gateway/v5\"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;RequestId&gt;</span>234<span class="nt">&lt;/RequestId&gt;</span>
+  <span class="nt">&lt;Response&gt;</span>
+    <span class="nt">&lt;ResponseDestinations&gt;</span>
+      <span class="nt">&lt;Pmp&gt;</span>KS<span class="nt">&lt;/Pmp&gt;</span>
+    <span class="nt">&lt;/ResponseDestinations&gt;</span>
+    <span class="nt">&lt;Disallowed&gt;</span>
+      <span class="nt">&lt;Message&gt;</span>There was a permissions problem making this request<span class="nt">&lt;/Message&gt;</span>
+      <span class="nt">&lt;Details&gt;</span><span class="cp">&lt;![CDATA[Based on the patient details submitted, the responding state PMP could not identify a unique patient. Please manually search for the patient in the state's PMP website.]]&gt;</span><span class="nt">&lt;/Details&gt;</span>
+      <span class="nt">&lt;Source&gt;</span>PMP<span class="nt">&lt;/Source&gt;</span>
+    <span class="nt">&lt;/Disallowed&gt;</span>
+  <span class="nt">&lt;/Response&gt;</span>
+  <span class="nt">&lt;Disclaimer&gt;</span>...<span class="nt">&lt;/Disclaimer&gt;</span>
+<span class="nt">&lt;/PatientResponse&gt;</span>
+</code></pre>
+    </div>
+
   </div><!-- .method-code -->
 </section>
 
@@ -610,6 +636,7 @@
   <h3>Response Details</h3>
   <p>The <code>Pmp</code> node contains the state abbreviation for the PMP system which the response is for.</p>
   <p>The <code>Message</code> node will be a simple text explanation of what happened. This should be appropriate to display to users.</p>
+  <p>The <code>Details</code> node will be present if there are details about the error beyond the message. This is especially important for responses involving multiple matches, as it is what indicates that the error was a multiple match error in particular.</p>
   <p>The <code>Source</code> node describes where in the request lifecycle the error originated. This may be helpful in troubleshooting.</p>
 </div>
 
