@@ -2,8 +2,11 @@
   position: fixed;
   left: 0;
   top: $header-height;
+  // bottom: 0 replaces min-height: 100%. It makes the side nav fill the full height of its container
+  // while allowing for overflow: auto.
+  bottom: 0;
+  overflow-y: auto;
   width: $side-nav-width;
-  min-height: 100%;
   background-color: $side-nav-background-color;
   border-right: $base-border;
 
