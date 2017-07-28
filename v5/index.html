@@ -112,6 +112,10 @@
         </li>
       </ul>
     </li>
+    <li>
+      <span class="active-marker">&nbsp;</span>
+      <a class="sidebar-nav-item" href="#epic-sso">Epic SSO</a>
+    </li>
   </ul>
 </div>
 
@@ -1994,6 +1998,50 @@
   <span class="nt">&lt;/Error&gt;</span>
 <span class="nt">&lt;/ReportResponse&gt;</span>
 </code></pre>
+    </div>
+  </div><!-- .method-code -->
+</section>
+
+  <section class="method" id="epic-sso">
+  <div class="method-copy">
+    <h1>Epic SSO</h1>
+    <p>Customers who wish to integrate with the PMP Gateway using Epic will want to consider the Epic SSO option. It allows for significantly simpler integration with Epic.</p>
+
+    <h2>Requirements</h2>
+    <p>Epic SSO requires Epic 2015 or higher. Reference PRJ 161400 when speaking to Epic about the integration.</p>
+
+    <h2>Details</h2>
+    <p>The process for retrieving a report through Epic is separate from the process outlined above involving a patient request followed by a report request. A GET request is made to a different endpoint with the web service user and an encrypted data string as query parameters.</p>
+    <p>The encrypted data string constists of patient information, provider information, and timestamp formatted as query parameters then encrypted using the web service user's password. The Epic endpoint does not use HTTP Basic authentication like the patient and report request endpoints above. Instead, the request is authorized by decrypting the data string.</p>
+    <p>If the request is successful, the response will an <a href="#report-response-html-report">HTML report</a>.</p>
+
+  </div><!-- .method-copy -->
+
+  <div class="method-code">
+    <div class="method-example">
+        <div class="method-example method-example-definition">
+          <h3>Epic Testing API Endpoint</h3>
+<pre class="highlight shell"><code>https://gateway-prep.pmp.appriss.com/v5/report/epic
+</code></pre>
+          <h3>Epic Production API Endpoint</h3>
+<pre class="highlight shell"><code>https://pmpgateway.net/v5/report/epic
+</code></pre>
+        </div>
+
+        <div class="method-example method-example-definition">
+          <h3>Example Data String</h3>
+          <p>This string is encrypted to form the <code>data</code> sent as a query parameter to the endpoint.</p>
+<pre class="highlight plaintext"><code>patientfirstname=Steven&amp;patientlastname=Testpatient&amp;patientdob=3%2F1%2F1970&amp;patientmrn=3050256&amp;patientzip=43215&amp;providerrole=Physician&amp;providerfirstname=Attending&amp;providerlastname=Emergency&amp;providerdea=AN1928285&amp;providernpi=1114005147&amp;facilityname=APPRISS+HEALTH&amp;facilitystate=OH&amp;facilitydea=&amp;facilitynpi=1212123123&amp;timestamp=20170719211305
+</code></pre>
+
+          <h3>Example Request</h3>
+<pre class="highlight plaintext"><code>GET https://gateway-prep.pmp.appriss.com/v5/report/epic?web_service_user=appriss-epicsso-pharm&amp;data=a5pVUIZY+ysw4+E8+bn2gHRI3VfdkbFNLqTY6MI3WcDd0XbuI/6j1l7t5f3gSZnmcBU/NUL9Q8fBiFMgtq93ei1km7fperTX/RGX3dlLyMYGru5hs99s1fuFKFl9b2UEAqetbtjqYoQA6GDp7SxRZm5WMVQilVPa+bWY1xLRyzNvwys9F7Z/VDbSjeIxUEMvvAjlDIeYCYZjEjVw5U49NLzR0YrKqf38pbA8uP9+ejOOfL5VcY/C19krO3sytOKhiHb493CMg4ULGmBU9ecEZIFu9d5p3n6n3yhYgBKxZpx3HsYyum0+3c8JLy1qxNqZAh5XLugva3S53cXC4s2O7OjyzcG9/1euDnIEflnikmOs3SAVT2YdpnMrptYbrJkDzA262igbMzuiMs7O79dFb7B3vZ1ykZme2GSNR4bDDqpntaoNQoUofYZo+dq/eVXq
+</code></pre>
+        </div>
+
+
+        <div class="method-example method-example-definition">
+        </div>
     </div>
   </div><!-- .method-code -->
 </section>
