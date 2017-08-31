@@ -67,7 +67,6 @@
         <StateCode>KS</StateCode>
       </DriversLicenseIdentifier>
       <PharmacyBenefitsMemberID>String</PharmacyBenefitsMemberID>
-      <MedicalBenefitsMemeberID>String</MedicalBenefitsMemeberID>
       <MedicalRecordID>XX-1234-AnyString</MedicalRecordID><!-- Optional. If you want historical scores in NARxCHECK reports then it is required. -->
     </Patient>
  </PrescriptionRequest>
