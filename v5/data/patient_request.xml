@@ -40,10 +40,6 @@
     </Location>
   </Requester>
   <PrescriptionRequest>
-    <DateRange>
-      <Begin>2008-11-01</Begin>
-      <End>2010-11-30</End>
-    </DateRange>
     <Patient>
       <Name>
         <First>Bob</First>
