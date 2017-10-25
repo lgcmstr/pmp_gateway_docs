@@ -32,4 +32,4 @@
   a: This depends on which state PMP systems the prescription data was retrieved from and each individual state's laws.
 
 - q: What roles am I allowed to use in a patient request or a report request?
-  a_file: roles 
+  a_file: roles
